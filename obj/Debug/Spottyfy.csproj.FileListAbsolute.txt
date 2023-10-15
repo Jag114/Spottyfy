@@ -2,7 +2,6 @@ D:\Projekty\Spottyfy\bin\Debug\Spottyfy.exe.config
 D:\Projekty\Spottyfy\bin\Debug\Spottyfy.exe
 D:\Projekty\Spottyfy\bin\Debug\Spottyfy.pdb
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.csproj.AssemblyReference.cache
-D:\Projekty\Spottyfy\obj\Debug\Spottyfy.csproj.SuggestedBindingRedirects.cache
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.Form1.resources
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.Properties.Resources.resources
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.csproj.GenerateResource.cache
