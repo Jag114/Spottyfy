@@ -15,7 +15,8 @@ namespace Spottyfy
         [STAThread]
         static void Main()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://admin:admin123@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+            /*
+            MongoClient dbClient = new MongoClient("mongodb+srv://user:password@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
 
             var dbList = dbClient.ListDatabases().ToList();
 
@@ -24,7 +25,7 @@ namespace Spottyfy
             {
                 Console.WriteLine(db);
             }
-
+            */
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AddSong());
