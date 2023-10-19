@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Driver;
 
 namespace Spottyfy
 {
@@ -14,9 +15,19 @@ namespace Spottyfy
         [STAThread]
         static void Main()
         {
+            MongoClient dbClient = new MongoClient("mongodb+srv://admin:admin123@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+
+            var dbList = dbClient.ListDatabases().ToList();
+
+            Console.WriteLine("The list of databases on this server is: ");
+            foreach (var db in dbList)
+            {
+                Console.WriteLine(db);
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new AddSong());
         }
     }
 }
