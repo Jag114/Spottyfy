@@ -12,9 +12,9 @@ namespace Spottyfy
 {
     public partial class AddSong : Form
     {
-        public AddSong()
+        public AddSong(string data)
         {
-            InitializeComponent();
+            InitializeComponent(data);
         }
 
         private void button1_Click(object sender, EventArgs e)

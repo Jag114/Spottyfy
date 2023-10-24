@@ -28,7 +28,7 @@ namespace Spottyfy
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(string data)
         {
             this.button1 = new System.Windows.Forms.Button();
             this.navBar1 = new Spottyfy.NavBar();
@@ -38,9 +38,9 @@ namespace Spottyfy
             // 
             this.button1.Location = new System.Drawing.Point(168, 112);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(300, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = data;
             this.button1.UseVisualStyleBackColor = true;
            
             // 
