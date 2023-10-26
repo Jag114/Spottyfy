@@ -16,22 +16,22 @@ namespace Spottyfy
         static void Main()
         {
             
-            MongoClient dbClient = new MongoClient("mongodb+srv://:@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+            //MongoClient dbClient = new MongoClient("mongodb+srv://:@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
 
-            var dbList = dbClient.ListDatabases().ToList();
+            //var dbList = dbClient.ListDatabases().ToList();
 
-            Console.WriteLine("The list of databases on this server is: ");
-            foreach (var db in dbList)
-            {
-                Console.WriteLine(db);
-            }
+            //Console.WriteLine("The list of databases on this server is: ");
+            //foreach (var db in dbList)
+            //{
+            //    Console.WriteLine(db);
+            //}
 
-            string data = string.Join(" ", dbList[0]);
-            Console.WriteLine(data);
+            //string data = string.Join(" ", dbList[0]);
+            //Console.WriteLine(data);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddSong(data));
+            Application.Run(new SongView());
         }
     }
 }

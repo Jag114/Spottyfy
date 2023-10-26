@@ -21,5 +21,10 @@ namespace Spottyfy
         {
             label1.Text = "You clicked the button, well done";
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
