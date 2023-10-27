@@ -109,3 +109,4 @@ C:\git\Spottyfy\obj\Debug\Spottyfy.csproj.CoreCompileInputs.cache
 C:\git\Spottyfy\obj\Debug\Spottyfy.csproj.CopyComplete
 C:\git\Spottyfy\obj\Debug\Spottyfy.exe
 C:\git\Spottyfy\obj\Debug\Spottyfy.pdb
+D:\Projekty\Spottyfy\obj\Debug\Spottyfy.SongView.resources
