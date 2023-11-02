@@ -15,7 +15,6 @@ namespace Spottyfy
         public SongView()
         {
             InitializeComponent();
-
         }
 
         private void SongView_Load(object sender, EventArgs e)
@@ -62,6 +61,10 @@ namespace Spottyfy
         {
 
         }
-        
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
