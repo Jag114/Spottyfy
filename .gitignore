@@ -1,1 +1,7 @@
 .vs/*
+.vs/Spottyfy/v17/.suo
+obj/*
+bin/*
+obj/
+bin/
+.vs/

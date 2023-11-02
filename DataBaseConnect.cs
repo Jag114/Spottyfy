@@ -20,15 +20,45 @@ namespace Spottyfy
 
         public string Connect()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://admin:phW6oW8s7K0TTFHK@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+            MongoClient dbClient = new MongoClient("mongodb+srv://admin:XtdGTzNozKUTkjAh@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
             Console.WriteLine("DB type is: " + dbType);
             var dbList = dbClient.ListDatabases().ToList();
+            //Console.WriteLine(dbList);
+            var db = dbClient.GetDatabase("Spottyfy");
+            Console.WriteLine("DB: " + db);
+            var songs = db.GetCollection<SongData>("Songs");
 
-            Console.WriteLine("The list of databases on this server is: ");
-            foreach (var db in dbList)
+            //ADD
+            SongData songTest = new SongData()
             {
-                Console.WriteLine(db);
+                name = "test1",
+                author = "me",
+                album = "the-best",
+                releaseDate = "today"
+            };
+            //songs.InsertOne(songTest);
+
+            //UPDATE
+            SongData songTestUpdated = new SongData()
+            {
+                Id = "6543b5de247e76261186eeb4",
+                name = "testUPDATED",
+                author = "future-me",
+                album = "the-bestest",
+                releaseDate = "tomorrow"
+            };
+            songs.ReplaceOne(song => song.Id == "6543b5de247e76261186eeb4", songTestUpdated);
+
+            //DISPLAY
+            List<SongData>songsList = songs.Find(song => true).ToList();
+            Console.WriteLine("Song numero uno: " + songsList.First().ToJson());
+            foreach(var songDoc in songsList)
+            {
+                Console.WriteLine(songDoc.ToJson());
             }
+
+            //DELETE
+            songs.DeleteOne(song => song.Id == "some id");
 
             //string data[] = string.Join(" ", dbList[0]);
             Console.WriteLine("DB list: " + dbList.ToJson());
