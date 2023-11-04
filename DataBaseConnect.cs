@@ -20,7 +20,7 @@ namespace Spottyfy
 
         public string Connect()
         {
-            MongoClient dbClient = new MongoClient("mongodb+srv://admin:XtdGTzNozKUTkjAh@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+            MongoClient dbClient = new MongoClient("mongodb+srv://admin:password@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
             Console.WriteLine("DB type is: " + dbType);
             var dbList = dbClient.ListDatabases().ToList();
             //Console.WriteLine(dbList);
@@ -47,10 +47,11 @@ namespace Spottyfy
                 album = "the-bestest",
                 releaseDate = "tomorrow"
             };
-            songs.ReplaceOne(song => song.Id == "6543b5de247e76261186eeb4", songTestUpdated);
+            //songs.ReplaceOne(song => song.Id == "6543b5de247e76261186eeb4", songTestUpdated);
 
             //DISPLAY
             List<SongData>songsList = songs.Find(song => true).ToList();
+            Console.WriteLine("Songs list JSON: " + songsList.ToJson());
             Console.WriteLine("Song numero uno: " + songsList.First().ToJson());
             foreach(var songDoc in songsList)
             {
@@ -58,7 +59,7 @@ namespace Spottyfy
             }
 
             //DELETE
-            songs.DeleteOne(song => song.Id == "some id");
+            //songs.DeleteOne(song => song.Id == "some id");
 
             //string data[] = string.Join(" ", dbList[0]);
             Console.WriteLine("DB list: " + dbList.ToJson());
@@ -67,5 +68,32 @@ namespace Spottyfy
             
             return data;
         } 
+
+        //return a collection of songs from the mongoDB db in a List format, list itself
+        //an each song in list can be ToJson'ed so they are easier to work with
+        public List<SongData> GetSongs(IMongoCollection<SongData> collection)
+        {
+            List<SongData> songsList = collection.Find(song => true).ToList();
+            return songsList;
+        }
+
+        //adds singular song to mongoDB db
+        public void AddSong(IMongoCollection<SongData> collection, SongData newSong)
+        {
+            collection.InsertOne(newSong);
+        }
+
+        //updates singular song in the mongoDB db based on the ID given in parameters 
+        //how to get the same id for both of them
+        public void UpdateSong(IMongoCollection<SongData> collection, SongData updatedSong, string songId)
+        {
+            collection.ReplaceOne(song => song.Id == songId, updatedSong);
+        }
+
+        //deletes singular song from mongoDB db based on the ID given in parameters
+        public void DeleteSong(IMongoCollection<SongData> collection, string songId)
+        {
+            collection.DeleteOne(song => song.Id == songId);
+        }
     }
 }

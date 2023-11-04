@@ -44,7 +44,6 @@ D:\Projekty\Spottyfy\bin\Debug\System.Security.Principal.Windows.xml
 D:\Projekty\Spottyfy\bin\Debug\System.Text.Encoding.CodePages.xml
 D:\Projekty\Spottyfy\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.csproj.AssemblyReference.cache
-D:\Projekty\Spottyfy\obj\Debug\Spottyfy.csproj.SuggestedBindingRedirects.cache
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.AddSong.resources
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.Form1.resources
 D:\Projekty\Spottyfy\obj\Debug\Spottyfy.NavBar.resources

@@ -5,3 +5,5 @@ bin/*
 obj/
 bin/
 .vs/
+bin/Debug
+obj/Debug
