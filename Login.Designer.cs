@@ -1,4 +1,4 @@
-﻿namespace login_window
+﻿namespace Spottyfy
 {
     partial class Login
     {
