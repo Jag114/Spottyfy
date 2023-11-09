@@ -10,13 +10,12 @@ using System.Threading.Tasks;
 
 namespace Spottyfy
 {
-    //virutal classes
-    //interfaces
     //return jsons, and get jsons in parameters
     public class DataBaseConnect
     {
         int dbType;
         MongoClient mongoClient;
+
         public DataBaseConnect(int db)
         {
             dbType = db;
@@ -26,25 +25,40 @@ namespace Spottyfy
         {
             if (pass == "") return -1;
 
-            try
+            switch (dbType)
             {
-                mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
-                Console.WriteLine("DB type is: " + dbType);
-                var dbList = mongoClient.ListDatabases().ToList();
-                //Console.WriteLine(dbList);
-                var db = mongoClient.GetDatabase("Spottyfy");
-                Console.WriteLine("DB: " + db);
-                var songs = db.GetCollection<SongData>("Songs");
-                //Console.WriteLine(db.ToJson());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-                return -1;
-            }
-            
+                case 1://mongo
+                    try
+                    {
+                        mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+                        Console.WriteLine("DB type is: " + dbType);
+                        var dbList = mongoClient.ListDatabases().ToList();
+                        //Console.WriteLine(dbList);
+                        var db = mongoClient.GetDatabase("Spottyfy");
+                        Console.WriteLine("DB: " + db);
+                        var songs = db.GetCollection<SongData>("Songs");
+                        //Console.WriteLine(db.ToJson());
+                        return 0;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Exception in DataBaseConnect: " + e.Message);
+                        return -1;
+                    }
 
-            return 0;
+                case 2://firebase
+
+                    return -1;
+
+                case 3://azuresql
+
+                    return -1;
+
+                default:
+                    return 0;
+            }
+
+
         } 
 
         public IMongoCollection<SongData> GetSongCollection()
