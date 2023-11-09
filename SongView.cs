@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,12 @@ namespace Spottyfy
 
         private void SongView_Load(object sender, EventArgs e)
         {
+            Console.WriteLine("AAAAAAAAAAAAAAAA");
+            DataBaseConnect connection = new DataBaseConnect(1);
+            connection.Connect("admin", "password");
+            var collection = connection.GetSongCollection();
+            Console.WriteLine(connection.GetSongs(collection).ToJson());
+            connection.AddSong(collection);
             List<Album> albums = Album.getAlbumsMethod();
             albumTitle.Text = albums[0].title;
             albumArtist.Text = albums[0].artist;

@@ -18,7 +18,7 @@ namespace Spottyfy
 
         //tu beda dane z bazy
         DataBaseConnect DB = new DataBaseConnect(1);
-        string data = DB.Connect();
+        //string data = DB.Connect();
 
         string[] titles = { "Album1", "Album2" };
         string[] artists = { "Artist1", "Artist2" };
@@ -26,7 +26,7 @@ namespace Spottyfy
             {
                 
                 albums.Add(new Album() { 
-                    title = data, artist = artists[i] 
+                    title = titles[i], artist = artists[i] 
                 });
                 
                 
