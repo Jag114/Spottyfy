@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
 using MongoDB.Driver.GeoJsonObjectModel;
@@ -21,7 +22,7 @@ namespace Spottyfy
             dbType = db;
         }
 
-        public int Connect(string login = "admin", string pass = "")
+        public int Connect(string login = "admin", string pass = "loHs1lSZ788mv0HK")
         {
             if (pass == "") return -1;
 
@@ -68,6 +69,21 @@ namespace Spottyfy
             return songsCollection;
         }
 
+        public IMongoCollection<UserData> GetUserCollection()
+        {
+            var db = mongoClient.GetDatabase("Spottyfy");
+            var userCollection = db.GetCollection<UserData>("Users");
+            return userCollection;
+        }
+
+        public IMongoCollection<AlbumData> GetAlbumCollection()
+        {
+            var db = mongoClient.GetDatabase("Spottyfy");
+            var albumCollection = db.GetCollection<AlbumData>("Albums");
+            return albumCollection;
+        }
+
+        //song
         //return a collection of songs from the mongoDB db in a List format, list itself
         //an each song in list can be ToJson'ed so they are easier to work with
         public List<SongData> GetSongs(IMongoCollection<SongData> collection)
@@ -76,9 +92,15 @@ namespace Spottyfy
             return songsList;
         }
 
+        public List<SongData> GetSongFromAlbum(IMongoCollection<SongData> collection, string albumId)
+        {
+            var song = collection.Find(s => s.album == albumId).ToList();
+            return song;
+        }
+
         //adds singular song to mongoDB db
         //chekc if possible withou id
-        public void AddSong(IMongoCollection<SongData> collection, SongData newSong, string songJSON)
+        public void AddSong(IMongoCollection<SongData> collection, SongData newSong)
         {
             //create new song with json
             collection.InsertOne(newSong);
@@ -107,6 +129,52 @@ namespace Spottyfy
         public void DeleteSong(IMongoCollection<SongData> collection, string songId)
         {
             collection.DeleteOne(song => song.Id == songId);
+        }
+
+
+        //user
+        //useless?
+        public List<UserData> GetUser(IMongoCollection<UserData> collection, string userId)
+        {
+            var user = collection.Find(u => u.Id == userId).ToList();
+            return user;
+        }
+
+        public void AddUser(IMongoCollection<UserData> collection, UserData user)
+        {
+            collection.InsertOne(user);
+        }
+
+        public void UpdateUser(IMongoCollection<UserData> collection, UserData updatedUser, string userId)
+        {
+            collection.ReplaceOne(u => u.Id == userId, updatedUser);
+        }
+
+        public void DeleteUser(IMongoCollection<UserData> collection, string userId)
+        {
+            collection.DeleteOne(u => u.Id == userId);
+        }
+
+        //album
+        public List<AlbumData> GetAlbum(IMongoCollection<AlbumData> collection, string albumId)
+        {
+            var album = collection.Find(a => a.Id == albumId).ToList();
+            return album;
+        }
+
+        public void AddAlbum(IMongoCollection<AlbumData> collection, AlbumData album)
+        {
+            collection.InsertOne(album);
+        }
+
+        public void UpdateAlbum(IMongoCollection<AlbumData> collection, AlbumData updatedAlbum, string albumId)
+        {
+            collection.ReplaceOne(a => a.Id == albumId, updatedAlbum);
+        }
+
+        public void DeleteAlbum(IMongoCollection<AlbumData> collection, string albumId)
+        {
+            collection.DeleteOne(a => a.Id == albumId);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Spottyfy
         public string Id { get; set; }
 
         //[BsonElement("basic-info")]
-        public string name { get; set; }
+        public string name { get; set; } 
 
         public string author { get; set; }
 
