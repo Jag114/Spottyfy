@@ -33,5 +33,22 @@ namespace Spottyfy
         {
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_singup_login_window_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SignUp SignUpOpen = new SignUp();
+            SignUpOpen.ShowDialog();
+        }
+
+        private void button_loggin_window_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
