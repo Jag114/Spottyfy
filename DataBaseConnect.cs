@@ -22,7 +22,7 @@ namespace Spottyfy
             dbType = db;
         }
 
-        public int Connect(string login = "admin", string pass = "loHs1lSZ788mv0HK")
+        public int Connect(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
         {
             if (pass == "") return -1;
 

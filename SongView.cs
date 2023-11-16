@@ -21,6 +21,7 @@ namespace Spottyfy
         private void SongView_Load(object sender, EventArgs e)
         {
             List<Album> albums = Album.getAlbumsMethod();
+            Console.WriteLine(string.Join(",",albums));
             albumTitle.Text = albums[0].title;
             albumArtist.Text = albums[0].artist;
             for (int i = 0; i < albums.Count; ++i)
