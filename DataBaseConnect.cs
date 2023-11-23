@@ -22,7 +22,7 @@ namespace Spottyfy
             dbType = db;
         }
 
-        public int Connect(string login = "admin", string pass = "loHs1lSZ788mv0HK")
+        public int Connect(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
         {
             if (pass == "") return -1;
 
@@ -110,9 +110,9 @@ namespace Spottyfy
         {
             SongData songTest = new SongData()
             {
-                name = "test1",
+                name = "Beep",
                 author = "me",
-                album = "the-best",
+                album = "654fd7d6d3297fe492bc390c",
                 releaseDate = DateTime.Now.ToString("h:mm:ss tt")
             };
             collection.InsertOne(songTest);
