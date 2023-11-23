@@ -15,12 +15,10 @@ namespace Spottyfy
         [STAThread]
         static void Main()
         {
-            
-            
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SongView());
+            //Application.Run(new Login());
         }
     }
 }
