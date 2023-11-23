@@ -14,6 +14,7 @@ namespace Spottyfy
 {
     public class Album
     {
+        public string id { get; set; }
         public string title { get; set; }
         public string artist { get; set; }
 
@@ -21,7 +22,6 @@ namespace Spottyfy
 
             List<Album> albums = new List<Album>();
 
-            Console.WriteLine("AAAAAAAAAAAAAAAA");
             DataBaseConnect connection = new DataBaseConnect(1);//enum instead of magical number?
             connection.Connect();
             JArray rawAlbums = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(connection.GetAlbumCollection().AsQueryable()));
@@ -45,7 +45,7 @@ namespace Spottyfy
             foreach (JObject item in rawAlbums)
             {
                 albums.Add(new Album() { 
-                    title = item.GetValue("name").ToString(), artist = item.GetValue("author").ToString()
+                    title = item.GetValue("name").ToString(), artist = item.GetValue("author").ToString(), id=item.GetValue("Id").ToString()
                 });
             }
 

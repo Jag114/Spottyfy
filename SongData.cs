@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
 
 namespace Spottyfy
 {
@@ -22,5 +24,14 @@ namespace Spottyfy
         public string album { get; set; }
 
         public string releaseDate { get; set; }
+
+        public static List<SongData> getSongsFromAlbum(string albumId) {
+            List<SongData> songs;
+            DataBaseConnect connection = new DataBaseConnect(1);//enum instead of magical number?
+            connection.Connect();
+            //connection.AddSong(connection.GetSongCollection());
+            songs = connection.GetSongFromAlbum(connection.GetSongCollection(), albumId);
+            return songs;
+        }
     }
 }
