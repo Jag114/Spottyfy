@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_login_window = new System.Windows.Forms.Panel();
+            this.button_singup_login_window = new System.Windows.Forms.Button();
             this.button_exit_login_window = new System.Windows.Forms.Button();
             this.label_failed_login_window = new System.Windows.Forms.Label();
             this.linkLabel_forgot_password = new System.Windows.Forms.LinkLabel();
@@ -47,6 +48,7 @@
             // panel_login_window
             // 
             this.panel_login_window.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.panel_login_window.Controls.Add(this.button_singup_login_window);
             this.panel_login_window.Controls.Add(this.button_exit_login_window);
             this.panel_login_window.Controls.Add(this.label_failed_login_window);
             this.panel_login_window.Controls.Add(this.linkLabel_forgot_password);
@@ -65,6 +67,19 @@
             this.panel_login_window.Name = "panel_login_window";
             this.panel_login_window.Size = new System.Drawing.Size(655, 404);
             this.panel_login_window.TabIndex = 0;
+            // 
+            // button_singup_login_window
+            // 
+            this.button_singup_login_window.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.button_singup_login_window.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_singup_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.button_singup_login_window.Location = new System.Drawing.Point(12, 333);
+            this.button_singup_login_window.Name = "button_singup_login_window";
+            this.button_singup_login_window.Size = new System.Drawing.Size(310, 50);
+            this.button_singup_login_window.TabIndex = 13;
+            this.button_singup_login_window.Text = "Sign up";
+            this.button_singup_login_window.UseVisualStyleBackColor = false;
+            this.button_singup_login_window.Click += new System.EventHandler(this.button_singup_login_window_Click);
             // 
             // button_exit_login_window
             // 
@@ -111,11 +126,12 @@
             this.button_loggin_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.button_loggin_window.Location = new System.Drawing.Point(454, 333);
             this.button_loggin_window.Name = "button_loggin_window";
-            this.button_loggin_window.Size = new System.Drawing.Size(182, 50);
+            this.button_loggin_window.Size = new System.Drawing.Size(191, 50);
             this.button_loggin_window.TabIndex = 9;
             this.button_loggin_window.Text = "Log in";
             this.button_loggin_window.UseVisualStyleBackColor = false;
             this.button_loggin_window.Click += new System.EventHandler(this.button_loggin_window_Click);
+            this.button_loggin_window.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button_loggin_window_KeyPress);
             // 
             // panel5
             // 
@@ -223,6 +239,7 @@
         private System.Windows.Forms.LinkLabel linkLabel_forgot_password;
         private System.Windows.Forms.Label label_failed_login_window;
         private System.Windows.Forms.Button button_exit_login_window;
+        private System.Windows.Forms.Button button_singup_login_window;
     }
 }
 
