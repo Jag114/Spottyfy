@@ -32,6 +32,11 @@ namespace Spottyfy
                     try
                     {
                         mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+                        if (mongoClient == null)
+                        {
+                            Console.WriteLine("MongoClient returned null, no connection");
+                            return -1;
+                        }
                         Console.WriteLine("DB type is: " + dbType);
                         var dbList = mongoClient.ListDatabases().ToList();
                         //Console.WriteLine(dbList);
@@ -56,6 +61,7 @@ namespace Spottyfy
                     return -1;
 
                 default:
+                    Console.WriteLine("Wrong DB type chose, default case");
                     return 0;
             }
 
