@@ -6,8 +6,13 @@ using MongoDB.Driver.GeoJsonObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.Xml.Linq;
 
 namespace Spottyfy
 {
@@ -16,6 +21,7 @@ namespace Spottyfy
     {
         int dbType;
         MongoClient mongoClient;
+        NpgsqlConnection PSQLconnection;
 
         public DataBaseConnect(int db)
         {
@@ -56,9 +62,58 @@ namespace Spottyfy
 
                     return -1;
 
-                case 3://azuresql
+                case 3://postgresql
+                    Console.WriteLine("Case 3");
+                    try
+                    {
+                        Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                        string connectionString = "Host=localhost;Username=postgres;Password=postgres;Database=test";
+                        PSQLconnection = new NpgsqlConnection(connectionString);
+                        NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
+                        NpgsqlCommand command = dataSource.CreateCommand("SELECT * FROM table1");
+                        NpgsqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows && reader.Read())
+                        {
+                            Console.WriteLine(reader.GetInt64(0));
+                            Console.WriteLine(reader.GetString(1));
+                        }
+                        Console.WriteLine("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
-                    return -1;
+                        return 0;
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine("Exception in DataBaseConnect: " + e.Message);
+                        return -1;
+                    }
+
+                case 4://mysql
+                    MySqlConnection conn;
+                    string myConnectionString;
+
+                    myConnectionString = "server=127.0.0.1;uid=admin;pwd=admin123;database=test";
+
+                    try
+                    {
+                        conn = new MySqlConnection(myConnectionString);
+                        conn.Open();
+                        MySqlCommand cmd = conn.CreateCommand();
+                        cmd.CommandText = @"SELECT * FROM test.test_table;";
+                        MySqlDataReader Reader = cmd.ExecuteReader();
+                        if (!Reader.HasRows) return -1;
+                        while (Reader.Read())
+                        {
+                            Console.WriteLine(Reader["author"]);
+                            Console.WriteLine(Reader["song"]);
+                        }
+                        Reader.Close();
+                        conn.Close();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    return 0;
 
                 default:
                     Console.WriteLine("Wrong DB type chose, default case");
@@ -182,5 +237,9 @@ namespace Spottyfy
         {
             collection.DeleteOne(a => a.Id == albumId);
         }
+
+        
     }
+
+    
 }

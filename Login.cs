@@ -15,6 +15,9 @@ namespace Spottyfy
         public Login()
         {
             InitializeComponent();
+
+            DataBaseConnect connectionSQL = new DataBaseConnect(4);//test for mysql
+            connectionSQL.Connect();
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)
