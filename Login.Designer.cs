@@ -76,7 +76,7 @@
             this.button_singup_login_window.Location = new System.Drawing.Point(12, 333);
             this.button_singup_login_window.Name = "button_singup_login_window";
             this.button_singup_login_window.Size = new System.Drawing.Size(310, 50);
-            this.button_singup_login_window.TabIndex = 13;
+            this.button_singup_login_window.TabIndex = 7;
             this.button_singup_login_window.Text = "Sign up";
             this.button_singup_login_window.UseVisualStyleBackColor = false;
             this.button_singup_login_window.Click += new System.EventHandler(this.button_singup_login_window_Click);
@@ -89,7 +89,7 @@
             this.button_exit_login_window.Location = new System.Drawing.Point(328, 333);
             this.button_exit_login_window.Name = "button_exit_login_window";
             this.button_exit_login_window.Size = new System.Drawing.Size(120, 50);
-            this.button_exit_login_window.TabIndex = 12;
+            this.button_exit_login_window.TabIndex = 6;
             this.button_exit_login_window.Text = "Close";
             this.button_exit_login_window.UseVisualStyleBackColor = false;
             this.button_exit_login_window.Click += new System.EventHandler(this.button_exit_login_window_Click);
@@ -114,10 +114,11 @@
             this.linkLabel_forgot_password.Location = new System.Drawing.Point(325, 256);
             this.linkLabel_forgot_password.Name = "linkLabel_forgot_password";
             this.linkLabel_forgot_password.Size = new System.Drawing.Size(193, 18);
-            this.linkLabel_forgot_password.TabIndex = 10;
+            this.linkLabel_forgot_password.TabIndex = 4;
             this.linkLabel_forgot_password.TabStop = true;
             this.linkLabel_forgot_password.Text = "Forgot your password?";
             this.linkLabel_forgot_password.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
+            this.linkLabel_forgot_password.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_forgot_password_LinkClicked);
             // 
             // button_loggin_window
             // 
@@ -127,7 +128,7 @@
             this.button_loggin_window.Location = new System.Drawing.Point(454, 333);
             this.button_loggin_window.Name = "button_loggin_window";
             this.button_loggin_window.Size = new System.Drawing.Size(191, 50);
-            this.button_loggin_window.TabIndex = 9;
+            this.button_loggin_window.TabIndex = 5;
             this.button_loggin_window.Text = "Log in";
             this.button_loggin_window.UseVisualStyleBackColor = false;
             this.button_loggin_window.Click += new System.EventHandler(this.button_loggin_window_Click);

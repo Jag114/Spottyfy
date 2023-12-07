@@ -50,5 +50,13 @@ namespace Spottyfy
         {
 
         }
+
+        private void linkLabel_forgot_password_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string errorMessage = "This is a new error message. ";
+            AlertBox alertBox = new AlertBox();
+            alertBox.UpdateLabelTextAndCenter(errorMessage);
+            alertBox.Show();
+        }
     }
 }

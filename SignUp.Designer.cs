@@ -95,7 +95,7 @@
             this.button_signup_login_window.Location = new System.Drawing.Point(406, 575);
             this.button_signup_login_window.Name = "button_signup_login_window";
             this.button_signup_login_window.Size = new System.Drawing.Size(310, 50);
-            this.button_signup_login_window.TabIndex = 13;
+            this.button_signup_login_window.TabIndex = 8;
             this.button_signup_login_window.Text = "Sign up";
             this.button_signup_login_window.UseVisualStyleBackColor = false;
             this.button_signup_login_window.Click += new System.EventHandler(this.button_signup_login_window_Click);
@@ -108,7 +108,7 @@
             this.button_exit_signup_window.Location = new System.Drawing.Point(280, 575);
             this.button_exit_signup_window.Name = "button_exit_signup_window";
             this.button_exit_signup_window.Size = new System.Drawing.Size(120, 50);
-            this.button_exit_signup_window.TabIndex = 12;
+            this.button_exit_signup_window.TabIndex = 9;
             this.button_exit_signup_window.Text = "Close";
             this.button_exit_signup_window.UseVisualStyleBackColor = false;
             this.button_exit_signup_window.Click += new System.EventHandler(this.button_exit_signup_window_Click);
@@ -220,7 +220,7 @@
             this.input_repeatpassword_signup_window.Location = new System.Drawing.Point(398, 298);
             this.input_repeatpassword_signup_window.Name = "input_repeatpassword_signup_window";
             this.input_repeatpassword_signup_window.Size = new System.Drawing.Size(262, 43);
-            this.input_repeatpassword_signup_window.TabIndex = 14;
+            this.input_repeatpassword_signup_window.TabIndex = 4;
             this.input_repeatpassword_signup_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_repeatpassword_signup_window.UseSystemPasswordChar = true;
             // 
@@ -257,7 +257,7 @@
             this.input_email_signup_window.Location = new System.Drawing.Point(398, 371);
             this.input_email_signup_window.Name = "input_email_signup_window";
             this.input_email_signup_window.Size = new System.Drawing.Size(262, 43);
-            this.input_email_signup_window.TabIndex = 16;
+            this.input_email_signup_window.TabIndex = 5;
             this.input_email_signup_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_email_signup_window.UseSystemPasswordChar = true;
             this.input_email_signup_window.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -294,7 +294,7 @@
             this.checkBox_agreement_signup_window.Location = new System.Drawing.Point(193, 472);
             this.checkBox_agreement_signup_window.Name = "checkBox_agreement_signup_window";
             this.checkBox_agreement_signup_window.Size = new System.Drawing.Size(371, 22);
-            this.checkBox_agreement_signup_window.TabIndex = 18;
+            this.checkBox_agreement_signup_window.TabIndex = 6;
             this.checkBox_agreement_signup_window.Text = "Plesae fell free to sell my personal data";
             this.checkBox_agreement_signup_window.UseVisualStyleBackColor = true;
             // 
@@ -305,7 +305,7 @@
             this.checkBox_newsletter_signup_window.Location = new System.Drawing.Point(193, 500);
             this.checkBox_newsletter_signup_window.Name = "checkBox_newsletter_signup_window";
             this.checkBox_newsletter_signup_window.Size = new System.Drawing.Size(171, 22);
-            this.checkBox_newsletter_signup_window.TabIndex = 19;
+            this.checkBox_newsletter_signup_window.TabIndex = 7;
             this.checkBox_newsletter_signup_window.Text = "I love spam uwu";
             this.checkBox_newsletter_signup_window.UseVisualStyleBackColor = true;
             // 
