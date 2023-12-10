@@ -13,6 +13,8 @@ using Npgsql;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Xml.Linq;
+using System.Runtime.InteropServices;
+using Newtonsoft.Json.Linq;
 
 namespace Spottyfy
 {
@@ -22,10 +24,104 @@ namespace Spottyfy
         int dbType;
         MongoClient mongoClient;
         NpgsqlConnection PSQLconnection;
+        MySqlConnection mySqlConn;
 
         public DataBaseConnect(int db)
         {
             dbType = db;
+        }
+
+        public MongoClient ConnectMongo(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
+        {
+            try
+            {
+                mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+                if (mongoClient == null)
+                {
+                    Console.WriteLine("MongoClient returned null, no connection");
+                    return null;
+                }
+                return mongoClient;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception in ConnectMongo methodd: " + e.Message);
+                return null;
+            }
+            /*
+             Console.WriteLine("DB type is: " + dbType);
+             var dbList = mongoClient.ListDatabases().ToList();
+             //Console.WriteLine(dbList);
+             var db = mongoClient.GetDatabase("Spottyfy");
+             Console.WriteLine("DB: " + db);
+             var songs = db.GetCollection<SongData>("Songs");
+             //Console.WriteLine(db.ToJson());     
+            */
+        }
+
+        public MySqlConnection ConnectMysql(string login = "admin", string pass = "admin123")
+        {
+            string myConnectionString = $"server=127.0.0.1;uid={login};pwd={pass};database=test";
+            try
+            {
+                mySqlConn = new MySqlConnection(myConnectionString);
+                if(mySqlConn == null) {
+                    Console.WriteLine("MySqlConnection returned null, no connection");
+                    return null;
+                }
+                mySqlConn.Open();
+                return mySqlConn;
+                mySqlConn.Close();//might not be needed?
+                /*
+                 MySqlCommand cmd = conn.CreateCommand();
+                 cmd.CommandText = @"SELECT * FROM test.test_table;";
+                 MySqlDataReader Reader = cmd.ExecuteReader();
+                 if (!Reader.HasRows) return -1;
+                 while (Reader.Read())
+                 {
+                    Console.WriteLine(Reader["author"]);
+                    Console.WriteLine(Reader["song"]);
+                 }
+                 Reader.Close();
+
+                */
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception in ConnectMysql: " + ex.Message);
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+
+        }
+
+        public NpgsqlConnection ConnectPostgresql(string login = "postgres", string pass = "postgres")
+        {
+            try
+            {
+                string connectionString = $"Host=localhost;Username={login};Password={pass};Database=test";
+                if (mongoClient == null)
+                {
+                    Console.WriteLine("PostgreSQL returned null, no connection");
+                    return null;
+                }
+                PSQLconnection = new NpgsqlConnection(connectionString);
+                NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
+                NpgsqlCommand command = dataSource.CreateCommand("SELECT * FROM table1");
+                NpgsqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows && reader.Read())
+                {
+                    Console.WriteLine(reader.GetInt64(0));
+                    Console.WriteLine(reader.GetString(1));
+                }
+
+                return PSQLconnection;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception in ConnectPostgresql: " + e.Message);
+                return null;
+            }
         }
 
         public int Connect(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
@@ -35,93 +131,26 @@ namespace Spottyfy
             switch (dbType)
             {
                 case 1://mongo
-                    try
-                    {
-                        mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
-                        if (mongoClient == null)
-                        {
-                            Console.WriteLine("MongoClient returned null, no connection");
-                            return -1;
-                        }
-                        Console.WriteLine("DB type is: " + dbType);
-                        var dbList = mongoClient.ListDatabases().ToList();
-                        //Console.WriteLine(dbList);
-                        var db = mongoClient.GetDatabase("Spottyfy");
-                        Console.WriteLine("DB: " + db);
-                        var songs = db.GetCollection<SongData>("Songs");
-                        //Console.WriteLine(db.ToJson());
-                        return 0;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Exception in DataBaseConnect: " + e.Message);
-                        return -1;
-                    }
+                   
 
                 case 2://firebase
 
                     return -1;
 
                 case 3://postgresql
-                    Console.WriteLine("Case 3");
-                    try
-                    {
-                        Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        string connectionString = "Host=localhost;Username=postgres;Password=postgres;Database=test";
-                        PSQLconnection = new NpgsqlConnection(connectionString);
-                        NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
-                        NpgsqlCommand command = dataSource.CreateCommand("SELECT * FROM table1");
-                        NpgsqlDataReader reader = command.ExecuteReader();
-                        if (reader.HasRows && reader.Read())
-                        {
-                            Console.WriteLine(reader.GetInt64(0));
-                            Console.WriteLine(reader.GetString(1));
-                        }
-                        Console.WriteLine("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-
-                        return 0;
-                    }
-                    catch(Exception e)
-                    {
-                        Console.WriteLine("Exception in DataBaseConnect: " + e.Message);
-                        return -1;
-                    }
+                    
 
                 case 4://mysql
-                    MySqlConnection conn;
-                    string myConnectionString;
 
-                    myConnectionString = "server=127.0.0.1;uid=admin;pwd=admin123;database=test";
 
-                    try
-                    {
-                        conn = new MySqlConnection(myConnectionString);
-                        conn.Open();
-                        MySqlCommand cmd = conn.CreateCommand();
-                        cmd.CommandText = @"SELECT * FROM test.test_table;";
-                        MySqlDataReader Reader = cmd.ExecuteReader();
-                        if (!Reader.HasRows) return -1;
-                        while (Reader.Read())
-                        {
-                            Console.WriteLine(Reader["author"]);
-                            Console.WriteLine(Reader["song"]);
-                        }
-                        Reader.Close();
-                        conn.Close();
-                    }
-                    catch (MySqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    return 0;
-
+                    
                 default:
                     Console.WriteLine("Wrong DB type chose, default case");
                     return 0;
             }
 
 
-        } 
+        }
 
         public IMongoCollection<SongData> GetSongCollection()
         {
