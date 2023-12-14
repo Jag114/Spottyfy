@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,8 +17,9 @@ namespace Spottyfy
         {
             InitializeComponent();
 
-            DataBaseConnect connectionSQL = new DataBaseConnect(4);//test for mysql
-            connectionSQL.Connect();
+            //test
+            DataBaseConnect db = new DataBaseConnect(2);
+            db.connection.DeleteAlbum();
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)

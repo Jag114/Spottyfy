@@ -16,21 +16,42 @@ using System.Xml.Linq;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json.Linq;
 
+/*
+    1. Interfejs + klasy dla roznych baz z metodami, w konstruktorze tworze polaczenie
+    ta klasa bedzie nie potrzebna
+*/
+
 namespace Spottyfy
 {
     //return jsons, and get jsons in parameters
     public class DataBaseConnect
     {
         int dbType;
+        public IDB connection;
         MongoClient mongoClient;
-        NpgsqlConnection PSQLconnection;
         MySqlConnection mySqlConn;
+        NpgsqlConnection PSQLconnection;
 
-        public DataBaseConnect(int db)
+        public DataBaseConnect(int dbType)
         {
-            dbType = db;
+            IDB connection = null;
+            switch (dbType)
+            {
+                case 1:
+                    connection = new MongoDB();
+                    break;
+                case 2:
+                    connection = new MySqlDB();
+                    break;
+
+                default:
+                    break;
+            }
+            //connection.DeleteAlbum();
+            this.connection = connection;
         }
 
+        
         public MongoClient ConnectMongo(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
         {
             try
@@ -58,7 +79,7 @@ namespace Spottyfy
              //Console.WriteLine(db.ToJson());     
             */
         }
-
+        
         public MySqlConnection ConnectMysql(string login = "admin", string pass = "admin123")
         {
             string myConnectionString = $"server=127.0.0.1;uid={login};pwd={pass};database=test";
@@ -94,7 +115,7 @@ namespace Spottyfy
             }
 
         }
-
+        
         public NpgsqlConnection ConnectPostgresql(string login = "postgres", string pass = "postgres")
         {
             try
@@ -151,7 +172,7 @@ namespace Spottyfy
 
 
         }
-
+        
         public IMongoCollection<SongData> GetSongCollection()
         {
             var db = mongoClient.GetDatabase("Spottyfy");

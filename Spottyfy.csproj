@@ -201,12 +201,15 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="getAlbums.cs" />
+    <Compile Include="IDB.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MongoDB.cs" />
+    <Compile Include="MySqlDB.cs" />
     <Compile Include="NavBar.cs">
       <SubType>Component</SubType>
     </Compile>
