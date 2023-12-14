@@ -22,10 +22,13 @@ namespace Spottyfy
 
             List<Album> albums = new List<Album>();
 
-            DataBaseConnect connection = new DataBaseConnect(1);//enum instead of magical number?
+            DataBaseConnect connectionSQL = new DataBaseConnect(2);//test for postgresql
+            connectionSQL.Connect();
+            DataBaseConnect connection = new DataBaseConnect(2);//enum instead of magical number?
             connection.Connect();
             JArray rawAlbums = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(connection.GetAlbumCollection().AsQueryable()));
             Console.WriteLine(rawAlbums.ToString());
+            return albums;
             //AlbumData album = new AlbumData()
             //{
             //    name = "BestestAlbum",

@@ -6,8 +6,20 @@ using MongoDB.Driver.GeoJsonObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.Xml.Linq;
+using System.Runtime.InteropServices;
+using Newtonsoft.Json.Linq;
+
+/*
+    1. Interfejs + klasy dla roznych baz z metodami, w konstruktorze tworze polaczenie
+    ta klasa bedzie nie potrzebna
+*/
 
 namespace Spottyfy
 {
@@ -15,11 +27,122 @@ namespace Spottyfy
     public class DataBaseConnect
     {
         int dbType;
+        public IDB connection;
         MongoClient mongoClient;
+        MySqlConnection mySqlConn;
+        NpgsqlConnection PSQLconnection;
 
-        public DataBaseConnect(int db)
+        public DataBaseConnect(int dbType)
         {
-            dbType = db;
+            IDB connection = null;
+            switch (dbType)
+            {
+                case 1:
+                    connection = new MongoDB();
+                    break;
+                case 2:
+                    connection = new MySqlDB();
+                    break;
+
+                default:
+                    break;
+            }
+            //connection.DeleteAlbum();
+            this.connection = connection;
+        }
+
+        
+        public MongoClient ConnectMongo(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
+        {
+            try
+            {
+                mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
+                if (mongoClient == null)
+                {
+                    Console.WriteLine("MongoClient returned null, no connection");
+                    return null;
+                }
+                return mongoClient;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception in ConnectMongo methodd: " + e.Message);
+                return null;
+            }
+            /*
+             Console.WriteLine("DB type is: " + dbType);
+             var dbList = mongoClient.ListDatabases().ToList();
+             //Console.WriteLine(dbList);
+             var db = mongoClient.GetDatabase("Spottyfy");
+             Console.WriteLine("DB: " + db);
+             var songs = db.GetCollection<SongData>("Songs");
+             //Console.WriteLine(db.ToJson());     
+            */
+        }
+        
+        public MySqlConnection ConnectMysql(string login = "admin", string pass = "admin123")
+        {
+            string myConnectionString = $"server=127.0.0.1;uid={login};pwd={pass};database=test";
+            try
+            {
+                mySqlConn = new MySqlConnection(myConnectionString);
+                if(mySqlConn == null) {
+                    Console.WriteLine("MySqlConnection returned null, no connection");
+                    return null;
+                }
+                mySqlConn.Open();
+                return mySqlConn;
+                mySqlConn.Close();//might not be needed?
+                /*
+                 MySqlCommand cmd = conn.CreateCommand();
+                 cmd.CommandText = @"SELECT * FROM test.test_table;";
+                 MySqlDataReader Reader = cmd.ExecuteReader();
+                 if (!Reader.HasRows) return -1;
+                 while (Reader.Read())
+                 {
+                    Console.WriteLine(Reader["author"]);
+                    Console.WriteLine(Reader["song"]);
+                 }
+                 Reader.Close();
+
+                */
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Exception in ConnectMysql: " + ex.Message);
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+
+        }
+        
+        public NpgsqlConnection ConnectPostgresql(string login = "postgres", string pass = "postgres")
+        {
+            try
+            {
+                string connectionString = $"Host=localhost;Username={login};Password={pass};Database=test";
+                if (mongoClient == null)
+                {
+                    Console.WriteLine("PostgreSQL returned null, no connection");
+                    return null;
+                }
+                PSQLconnection = new NpgsqlConnection(connectionString);
+                NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
+                NpgsqlCommand command = dataSource.CreateCommand("SELECT * FROM table1");
+                NpgsqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows && reader.Read())
+                {
+                    Console.WriteLine(reader.GetInt64(0));
+                    Console.WriteLine(reader.GetString(1));
+                }
+
+                return PSQLconnection;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception in ConnectPostgresql: " + e.Message);
+                return null;
+            }
         }
 
         public int Connect(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
@@ -29,45 +152,27 @@ namespace Spottyfy
             switch (dbType)
             {
                 case 1://mongo
-                    try
-                    {
-                        mongoClient = new MongoClient($"mongodb+srv://{login}:{pass}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
-                        if (mongoClient == null)
-                        {
-                            Console.WriteLine("MongoClient returned null, no connection");
-                            return -1;
-                        }
-                        Console.WriteLine("DB type is: " + dbType);
-                        var dbList = mongoClient.ListDatabases().ToList();
-                        //Console.WriteLine(dbList);
-                        var db = mongoClient.GetDatabase("Spottyfy");
-                        Console.WriteLine("DB: " + db);
-                        var songs = db.GetCollection<SongData>("Songs");
-                        //Console.WriteLine(db.ToJson());
-                        return 0;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Exception in DataBaseConnect: " + e.Message);
-                        return -1;
-                    }
+                   
 
                 case 2://firebase
 
                     return -1;
 
-                case 3://azuresql
+                case 3://postgresql
+                    
 
-                    return -1;
+                case 4://mysql
 
+
+                    
                 default:
                     Console.WriteLine("Wrong DB type chose, default case");
                     return 0;
             }
 
 
-        } 
-
+        }
+        
         public IMongoCollection<SongData> GetSongCollection()
         {
             var db = mongoClient.GetDatabase("Spottyfy");
@@ -182,5 +287,9 @@ namespace Spottyfy
         {
             collection.DeleteOne(a => a.Id == albumId);
         }
+
+        
     }
+
+    
 }

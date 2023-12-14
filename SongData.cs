@@ -27,7 +27,7 @@ namespace Spottyfy
 
         public static List<SongData> getSongsFromAlbum(string albumId) {
             List<SongData> songs;
-            DataBaseConnect connection = new DataBaseConnect(1);//enum instead of magical number?
+            DataBaseConnect connection = new DataBaseConnect(2);//enum instead of magical number?
             connection.Connect();
             //connection.AddSong(connection.GetSongCollection());
             songs = connection.GetSongFromAlbum(connection.GetSongCollection(), albumId);

@@ -17,8 +17,8 @@ namespace Spottyfy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SongView());
-            //Application.Run(new Login());
+            //Application.Run(new SongView());
+            Application.Run(new Login());
         }
     }
 }
