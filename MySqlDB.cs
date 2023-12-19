@@ -13,7 +13,7 @@ namespace Spottyfy
     public class MySqlDB : IDB
     {
         MySqlConnection connection;
-        string login, password;
+        readonly string login, password;
 
         public MySqlDB(string login = "admin", string password = "admin123")
         {
@@ -29,30 +29,12 @@ namespace Spottyfy
                     Console.WriteLine("MySqlConnection returned null, no connection");
                 }
                 connection.Open();
-                //mySqlConn.Close();//might not be needed?
-                /*
-                 MySqlCommand cmd = conn.CreateCommand();
-                 cmd.CommandText = @"SELECT * FROM test.test_table;";
-                 MySqlDataReader Reader = cmd.ExecuteReader();
-                 if (!Reader.HasRows) return -1;
-                 while (Reader.Read())
-                 {
-                    Console.WriteLine(Reader["author"]);
-                    Console.WriteLine(Reader["song"]);
-                 }
-                 Reader.Close();
-
-                */
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine("Exception in ConnectMysql: " + ex.Message);
                 MessageBox.Show(ex.Message);
                 connection = null;
-            }
-            finally
-            {
-                connection.Close();
             }
         }
 
@@ -61,44 +43,75 @@ namespace Spottyfy
             connection.Close();
         }
 
-        public JArray DeleteAlbum()
+        public int DeleteAlbum()
+        {   
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = @"SELECT * FROM test.test_table;";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return -1;
+            List<string> authors = new List<string>();
+            List<SongData> songs = new List<SongData>();
+            while (Reader.Read())
+            {
+                //Console.WriteLine(Reader["author"]);
+                authors.Add(Reader["author"].ToString());
+                //Console.WriteLine(Reader["song"]);
+                string songId = Reader["id"].ToString();
+                string songName = Reader["song"].ToString();
+                string songAuthor = Reader["author"].ToString();
+                string songAlbum = Reader["album"].ToString();
+                //songs.Add(Reader["song"].ToString());
+                SongData song = new SongData();
+                song.Id = songId;
+                song.name = songName;
+                song.author = songAuthor;
+                song.album = songAlbum;
+                songs.Add(song);
+            }
+            Reader.Close();
+            Console.WriteLine("Listy: ");
+            //authors.ForEach(e => Console.WriteLine(e.ToString()));  
+            //songs.ForEach(e => Console.WriteLine(e.ToString()));
+            //JArray Jauthors = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(authors.AsQueryable()));
+            JArray Jsongs = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(songs.AsQueryable()));
+            //Console.WriteLine(Jauthors);
+
+            Console.WriteLine(Jsongs);
+            return 0;
+            //throw new NotImplementedException();
+        }
+
+        public int DeleteAlbums()
         {
-            Console.WriteLine("MYSQL");
-            Console.WriteLine(connection.Database);
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAlbums()
+        public int DeleteAuthor()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAuthor()
+        public int DeleteAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAuthors()
+        public int DeleteSong()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteSong()
+        public int DeleteSongs()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteSongs()
+        public int DeleteUser()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray DeleteUsers()
+        public int DeleteUsers()
         {
             throw new NotImplementedException();
         }
@@ -148,42 +161,42 @@ namespace Spottyfy
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAlbum()
+        public int UpdateAlbum()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAlbums()
+        public int UpdateAlbums()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAuthor()
+        public int UpdateAuthor()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAuthors()
+        public int UpdateAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateSong()
+        public int UpdateSong()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateSongs()
+        public int UpdateSongs()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateUser()
+        public int UpdateUser()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateUsers()
+        public int UpdateUsers()
         {
             throw new NotImplementedException();
         }

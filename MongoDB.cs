@@ -12,7 +12,7 @@ namespace Spottyfy
     public class MongoDB : IDB
     {
         MongoClient connection;
-        string login, password;
+        readonly string login, password;
 
         public MongoDB(string login = "fellen", string password = "ljrpo7G8qbt6mAeK")
         {
@@ -43,44 +43,42 @@ namespace Spottyfy
             */
         }
 
-        public JArray DeleteAlbum()
-        {
-            Console.WriteLine("MONGO");
-            Console.WriteLine(connection.Cluster);
-            throw new NotImplementedException();
-        }
-
-        public JArray DeleteAlbums()
+        public int DeleteAlbum()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAuthor()
+        public int DeleteAlbums()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAuthors()
+        public int DeleteAuthor()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteSong()
+        public int DeleteAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteSongs()
+        public int DeleteSong()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteUser()
+        public int DeleteSongs()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteUsers()
+        public int DeleteUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DeleteUsers()
         {
             throw new NotImplementedException();
         }
@@ -130,42 +128,42 @@ namespace Spottyfy
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAlbum()
+        public int UpdateAlbum()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAlbums()
+        public int UpdateAlbums()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAuthor()
+        public int UpdateAuthor()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAuthors()
+        public int UpdateAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateSong()
+        public int UpdateSong()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateSongs()
+        public int UpdateSongs()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateUser()
+        public int UpdateUser()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateUsers()
+        public int UpdateUsers()
         {
             throw new NotImplementedException();
         }

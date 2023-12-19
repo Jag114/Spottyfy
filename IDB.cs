@@ -9,33 +9,36 @@ namespace Spottyfy
 {
     public interface IDB
     {
+        //delete can be one method, takes table as argument
+        //update too? should receive new Data object, properties of it are used 
+        //in query
         JArray GetSong();
-        JArray UpdateSong();
-        JArray DeleteSong();
+        int UpdateSong();
+        int DeleteSong();
         JArray GetSongs();
-        JArray UpdateSongs();
-        JArray DeleteSongs();
+        int UpdateSongs();
+        int DeleteSongs();
 
         JArray GetAlbum();
-        JArray UpdateAlbum();
-        JArray DeleteAlbum();
+        int UpdateAlbum();
+        int DeleteAlbum();
         JArray GetAlbums();
-        JArray UpdateAlbums();
-        JArray DeleteAlbums();
+        int UpdateAlbums();
+        int DeleteAlbums();
 
         JArray GetAuthor();
-        JArray UpdateAuthor();
-        JArray DeleteAuthor();
+        int UpdateAuthor();
+        int DeleteAuthor();
         JArray GetAuthors();
-        JArray UpdateAuthors();
-        JArray DeleteAuthors();
+        int UpdateAuthors();
+        int DeleteAuthors();
 
         JArray GetUser();
-        JArray UpdateUser();
-        JArray DeleteUser();
+        int UpdateUser();
+        int DeleteUser();
         JArray GetUsers();
-        JArray UpdateUsers();
-        JArray DeleteUsers();
+        int UpdateUsers();
+        int DeleteUsers();
 
         JArray GetUserSettings();
 
