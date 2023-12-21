@@ -40,7 +40,8 @@ namespace Spottyfy
         {
             var db = connection.GetDatabase("Spottyfy");
             var songsCollection = db.GetCollection<SongData>("Songs");
-           
+            var albumsCollection = db.GetCollection<AlbumData>("Albums");
+
             //display data
             List<SongData> songs = new List<SongData>();
             var result = songsCollection.Find(Builders<SongData>.Filter.Empty).ToList();
@@ -61,8 +62,16 @@ namespace Spottyfy
             }
 
             //add data
+            SongData s = new SongData();
+            s.name = "new me";
+            s.album = "idk";
+            //Console.WriteLine(albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString());
+            s.author = albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString();
+            s.releaseDate = DateTime.Now.ToString();
+            //songsCollection.InsertOne(s);
 
             //delete data
+            songsCollection.DeleteOne(Builders<SongData>.Filter.Eq("name", "testUPDATED"));
 
             //update data
             return 0;
