@@ -27,6 +27,7 @@ namespace Spottyfy
                 if (connection == null)
                 {
                     Console.WriteLine("MySqlConnection returned null, no connection");
+                    //stop functions from going off if null
                 }
                 connection.Open();
             }

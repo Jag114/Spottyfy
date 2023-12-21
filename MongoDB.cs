@@ -1,8 +1,10 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,22 +34,40 @@ namespace Spottyfy
                 Console.WriteLine("Exception in ConnectMongo methodd: " + e.Message);
                 connection = null;
             }
-            /*
-             Console.WriteLine("DB type is: " + dbType);
-             var dbList = mongoClient.ListDatabases().ToList();
-             //Console.WriteLine(dbList);
-             var db = mongoClient.GetDatabase("Spottyfy");
-             Console.WriteLine("DB: " + db);
-             var songs = db.GetCollection<SongData>("Songs");
-             //Console.WriteLine(db.ToJson());     
-            */
         }
 
         public int DeleteAlbum()
         {
-            throw new NotImplementedException();
-        }
+            var db = connection.GetDatabase("Spottyfy");
+            var songsCollection = db.GetCollection<SongData>("Songs");
+           
+            //display data
+            List<SongData> songs = new List<SongData>();
+            var result = songsCollection.Find(Builders<SongData>.Filter.Empty).ToList();
+            foreach (var doc in result)
+            {
+                Console.WriteLine(doc.ToBsonDocument());
+            }
+            Console.WriteLine("------ Filtered data ------");
+            var filter = Builders<SongData>.Filter.Eq("name", "test1");
+            result = songsCollection.Find(filter).ToList();
+            foreach (var doc in result)
+            {
+                songs.Add(doc);
+            }
+            foreach(var song in songs)
+            {
+                Console.WriteLine(song.ToBsonDocument());
+            }
 
+            //add data
+
+            //delete data
+
+            //update data
+            return 0;
+        }
+        
         public int DeleteAlbums()
         {
             throw new NotImplementedException();
