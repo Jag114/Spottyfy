@@ -1,8 +1,10 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace Spottyfy
     public class MongoDB : IDB
     {
         MongoClient connection;
-        string login, password;
+        readonly string login, password;
 
         public MongoDB(string login = "fellen", string password = "ljrpo7G8qbt6mAeK")
         {
@@ -32,55 +34,80 @@ namespace Spottyfy
                 Console.WriteLine("Exception in ConnectMongo methodd: " + e.Message);
                 connection = null;
             }
-            /*
-             Console.WriteLine("DB type is: " + dbType);
-             var dbList = mongoClient.ListDatabases().ToList();
-             //Console.WriteLine(dbList);
-             var db = mongoClient.GetDatabase("Spottyfy");
-             Console.WriteLine("DB: " + db);
-             var songs = db.GetCollection<SongData>("Songs");
-             //Console.WriteLine(db.ToJson());     
-            */
         }
 
-        public JArray DeleteAlbum()
+        public int DeleteAlbum()
         {
-            Console.WriteLine("MONGO");
-            Console.WriteLine(connection.Cluster);
+            var db = connection.GetDatabase("Spottyfy");
+            var songsCollection = db.GetCollection<SongData>("Songs");
+            var albumsCollection = db.GetCollection<AlbumData>("Albums");
+
+            //display data
+            List<SongData> songs = new List<SongData>();
+            var result = songsCollection.Find(Builders<SongData>.Filter.Empty).ToList();
+            foreach (var doc in result)
+            {
+                Console.WriteLine(doc.ToBsonDocument());
+            }
+            Console.WriteLine("------ Filtered data ------");
+            var filter = Builders<SongData>.Filter.Eq("name", "test1");
+            result = songsCollection.Find(filter).ToList();
+            foreach (var doc in result)
+            {
+                songs.Add(doc);
+            }
+            foreach(var song in songs)
+            {
+                Console.WriteLine(song.ToBsonDocument());
+            }
+
+            //add data
+            SongData s = new SongData();
+            s.name = "new me";
+            s.album = "idk";
+            //Console.WriteLine(albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString());
+            s.author = albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString();
+            s.releaseDate = DateTime.Now.ToString();
+            //songsCollection.InsertOne(s);
+
+            //delete data
+            songsCollection.DeleteOne(Builders<SongData>.Filter.Eq("name", "testUPDATED"));
+
+            //update data
+            return 0;
+        }
+        
+        public int DeleteAlbums()
+        {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAlbums()
+        public int DeleteAuthor()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAuthor()
+        public int DeleteAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteAuthors()
+        public int DeleteSong()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteSong()
+        public int DeleteSongs()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteSongs()
+        public int DeleteUser()
         {
             throw new NotImplementedException();
         }
 
-        public JArray DeleteUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray DeleteUsers()
+        public int DeleteUsers()
         {
             throw new NotImplementedException();
         }
@@ -130,42 +157,42 @@ namespace Spottyfy
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAlbum()
+        public int UpdateAlbum()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAlbums()
+        public int UpdateAlbums()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAuthor()
+        public int UpdateAuthor()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateAuthors()
+        public int UpdateAuthors()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateSong()
+        public int UpdateSong()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateSongs()
+        public int UpdateSongs()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateUser()
+        public int UpdateUser()
         {
             throw new NotImplementedException();
         }
 
-        public JArray UpdateUsers()
+        public int UpdateUsers()
         {
             throw new NotImplementedException();
         }

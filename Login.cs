@@ -18,7 +18,7 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            DataBaseConnect db = new DataBaseConnect(2);
+            DataBaseConnect db = new DataBaseConnect(1);//1-mongo, 2-mysql
             db.connection.DeleteAlbum();
         }
 
