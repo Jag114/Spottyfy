@@ -82,122 +82,72 @@ namespace Spottyfy
             //throw new NotImplementedException();
         }
 
-        public int DeleteAlbums()
+        public JArray GetData(string dataType)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteAuthor()
+        public int AddData(SongData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteAuthors()
+        public int AddData(AlbumData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteSong()
+        public int AddData(AuthorData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteSongs()
+        public int AddData(UserData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteUser()
+        public int UpdateData(SongData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteUsers()
+        public int UpdateData(AlbumData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAlbum()
+        public int UpdateData(AuthorData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAlbums()
+        public int UpdateData(UserData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAuthor()
+        public int DeleteData(SongData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAuthors()
+        public int DeleteData(AlbumData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetSong()
+        public int DeleteData(AuthorData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetSongs()
+        public int DeleteData(UserData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray GetUsers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray GetUserSettings()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAlbum()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAlbums()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAuthor()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAuthors()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateSong()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateSongs()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateUsers()
+        public int TestData()
         {
             throw new NotImplementedException();
         }

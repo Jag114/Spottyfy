@@ -43,7 +43,9 @@ namespace Spottyfy
                 case 2:
                     connection = new MySqlDB();
                     break;
-
+                case 3:
+                    connection = new PostgreSqlDB();
+                    break;
                 default:
                     break;
             }
@@ -145,33 +147,7 @@ namespace Spottyfy
             }
         }
 
-        public int Connect(string login = "fellen", string pass = "ljrpo7G8qbt6mAeK")
-        {
-            if (pass == "") return -1;
-
-            switch (dbType)
-            {
-                case 1://mongo
-                   
-
-                case 2://firebase
-
-                    return -1;
-
-                case 3://postgresql
-                    
-
-                case 4://mysql
-
-
-                    
-                default:
-                    Console.WriteLine("Wrong DB type chose, default case");
-                    return 0;
-            }
-
-
-        }
+       
         
         public IMongoCollection<SongData> GetSongCollection()
         {

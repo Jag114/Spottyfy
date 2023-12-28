@@ -18,8 +18,15 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            DataBaseConnect db = new DataBaseConnect(1);//1-mongo, 2-mysql
-            db.connection.DeleteAlbum();
+            int type = 1;
+            string dataType = "song";
+            DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql, 3-postgresql
+            db.connection.GetData(dataType);
+
+            DataBaseConnect db2 = new DataBaseConnect(3);
+            db2.connection.GetData(dataType);
+
+            
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)
