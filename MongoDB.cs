@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,13 @@ namespace Spottyfy
     {
         MongoClient connection;
         IMongoDatabase db;
-        readonly string login, password;
+        readonly string login, password, dbName;
 
-        public MongoDB(string login = "fellen", string password = "ljrpo7G8qbt6mAeK")
+        public MongoDB(string login = "fellen", string password = "ljrpo7G8qbt6mAeK", string dbName = "Spottyfy")
         {
             this.login = login;
             this.password = password;
+            this.dbName = dbName;
 
             try
             {
@@ -30,7 +32,7 @@ namespace Spottyfy
                     Console.WriteLine("MongoClient returned null, no connection");
                     throw new Exception("NULL MongoClient");
                 }
-                db = connection.GetDatabase("Spottyfy");
+                db = connection.GetDatabase(dbName);
             }
             catch (Exception e)
             {
@@ -84,26 +86,52 @@ namespace Spottyfy
             return 0;
         }
 
-        //SONG
-        public JArray GetData(string dataType)
+        public List<SongData> GetSongData()
         {
-            switch (dataType)
+            var collection = db.GetCollection<SongData>("Songs");
+            List<SongData> songs = new List<SongData>();
+            var results = collection.Find(Builders<SongData>.Filter.Empty).ToList();
+            foreach (var doc in results)
             {
-                case "song":
-                    var songsCollection = db.GetCollection<SongData>("Songs");
-                    List<SongData> songsL = new List<SongData>();
-                    JArray songs = new JArray();
-                    var result = songsCollection.Find(Builders<SongData>.Filter.Empty).ToList();
-                    foreach (var doc in result)
-                    {
-                        songsL.Add(doc);
-                    }
-                    songs = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(songsL.AsQueryable()));
-                    Console.WriteLine("Songs\n " + songs);
-                    return songs;
-                default:
-                    return null;
+                songs.Add(doc);
             }
+            return songs;
+        }
+
+        public List<AlbumData> GetAlbumData()
+        {
+            var collection = db.GetCollection<AlbumData>("Albums");
+            List<AlbumData> albums = new List<AlbumData>();
+            var results = collection.Find(Builders<AlbumData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                albums.Add(doc);
+            }
+            return albums;
+        }
+
+        public List<AuthorData> GetAuthorData()
+        {
+            var collection = db.GetCollection<AuthorData>("Authors");
+            List<AuthorData> authors = new List<AuthorData>();
+            var results = collection.Find(Builders<AuthorData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                authors.Add(doc);
+            }
+            return authors;
+        }
+
+        public List<UserData> GetUserData()
+        {
+            var collection = db.GetCollection<UserData>("Users");
+            List<UserData> albums = new List<UserData>();
+            var results = collection.Find(Builders<UserData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                albums.Add(doc);
+            }
+            return albums;
         }
 
         public int AddData(SongData x)
@@ -165,5 +193,6 @@ namespace Spottyfy
         {
             throw new NotImplementedException();
         }
+
     }
 }

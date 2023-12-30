@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,14 +21,32 @@ namespace Spottyfy
 
             //test
             int type = 1;
-            string dataType = "song";
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql, 3-postgresql
-            db.connection.GetData(dataType);
+            var a = db.connection.GetSongData();
+            foreach (var s in a)
+            {
+                Console.WriteLine(s.ToJson());
+            }
+            var b = db.connection.GetAlbumData();
+            foreach (var s in b)
+            {
+                Console.WriteLine(s.ToJson());
+            }
+            var c = db.connection.GetAuthorData();
+            foreach (var s in c)
+            {
+                Console.WriteLine(s.ToJson());
+            }
+            var d = db.connection.GetUserData();
+            foreach (var s in d)
+            {
+                Console.WriteLine(s.ToJson());
+            }
 
-            DataBaseConnect db2 = new DataBaseConnect(3);
-            db2.connection.GetData(dataType);
+            //DataBaseConnect db2 = new DataBaseConnect(3);
+            //db2.connection.TestData();
 
-            
+
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)

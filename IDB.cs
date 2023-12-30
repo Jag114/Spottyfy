@@ -9,10 +9,12 @@ namespace Spottyfy
 {
     public interface IDB
     {
-        //delete can be one method, takes table as argument
-        //update too? should receive new Data object, properties of it are used 
-        //in query
-        JArray GetData(string dataType);
+        //JArray GetData(string dataType);
+        List<SongData> GetSongData();
+        List<AlbumData> GetAlbumData();
+        List<AuthorData> GetAuthorData();
+        List<UserData> GetUserData();
+
         int AddData(SongData x);
         int AddData(AlbumData x);
         int AddData(AuthorData x);

@@ -1,7 +1,9 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Core.Configuration;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using Npgsql;
+using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -15,6 +17,7 @@ namespace Spottyfy
     public class PostgreSqlDB : IDB
     {
         NpgsqlConnection connection;
+        string connectionString;
         readonly string login, password;
 
         public PostgreSqlDB(string login = "postgres", string password = "postgres")
@@ -24,20 +27,11 @@ namespace Spottyfy
 
             try
             {
-                string connectionString = $"Host=localhost;Username={login};Password={password};Database=test";
+                connectionString = $"Host=localhost;Username={this.login};Password={this.password};Database=test";
                 connection = new NpgsqlConnection(connectionString);
                 if (connection == null)
                 {
                     Console.WriteLine("PostgreSQL returned null, no connection");
-                }
-                
-                NpgsqlDataSource dataSource = NpgsqlDataSource.Create(connectionString);
-                NpgsqlCommand command = dataSource.CreateCommand("SELECT * FROM table1");
-                NpgsqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows && reader.Read())
-                {
-                    Console.WriteLine(reader.GetInt64(0));
-                    Console.WriteLine(reader.GetString(1));
                 }
             }
             catch (Exception e)
@@ -46,15 +40,52 @@ namespace Spottyfy
             }
         }
 
-        public int DeleteAlbum()
+
+        public int TestData()
         {
+            connection.Open();
+            string query = "SELECT * FROM songs";
+            NpgsqlCommand command = new NpgsqlCommand(query, connection);
+            NpgsqlDataReader reader = command.ExecuteReader();
+            List<SongData> songs = new List<SongData>();
+            while (reader.Read())
+            {
+                SongData song = new SongData();
+                song.Id = reader["id"].ToString();
+                song.name = reader["name"].ToString();
+                song.author = reader["author"].ToString();
+                song.album = reader["album"].ToString();
+                song.releaseDate = reader["release-date"].ToString();
+                songs.Add(song);
+            }
+            reader.Close();
+            connection.Close();
+            Console.WriteLine(songs.Count);
+            foreach (var s in songs)
+            {
+                Console.WriteLine(s.name);
+            }
             return 0;
         }
 
-        public JArray GetData(string dataType)
+        public List<SongData> GetSongData()
         {
-            Console.WriteLine("AAAAAA");
-            return new JArray();
+            throw new NotImplementedException();
+        }
+
+        public List<AlbumData> GetAlbumData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AuthorData> GetAuthorData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserData> GetUserData()
+        {
+            throw new NotImplementedException();
         }
 
         public int AddData(SongData x)
@@ -113,11 +144,6 @@ namespace Spottyfy
         }
 
         public int DeleteData(UserData x, int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int TestData()
         {
             throw new NotImplementedException();
         }

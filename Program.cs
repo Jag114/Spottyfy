@@ -18,10 +18,10 @@ namespace Spottyfy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new SongView());
-            Login l = new Login();
-            l.StartPosition = FormStartPosition.Manual;
-            l.Location = new System.Drawing.Point(0,0);
-            l.Show();
+            //Login l = new Login();
+            //l.StartPosition = FormStartPosition.Manual;
+            //l.Location = new System.Drawing.Point(0,0);
+            //l.Show();
             Application.Run(new Login());
         }
     }

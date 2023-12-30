@@ -44,7 +44,7 @@ namespace Spottyfy
             connection.Close();
         }
 
-        public int DeleteAlbum()
+        public int TestData()
         {   
             MySqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = @"SELECT * FROM test.test_table;";
@@ -82,7 +82,22 @@ namespace Spottyfy
             //throw new NotImplementedException();
         }
 
-        public JArray GetData(string dataType)
+        public List<SongData> GetSongData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AlbumData> GetAlbumData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AuthorData> GetAuthorData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserData> GetUserData()
         {
             throw new NotImplementedException();
         }
@@ -143,11 +158,6 @@ namespace Spottyfy
         }
 
         public int DeleteData(UserData x, int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int TestData()
         {
             throw new NotImplementedException();
         }
