@@ -19,9 +19,8 @@ namespace Spottyfy
         public string artist { get; set; }
 
         public static List<Album> getAlbumsMethod() {
-
+            /*
             List<Album> albums = new List<Album>();
-
             DataBaseConnect connectionSQL = new DataBaseConnect(2);//test for postgresql
             connectionSQL.Connect();
             DataBaseConnect connection = new DataBaseConnect(2);//enum instead of magical number?
@@ -53,6 +52,8 @@ namespace Spottyfy
             }
 
             return albums;
+            */
+            return null;
         }
         
 

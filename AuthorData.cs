@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Spottyfy
 {
-    public class UserData
+    public class AuthorData
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -16,11 +16,5 @@ namespace Spottyfy
 
         //[BsonElement("basic-info")]
         public string name { get; set; }
-
-        public string password { get; set; }
-
-        public string rank { get; set; }
-
-        public DateTime creationDate { get; set; }
     }
 }

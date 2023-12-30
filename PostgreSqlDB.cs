@@ -1,8 +1,12 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Core.Configuration;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
+using Npgsql;
+using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,76 +14,58 @@ using System.Windows.Forms;
 
 namespace Spottyfy
 {
-    public class MySqlDB : IDB
+    public class PostgreSqlDB : IDB
     {
-        MySqlConnection connection;
+        NpgsqlConnection connection;
+        string connectionString;
         readonly string login, password;
 
-        public MySqlDB(string login = "admin", string password = "admin123")
+        public PostgreSqlDB(string login = "postgres", string password = "postgres")
         {
             this.login = login;
             this.password = password;
 
-            string myConnectionString = $"server=127.0.0.1;uid={this.login};pwd={this.password};database=test";
             try
             {
-                connection = new MySqlConnection(myConnectionString);
+                connectionString = $"Host=localhost;Username={this.login};Password={this.password};Database=test";
+                connection = new NpgsqlConnection(connectionString);
                 if (connection == null)
                 {
-                    Console.WriteLine("MySqlConnection returned null, no connection");
-                    //stop functions from going off if null
+                    Console.WriteLine("PostgreSQL returned null, no connection");
                 }
-                connection.Open();
             }
-            catch (MySqlException ex)
+            catch (Exception e)
             {
-                Console.WriteLine("Exception in ConnectMysql: " + ex.Message);
-                MessageBox.Show(ex.Message);
-                connection = null;
+                Console.WriteLine("Exception in ConnectPostgresql: " + e.Message);
             }
         }
 
-        ~MySqlDB() 
-        {
-            connection.Close();
-        }
 
         public int TestData()
-        {   
-            MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM test.test_table;";
-            MySqlDataReader Reader = cmd.ExecuteReader();
-            if (!Reader.HasRows) return -1;
-            List<string> authors = new List<string>();
+        {
+            connection.Open();
+            string query = "SELECT * FROM songs";
+            NpgsqlCommand command = new NpgsqlCommand(query, connection);
+            NpgsqlDataReader reader = command.ExecuteReader();
             List<SongData> songs = new List<SongData>();
-            while (Reader.Read())
+            while (reader.Read())
             {
-                //Console.WriteLine(Reader["author"]);
-                authors.Add(Reader["author"].ToString());
-                //Console.WriteLine(Reader["song"]);
-                string songId = Reader["id"].ToString();
-                string songName = Reader["song"].ToString();
-                string songAuthor = Reader["author"].ToString();
-                string songAlbum = Reader["album"].ToString();
-                //songs.Add(Reader["song"].ToString());
                 SongData song = new SongData();
-                song.Id = songId;
-                song.name = songName;
-                song.author = songAuthor;
-                song.album = songAlbum;
+                song.Id = reader["id"].ToString();
+                song.name = reader["name"].ToString();
+                song.author = reader["author"].ToString();
+                song.album = reader["album"].ToString();
+                song.releaseDate = reader["release-date"].ToString();
                 songs.Add(song);
             }
-            Reader.Close();
-            Console.WriteLine("Listy: ");
-            //authors.ForEach(e => Console.WriteLine(e.ToString()));  
-            //songs.ForEach(e => Console.WriteLine(e.ToString()));
-            //JArray Jauthors = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(authors.AsQueryable()));
-            JArray Jsongs = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(songs.AsQueryable()));
-            //Console.WriteLine(Jauthors);
-
-            Console.WriteLine(Jsongs);
+            reader.Close();
+            connection.Close();
+            Console.WriteLine(songs.Count);
+            foreach (var s in songs)
+            {
+                Console.WriteLine(s.name);
+            }
             return 0;
-            //throw new NotImplementedException();
         }
 
         public List<SongData> GetSongData()

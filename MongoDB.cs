@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ namespace Spottyfy
     public class MongoDB : IDB
     {
         MongoClient connection;
-        readonly string login, password;
+        IMongoDatabase db;
+        readonly string login, password, dbName;
 
-        public MongoDB(string login = "fellen", string password = "ljrpo7G8qbt6mAeK")
+        public MongoDB(string login = "fellen", string password = "ljrpo7G8qbt6mAeK", string dbName = "Spottyfy")
         {
             this.login = login;
             this.password = password;
+            this.dbName = dbName;
 
             try
             {
@@ -27,7 +30,9 @@ namespace Spottyfy
                 if (connection == null)
                 {
                     Console.WriteLine("MongoClient returned null, no connection");
+                    throw new Exception("NULL MongoClient");
                 }
+                db = connection.GetDatabase(dbName);
             }
             catch (Exception e)
             {
@@ -36,7 +41,7 @@ namespace Spottyfy
             }
         }
 
-        public int DeleteAlbum()
+        public int TestData()
         {
             var db = connection.GetDatabase("Spottyfy");
             var songsCollection = db.GetCollection<SongData>("Songs");
@@ -74,127 +79,120 @@ namespace Spottyfy
             songsCollection.DeleteOne(Builders<SongData>.Filter.Eq("name", "testUPDATED"));
 
             //update data
+            var f = Builders<SongData>.Filter.Eq(song => song.Id, "6543b61390758d44f6d17b62");
+            var update = Builders<SongData>.Update.Set(song => song.name, "Updated song");
+            songsCollection.UpdateOne(f, update);
+
             return 0;
         }
-        
-        public int DeleteAlbums()
+
+        public List<SongData> GetSongData()
+        {
+            var collection = db.GetCollection<SongData>("Songs");
+            List<SongData> songs = new List<SongData>();
+            var results = collection.Find(Builders<SongData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                songs.Add(doc);
+            }
+            return songs;
+        }
+
+        public List<AlbumData> GetAlbumData()
+        {
+            var collection = db.GetCollection<AlbumData>("Albums");
+            List<AlbumData> albums = new List<AlbumData>();
+            var results = collection.Find(Builders<AlbumData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                albums.Add(doc);
+            }
+            return albums;
+        }
+
+        public List<AuthorData> GetAuthorData()
+        {
+            var collection = db.GetCollection<AuthorData>("Authors");
+            List<AuthorData> authors = new List<AuthorData>();
+            var results = collection.Find(Builders<AuthorData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                authors.Add(doc);
+            }
+            return authors;
+        }
+
+        public List<UserData> GetUserData()
+        {
+            var collection = db.GetCollection<UserData>("Users");
+            List<UserData> albums = new List<UserData>();
+            var results = collection.Find(Builders<UserData>.Filter.Empty).ToList();
+            foreach (var doc in results)
+            {
+                albums.Add(doc);
+            }
+            return albums;
+        }
+
+        public int AddData(SongData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteAuthor()
+        public int AddData(AlbumData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteAuthors()
+        public int AddData(AuthorData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteSong()
+        public int AddData(UserData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteSongs()
+        public int UpdateData(SongData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteUser()
+        public int UpdateData(AlbumData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteUsers()
+        public int UpdateData(AuthorData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAlbum()
+        public int UpdateData(UserData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAlbums()
+        public int DeleteData(SongData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAuthor()
+        public int DeleteData(AlbumData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetAuthors()
+        public int DeleteData(AuthorData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetSong()
+        public int DeleteData(UserData x, int id)
         {
             throw new NotImplementedException();
         }
 
-        public JArray GetSongs()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray GetUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray GetUsers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public JArray GetUserSettings()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAlbum()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAlbums()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAuthor()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateAuthors()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateSong()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateSongs()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateUsers()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
