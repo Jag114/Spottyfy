@@ -69,10 +69,10 @@ namespace Spottyfy
             //add data
             SongData s = new SongData();
             s.name = "new me";
-            s.album = "idk";
+            //s.album = "idk";
             //Console.WriteLine(albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString());
             s.author = albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString();
-            s.releaseDate = DateTime.Now.ToString();
+            //s.releaseDate = DateTime.Now.ToString();
             //songsCollection.InsertOne(s);
 
             //delete data
@@ -88,70 +88,150 @@ namespace Spottyfy
 
         public List<SongData> GetSongData()
         {
-            var collection = db.GetCollection<SongData>("Songs");
             List<SongData> songs = new List<SongData>();
-            var results = collection.Find(Builders<SongData>.Filter.Empty).ToList();
-            foreach (var doc in results)
+            try
             {
-                songs.Add(doc);
+                var collection = db.GetCollection<SongData>("Songs");
+                var results = collection.Find(Builders<SongData>.Filter.Empty).ToList();
+                foreach (var doc in results)
+                {
+                    songs.Add(doc);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             return songs;
         }
 
         public List<AlbumData> GetAlbumData()
         {
-            var collection = db.GetCollection<AlbumData>("Albums");
             List<AlbumData> albums = new List<AlbumData>();
-            var results = collection.Find(Builders<AlbumData>.Filter.Empty).ToList();
-            foreach (var doc in results)
+            try
             {
-                albums.Add(doc);
+                var collection = db.GetCollection<AlbumData>("Albums");
+                var results = collection.Find(Builders<AlbumData>.Filter.Empty).ToList();
+                foreach (var doc in results)
+                {
+                    albums.Add(doc);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             return albums;
         }
 
         public List<AuthorData> GetAuthorData()
         {
-            var collection = db.GetCollection<AuthorData>("Authors");
             List<AuthorData> authors = new List<AuthorData>();
-            var results = collection.Find(Builders<AuthorData>.Filter.Empty).ToList();
-            foreach (var doc in results)
+            try
             {
-                authors.Add(doc);
+                var collection = db.GetCollection<AuthorData>("Authors");
+                var results = collection.Find(Builders<AuthorData>.Filter.Empty).ToList();
+                foreach (var doc in results)
+                {
+                    authors.Add(doc);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             return authors;
         }
 
         public List<UserData> GetUserData()
         {
-            var collection = db.GetCollection<UserData>("Users");
             List<UserData> albums = new List<UserData>();
-            var results = collection.Find(Builders<UserData>.Filter.Empty).ToList();
-            foreach (var doc in results)
+            try
             {
-                albums.Add(doc);
+                var collection = db.GetCollection<UserData>("Users");
+                var results = collection.Find(Builders<UserData>.Filter.Empty).ToList();
+                foreach (var doc in results)
+                {
+                    albums.Add(doc);
+                }
             }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             return albums;
         }
 
         public int AddData(SongData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<SongData>("Songs");
+                collection.InsertOne(x);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+
+            return 0;
         }
 
         public int AddData(AlbumData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<AlbumData>("Albums");
+                collection.InsertOne(x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+
+            return 0;
         }
 
         public int AddData(AuthorData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<AuthorData>("Authors");
+                collection.InsertOne(x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+
+            return 0;
         }
 
         public int AddData(UserData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<UserData>("Users");
+                if(collection.CountDocuments(Builders<UserData>.Filter.Empty) == 0)
+                {
+                    x.rank = "admin";
+                } 
+                collection.InsertOne(x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+
+            return 0;
         }
 
         public int UpdateData(SongData x, int id)

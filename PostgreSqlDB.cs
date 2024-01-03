@@ -55,7 +55,7 @@ namespace Spottyfy
                 song.name = reader["name"].ToString();
                 song.author = reader["author"].ToString();
                 song.album = reader["album"].ToString();
-                song.releaseDate = reader["release-date"].ToString();
+                //song.releaseDate = reader["release-date"].ToString();
                 songs.Add(song);
             }
             reader.Close();
