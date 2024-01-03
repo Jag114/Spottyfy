@@ -200,7 +200,7 @@ namespace Spottyfy
                 name = "Beep",
                 author = "me",
                 album = "654fd7d6d3297fe492bc390c",
-                releaseDate = DateTime.Now.ToString("h:mm:ss tt")
+                //releaseDate = DateTime.Now.ToString("h:mm:ss tt")
             };
             collection.InsertOne(songTest);
         }

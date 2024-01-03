@@ -19,6 +19,6 @@ namespace Spottyfy
 
         public string author { get; set; }
 
-        public string releaseDate { get; set; }
+        public DateTime releaseDate { get; set; }
     }
 }

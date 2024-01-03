@@ -23,7 +23,7 @@ namespace Spottyfy
 
         public string album { get; set; }
 
-        public string releaseDate { get; set; }
+        public DateTime releaseDate { get; set; }
 
         public static List<SongData> getSongsFromAlbum(string albumId) {
             /*
