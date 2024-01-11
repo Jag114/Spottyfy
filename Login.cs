@@ -85,8 +85,13 @@ namespace Spottyfy
 
         private void button_loggin_window_Click(object sender, EventArgs e)
         {
-            if (input_username_login_window.Text == "PLACEHOLDER_databaseuser" && input_password_login_window.Text == "PLACEHOLDER_databasepassword")
+            if (input_username_login_window.Text == "admin" && input_password_login_window.Text == "admin")
             {
+                SongView svForm = new SongView();
+                svForm.Location = this.Location;
+                svForm.StartPosition = FormStartPosition.Manual;
+                svForm.FormClosing += delegate { this.Show(); };
+                svForm.Show();
                 this.Hide();
             }
             else
@@ -107,9 +112,12 @@ namespace Spottyfy
 
         private void button_singup_login_window_Click(object sender, EventArgs e)
         {
-            this.Hide();
             SignUp SignUpOpen = new SignUp();
-            SignUpOpen.ShowDialog();
+            SignUpOpen.Location = this.Location;
+            SignUpOpen.StartPosition = FormStartPosition.Manual;
+            SignUpOpen.FormClosing += delegate { this.Show(); };
+            SignUpOpen.Show();
+            this.Hide();
         }
 
         private void button_loggin_window_KeyPress(object sender, KeyPressEventArgs e)

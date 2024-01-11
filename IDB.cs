@@ -11,6 +11,7 @@ namespace Spottyfy
     {
         //JArray GetData(string dataType);
         List<SongData> GetSongData();
+        List<SongData> GetSongDataFromAlbum(string albumId);
         List<AlbumData> GetAlbumData();
         List<AuthorData> GetAuthorData();
         List<UserData> GetUserData();

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -22,14 +23,13 @@ namespace Spottyfy
 
         private void SongView_Load(object sender, EventArgs e)
         {
-            /*flowLayoutPanel1.BackColor=Color.LimeGreen; flowLayoutPanel2.BackColor=Color.LimeGreen;
-            splitContainer1.BackColor=Color.LimeGreen; splitContainer2.BackColor=Color.LimeGreen;
-            this.TransparencyKey=Color.LimeGreen;*/
-            List<Album> albums = Album.getAlbumsMethod();
-            List<SongData> songs = SongData.getSongsFromAlbum(albums[0].id);
-            Console.WriteLine(string.Join(",",albums));
-            albumTitle.Text = albums[0].title;
-            albumArtist.Text = albums[0].artist;
+            int type = 1;
+            DataBaseConnect db = new DataBaseConnect(type);
+            var albums = db.connection.GetAlbumData();
+            var songs = db.connection.GetSongDataFromAlbum(albums[0].Id);
+            Console.WriteLine(string.Join(",",songs));
+            albumTitle.Text = albums[0].name;
+            albumArtist.Text = albums[0].author;
             loadSongs(songs);
             for (int i = 0; i < albums.Count; ++i)
             {
@@ -40,19 +40,20 @@ namespace Spottyfy
                 button.BackColor = Color.FromArgb(82,80,80);
                 int tag = i;
                 button.Tag = tag;
-                button.Text = albums[i].title;
+                button.Text = albums[i].name;
                 button.Click += (s, ev) => {
                     System.Diagnostics.Debug.WriteLine(tag);
-                    albumTitle.Text = albums[tag].title;
-                    albumArtist.Text = albums[tag].artist;
-                    songs = SongData.getSongsFromAlbum(albums[tag].id);
+                    albumTitle.Text = albums[tag].name;
+                    albumArtist.Text = albums[tag].author;
+                    songs = db.connection.GetSongDataFromAlbum(albums[tag].Id);
                     loadSongs(songs);
                 };
                 flowLayoutPanel1.Controls.Add(button);
             }
         }
         private void loadSongs(List<SongData> songs) {
-            foreach (SongData song in songs) { 
+            flowLayoutPanel2.Controls.Clear();
+            foreach (SongData song in songs) {
                 Label songLabel = new Label();
                 songLabel.Text = song.name;
                 songLabel.ForeColor = Color.White;

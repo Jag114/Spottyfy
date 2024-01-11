@@ -86,6 +86,10 @@ namespace Spottyfy
         {
             throw new NotImplementedException();
         }
+        public List<SongData> GetSongDataFromAlbum(string albumId)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<AlbumData> GetAlbumData()
         {

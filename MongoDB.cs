@@ -105,6 +105,25 @@ namespace Spottyfy
 
             return songs;
         }
+        public List<SongData> GetSongDataFromAlbum(string albumId)
+        {
+            List<SongData> songs = new List<SongData>();
+            try
+            {
+                var collection = db.GetCollection<SongData>("Songs");
+                var results = collection.Find(Builders<SongData>.Filter.Eq(s => s.album, albumId)).ToList();
+                foreach (var doc in results)
+                {
+                    songs.Add(doc);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return songs;
+        }
 
         public List<AlbumData> GetAlbumData()
         {
