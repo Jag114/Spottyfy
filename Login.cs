@@ -22,6 +22,7 @@ namespace Spottyfy
             //test
             int type = 1;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql, 3-postgresql
+            db.connection.TestData();
             /*
             UserData user = new UserData{
                 name = "user2",
@@ -52,6 +53,7 @@ namespace Spottyfy
             db.connection.AddData(author);
             */
 
+            /*
             var a = db.connection.GetSongData();
             Console.WriteLine("Songs:");
             foreach (var s in a)
@@ -76,7 +78,7 @@ namespace Spottyfy
             {
                 Console.WriteLine(s.ToJson());
             }
-
+            */
             //DataBaseConnect db2 = new DataBaseConnect(3);
             //db2.connection.TestData();
 
