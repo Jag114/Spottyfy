@@ -36,11 +36,12 @@ namespace Spottyfy
                 Button button = new Button();
                 button.Width = flowLayoutPanel1.Width;
                 button.Height = 100;
-                button.ForeColor = Color.White;
-                button.BackColor = Color.FromArgb(82,80,80);
+                button.BackColor = Color.FromArgb(215, 247, 91);
+                button.ForeColor = Color.FromArgb(26, 24, 27);
                 int tag = i;
                 button.Tag = tag;
                 button.Text = albums[i].name;
+                button.Font = new Font("Microsoft Sans Serif", 18);
                 button.Click += (s, ev) => {
                     System.Diagnostics.Debug.WriteLine(tag);
                     albumTitle.Text = albums[tag].name;
@@ -54,9 +55,19 @@ namespace Spottyfy
         private void loadSongs(List<SongData> songs) {
             flowLayoutPanel2.Controls.Clear();
             foreach (SongData song in songs) {
-                Label songLabel = new Label();
+                LinkLabel songLabel = new LinkLabel();
                 songLabel.Text = song.name;
-                songLabel.ForeColor = Color.White;
+                songLabel.ForeColor = Color.FromArgb(215, 247, 91);
+                songLabel.LinkColor = Color.FromArgb(215, 247, 91);
+                songLabel.LinkClicked += (s, ev) =>
+                {
+                    SongDetailView sdForm = new SongDetailView(song,albumTitle.Text);
+                    sdForm.Location = this.Location;
+                    sdForm.StartPosition = FormStartPosition.Manual;
+                    sdForm.FormClosing += delegate { Application.Exit(); };
+                    sdForm.Show();
+                    this.Hide();
+                };
                 songLabel.Width = flowLayoutPanel2.Width;
                 songLabel.Height = 30;
                 songLabel.Font= new Font("Microsoft Sans Serif", 16);

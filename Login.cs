@@ -90,7 +90,7 @@ namespace Spottyfy
                 SongView svForm = new SongView();
                 svForm.Location = this.Location;
                 svForm.StartPosition = FormStartPosition.Manual;
-                svForm.FormClosing += delegate { this.Show(); };
+                svForm.FormClosing += delegate { Application.Exit(); };
                 svForm.Show();
                 this.Hide();
             }
@@ -115,7 +115,7 @@ namespace Spottyfy
             SignUp SignUpOpen = new SignUp();
             SignUpOpen.Location = this.Location;
             SignUpOpen.StartPosition = FormStartPosition.Manual;
-            SignUpOpen.FormClosing += delegate { this.Show(); };
+            SignUpOpen.FormClosing += delegate {  Application.Exit(); };
             SignUpOpen.Show();
             this.Hide();
         }

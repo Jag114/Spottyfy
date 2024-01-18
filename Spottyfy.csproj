@@ -225,6 +225,12 @@
     </Compile>
     <Compile Include="SignUp.Designer.cs" />
     <Compile Include="SongData.cs" />
+    <Compile Include="SongDetailView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SongDetailView.Designer.cs">
+      <DependentUpon>SongDetailView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SongView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="SignUp.resx" />
+    <EmbeddedResource Include="SongDetailView.resx">
+      <DependentUpon>SongDetailView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SongView.resx">
       <DependentUpon>SongView.cs</DependentUpon>
     </EmbeddedResource>
