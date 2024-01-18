@@ -1,4 +1,6 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
@@ -27,17 +29,12 @@ namespace Spottyfy
             try
             {
                 connection = new MongoClient($"mongodb+srv://{this.login}:{this.password}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
-                if (connection == null)
-                {
-                    Console.WriteLine("MongoClient returned null, no connection");
-                    throw new Exception("NULL MongoClient");
-                }
                 db = connection.GetDatabase(dbName);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception in ConnectMongo methodd: " + e.Message);
                 connection = null;
+                Console.WriteLine("Exception in MongoClient caught: " + e.Message);
             }
         }
 
@@ -48,8 +45,16 @@ namespace Spottyfy
             var albumsCollection = db.GetCollection<AlbumData>("Albums");
 
             //display data
+
             List<SongData> songs = new List<SongData>();
-            var result = songsCollection.Find(Builders<SongData>.Filter.Empty).ToList();
+            var projection = Builders<SongData>.Projection.Expression(x => new SongData
+            {
+                Id = x.Id.ToString(),
+                author = x.author,
+                album = x.album,
+                releaseDate = x.releaseDate
+            });
+            var result = songsCollection.Find(Builders<SongData>.Filter.Empty).Project(projection).ToList();
             foreach (var doc in result)
             {
                 Console.WriteLine(doc.ToBsonDocument());
@@ -71,17 +76,17 @@ namespace Spottyfy
             s.name = "new me";
             //s.album = "idk";
             //Console.WriteLine(albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString());
-            s.author = albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString();
+            //s.author = albumsCollection.Find(Builders<AlbumData>.Filter.Eq("name", "BestestAlbum")).ToList()[0].name.ToString();
             //s.releaseDate = DateTime.Now.ToString();
             //songsCollection.InsertOne(s);
 
             //delete data
-            songsCollection.DeleteOne(Builders<SongData>.Filter.Eq("name", "testUPDATED"));
+            //songsCollection.DeleteOne(Builders<SongData>.Filter.Eq("name", "testUPDATED"));
 
             //update data
             var f = Builders<SongData>.Filter.Eq(song => song.Id, "6543b61390758d44f6d17b62");
             var update = Builders<SongData>.Update.Set(song => song.name, "Updated song");
-            songsCollection.UpdateOne(f, update);
+            //songsCollection.UpdateOne(f, update);
 
             return 0;
         }
@@ -105,6 +110,26 @@ namespace Spottyfy
 
             return songs;
         }
+        public List<SongData> GetSongDataFromAlbum(string albumId)
+        {
+            List<SongData> songs = new List<SongData>();
+            try
+            {
+                var collection = db.GetCollection<SongData>("Songs");
+                var results = collection.Find(Builders<SongData>.Filter.Eq(s => s.album, albumId)).ToList();
+                foreach (var doc in results)
+                {
+                    songs.Add(doc);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return songs;
+        }
+
         public List<SongData> GetSongDataFromAlbum(string albumId)
         {
             List<SongData> songs = new List<SongData>();

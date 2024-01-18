@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
 using System;
@@ -47,37 +48,38 @@ namespace Spottyfy
         public int TestData()
         {   
             MySqlCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = @"INSERT INTO test.test_table(album, author, song) VALUES (1, 'visual', 'ms song');";
+            //cmd.ExecuteNonQuery();
+
             cmd.CommandText = @"SELECT * FROM test.test_table;";
             MySqlDataReader Reader = cmd.ExecuteReader();
             if (!Reader.HasRows) return -1;
-            List<string> authors = new List<string>();
             List<SongData> songs = new List<SongData>();
             while (Reader.Read())
             {
-                //Console.WriteLine(Reader["author"]);
-                authors.Add(Reader["author"].ToString());
                 //Console.WriteLine(Reader["song"]);
                 string songId = Reader["id"].ToString();
                 string songName = Reader["song"].ToString();
                 string songAuthor = Reader["author"].ToString();
                 string songAlbum = Reader["album"].ToString();
+                DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
                 //songs.Add(Reader["song"].ToString());
-                SongData song = new SongData();
-                song.Id = songId;
-                song.name = songName;
-                song.author = songAuthor;
-                song.album = songAlbum;
+                SongData song = new SongData{
+                    Id = songId,
+                    name = songName,
+                    author = songAuthor,        
+                    album = songAlbum,
+                    releaseDate = songReleaseDate
+                };
                 songs.Add(song);
             }
             Reader.Close();
             Console.WriteLine("Listy: ");
-            //authors.ForEach(e => Console.WriteLine(e.ToString()));  
-            //songs.ForEach(e => Console.WriteLine(e.ToString()));
-            //JArray Jauthors = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(authors.AsQueryable()));
-            JArray Jsongs = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(songs.AsQueryable()));
-            //Console.WriteLine(Jauthors);
-
-            Console.WriteLine(Jsongs);
+            foreach (var item in songs)
+            {
+                Console.WriteLine(item.ToJson<SongData>());
+            }
             return 0;
             //throw new NotImplementedException();
         }
