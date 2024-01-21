@@ -266,7 +266,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SignUp.resx" />
+    
     <EmbeddedResource Include="SongDetailView.resx">
       <DependentUpon>SongDetailView.cs</DependentUpon>
     </EmbeddedResource>
