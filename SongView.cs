@@ -23,7 +23,7 @@ namespace Spottyfy
 
         private void SongView_Load(object sender, EventArgs e)
         {
-            int type = 1;
+            int type = 2;
             DataBaseConnect db = new DataBaseConnect(type);
             var albums = db.connection.GetAlbumData();
             var songs = db.connection.GetSongDataFromAlbum(albums[0].Id);

@@ -22,7 +22,7 @@ namespace Spottyfy
             //l.StartPosition = FormStartPosition.Manual;
             //l.Location = new System.Drawing.Point(0,0);
             //l.Show();
-            Application.Run(new Login());
+            Application.Run(new SongView());
         }
     }
 }
