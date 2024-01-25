@@ -57,7 +57,6 @@ namespace Spottyfy
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(1210, 125);
             this.panel_top.TabIndex = 0;
-            this.panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_top_Paint);
             // 
             // flowLayoutPanel_right
             // 
@@ -193,11 +192,13 @@ namespace Spottyfy
             this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_user);
             this.Controls.Add(this.panel_top);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.SizeChanged += new System.EventHandler(this.MainMenu_SizeChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainMenu_KeyDown);
             this.panel_top.ResumeLayout(false);
             this.flowLayoutPanel_right.ResumeLayout(false);
             this.panel_user.ResumeLayout(false);
