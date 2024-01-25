@@ -49,6 +49,7 @@ namespace Spottyfy
             }
         }
 
+        /*
         private void button_user_MouseHover(object sender, EventArgs e)
         {
             panel_user.Visible = true;
@@ -66,10 +67,20 @@ namespace Spottyfy
             Delay(3000, (o, a) => panel_user.Visible = false);
             
         }
-
+        */
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button_user_Click(object sender, EventArgs e)
+        {
+            if (panel_user.Visible == true)
+            {
+                panel_user.Visible = false;
+            }
+            else panel_user.Visible = true;
+
         }
     }
 }

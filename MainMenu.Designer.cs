@@ -49,9 +49,10 @@ namespace Spottyfy
             this.panel_top.Controls.Add(this.button_settings);
             this.panel_top.Controls.Add(this.button_user);
             this.panel_top.Controls.Add(this.button_nightmode);
-            this.panel_top.Location = new System.Drawing.Point(-4, -4);
+            this.panel_top.Location = new System.Drawing.Point(-6, -6);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(807, 79);
+            this.panel_top.Size = new System.Drawing.Size(1210, 122);
             this.panel_top.TabIndex = 0;
             // 
             // button_settings
@@ -60,10 +61,11 @@ namespace Spottyfy
             this.button_settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_settings.FlatAppearance.BorderSize = 0;
             this.button_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_settings.Location = new System.Drawing.Point(742, 16);
+            this.button_settings.Location = new System.Drawing.Point(1113, 25);
+            this.button_settings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_settings.Name = "button_settings";
             this.button_settings.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button_settings.Size = new System.Drawing.Size(50, 50);
+            this.button_settings.Size = new System.Drawing.Size(75, 77);
             this.button_settings.TabIndex = 3;
             this.button_settings.UseVisualStyleBackColor = true;
             // 
@@ -73,13 +75,14 @@ namespace Spottyfy
             this.button_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_user.FlatAppearance.BorderSize = 0;
             this.button_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_user.Location = new System.Drawing.Point(673, 16);
+            this.button_user.Location = new System.Drawing.Point(1010, 25);
+            this.button_user.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_user.Name = "button_user";
             this.button_user.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button_user.Size = new System.Drawing.Size(50, 50);
+            this.button_user.Size = new System.Drawing.Size(75, 77);
             this.button_user.TabIndex = 2;
             this.button_user.UseVisualStyleBackColor = true;
-            this.button_user.MouseHover += new System.EventHandler(this.button_user_MouseHover);
+            this.button_user.Click += new System.EventHandler(this.button_user_Click);
             // 
             // button_nightmode
             // 
@@ -87,10 +90,11 @@ namespace Spottyfy
             this.button_nightmode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_nightmode.FlatAppearance.BorderSize = 0;
             this.button_nightmode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_nightmode.Location = new System.Drawing.Point(606, 16);
+            this.button_nightmode.Location = new System.Drawing.Point(909, 25);
+            this.button_nightmode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_nightmode.Name = "button_nightmode";
             this.button_nightmode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button_nightmode.Size = new System.Drawing.Size(50, 50);
+            this.button_nightmode.Size = new System.Drawing.Size(75, 77);
             this.button_nightmode.TabIndex = 1;
             this.button_nightmode.UseVisualStyleBackColor = true;
             this.button_nightmode.Click += new System.EventHandler(this.button_nightmode_Click);
@@ -100,12 +104,12 @@ namespace Spottyfy
             this.panel_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
             this.panel_user.Controls.Add(this.button_usersett);
             this.panel_user.Controls.Add(this.button_logout);
-            this.panel_user.Location = new System.Drawing.Point(602, 68);
+            this.panel_user.Location = new System.Drawing.Point(903, 105);
+            this.panel_user.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_user.Name = "panel_user";
-            this.panel_user.Size = new System.Drawing.Size(186, 211);
+            this.panel_user.Size = new System.Drawing.Size(279, 325);
             this.panel_user.TabIndex = 1;
             this.panel_user.Visible = false;
-            this.panel_user.MouseLeave += new System.EventHandler(this.panel_user_MouseLeave);
             // 
             // button_usersett
             // 
@@ -116,9 +120,10 @@ namespace Spottyfy
             this.button_usersett.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_usersett.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_usersett.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_usersett.Location = new System.Drawing.Point(0, 140);
+            this.button_usersett.Location = new System.Drawing.Point(0, 215);
+            this.button_usersett.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_usersett.Name = "button_usersett";
-            this.button_usersett.Size = new System.Drawing.Size(186, 31);
+            this.button_usersett.Size = new System.Drawing.Size(279, 48);
             this.button_usersett.TabIndex = 3;
             this.button_usersett.Text = "User Settings";
             this.button_usersett.UseVisualStyleBackColor = true;
@@ -132,29 +137,32 @@ namespace Spottyfy
             this.button_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_logout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_logout.Location = new System.Drawing.Point(0, 177);
+            this.button_logout.Location = new System.Drawing.Point(0, 272);
+            this.button_logout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_logout.Name = "button_logout";
-            this.button_logout.Size = new System.Drawing.Size(186, 31);
+            this.button_logout.Size = new System.Drawing.Size(279, 48);
             this.button_logout.TabIndex = 2;
             this.button_logout.Text = "Log out";
             this.button_logout.UseVisualStyleBackColor = true;
             // 
             // panel_empty
             // 
-            this.panel_empty.Location = new System.Drawing.Point(23, 95);
+            this.panel_empty.Location = new System.Drawing.Point(34, 146);
+            this.panel_empty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_empty.Name = "panel_empty";
-            this.panel_empty.Size = new System.Drawing.Size(573, 343);
+            this.panel_empty.Size = new System.Drawing.Size(860, 528);
             this.panel_empty.TabIndex = 2;
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_user);
             this.Controls.Add(this.panel_top);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
