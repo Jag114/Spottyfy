@@ -129,19 +129,12 @@ namespace Spottyfy
         private void select_mysql_CheckedChanged(object sender, EventArgs e)
         {
             select_mongo.Checked = false;
-            select_postgresql.Checked = false;
         }
 
         private void select_mongo_CheckedChanged(object sender, EventArgs e)
         {
-            select_postgresql.Checked = false;
             select_mysql.Checked = false;
         }
 
-        private void select_postgresql_CheckedChanged(object sender, EventArgs e)
-        {
-            select_mysql.Checked = false;
-            select_mongo.Checked = false;
-        }
     }
 }

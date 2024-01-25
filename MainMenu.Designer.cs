@@ -32,6 +32,7 @@ namespace Spottyfy
         private void InitializeComponent()
         {
             this.panel_top = new System.Windows.Forms.Panel();
+            this.button_viewsongs = new System.Windows.Forms.Button();
             this.button_settings = new System.Windows.Forms.Button();
             this.button_user = new System.Windows.Forms.Button();
             this.button_nightmode = new System.Windows.Forms.Button();
@@ -46,14 +47,30 @@ namespace Spottyfy
             // panel_top
             // 
             this.panel_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.panel_top.Controls.Add(this.button_viewsongs);
             this.panel_top.Controls.Add(this.button_settings);
             this.panel_top.Controls.Add(this.button_user);
             this.panel_top.Controls.Add(this.button_nightmode);
+            this.panel_top.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.panel_top.Location = new System.Drawing.Point(-6, -6);
             this.panel_top.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(1210, 122);
             this.panel_top.TabIndex = 0;
+            this.panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_top_Paint);
+            // 
+            // button_viewsongs
+            // 
+            this.button_viewsongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.button_viewsongs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_viewsongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.button_viewsongs.Location = new System.Drawing.Point(40, 37);
+            this.button_viewsongs.Name = "button_viewsongs";
+            this.button_viewsongs.Size = new System.Drawing.Size(136, 52);
+            this.button_viewsongs.TabIndex = 4;
+            this.button_viewsongs.Text = "View Songs";
+            this.button_viewsongs.UseVisualStyleBackColor = false;
+            this.button_viewsongs.Click += new System.EventHandler(this.button_viewsongs_Click);
             // 
             // button_settings
             // 
@@ -189,5 +206,6 @@ namespace Spottyfy
         private System.Windows.Forms.Button button_settings;
         private System.Windows.Forms.Button button_usersett;
         private System.Windows.Forms.Panel panel_empty;
+        private System.Windows.Forms.Button button_viewsongs;
     }
 }

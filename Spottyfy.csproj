@@ -269,6 +269,9 @@
     <EmbeddedResource Include="LoginAndSign\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NavBar.resx">
       <DependentUpon>NavBar.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +313,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\whitemoon.png" />
     <None Include="Resources\user1.png" />
     <None Include="Resources\user0.png" />
     <None Include="Resources\to_night.png" />
