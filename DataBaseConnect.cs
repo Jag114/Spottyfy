@@ -43,9 +43,6 @@ namespace Spottyfy
                 case 2:
                     connection = new MySqlDB();
                     break;
-                case 3:
-                    connection = new PostgreSqlDB();
-                    break;
                 default:
                     break;
             }

@@ -64,8 +64,12 @@ namespace Spottyfy
                 string songAlbum = Reader["album"].ToString();
                 DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
                 //songs.Add(Reader["song"].ToString());
-                SongData song = new SongData{
-                    Id = songId,
+
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                SongData song = new SongData {
+                    Id = standardizedID,
                     name = songName,
                     author = songAuthor,        
                     album = songAlbum,
@@ -77,7 +81,7 @@ namespace Spottyfy
             Console.WriteLine("Listy: ");
             foreach (var item in songs)
             {
-                Console.WriteLine(item.ToJson<SongData>());
+                Console.WriteLine(item.ToJson());
             }
             return 0;
             //throw new NotImplementedException();
@@ -128,44 +132,71 @@ namespace Spottyfy
             throw new NotImplementedException();
         }
 
-        public int UpdateData(SongData x, int id)
+        public int UpdateData(SongData x)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AlbumData x, int id)
+        public int UpdateData(AlbumData x)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AuthorData x, int id)
+        public int UpdateData(AuthorData x)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(UserData x, int id)
+        public int UpdateData(UserData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(SongData x, int id)
+        public int DeleteData(SongData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(AlbumData x, int id)
+        public int DeleteData(AlbumData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(AuthorData x, int id)
+        public int DeleteData(AuthorData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(UserData x, int id)
+        public int DeleteData(UserData x)
         {
             throw new NotImplementedException();
+        }
+
+        public int Authenticate(string login, string password)
+        {
+            MySqlCommand cmd = connection.CreateCommand();
+                                                                           //login
+            cmd.CommandText = @"SELECT * FROM test.test_table WHERE author = 'me';";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return -1;
+            SongData u = new SongData();
+            while (Reader.Read())
+            {
+                string songId = Reader["id"].ToString();
+                string songName = Reader["song"].ToString();
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+                u.Id = standardizedID;
+                u.name = songName;     
+            }
+            if(u.Id == password)
+            {
+                Console.WriteLine("Wrong password");
+                return -1;
+            }
+            Reader.Close();
+            Console.WriteLine(u.ToJson());
+            return 0;
         }
     }
 }

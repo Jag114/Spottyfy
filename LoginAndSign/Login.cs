@@ -20,11 +20,13 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            int type = 1;
-            DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql, 3-postgresql
+            int type = 2;
+            DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
+            db.connection.TestData();
+            db.connection.Authenticate("me", "1");
             /*
             UserData user = new UserData{
-                name = "user2",
+                name = "user3",
                 creationDate = DateTime.Now,
                 password = "password",
                 rank = "newbie"
@@ -51,7 +53,7 @@ namespace Spottyfy
             };
             db.connection.AddData(author);
             */
-
+            /*
             var a = db.connection.GetSongData();
             Console.WriteLine("Songs:");
             foreach (var s in a)
@@ -76,7 +78,7 @@ namespace Spottyfy
             {
                 Console.WriteLine(s.ToJson());
             }
-
+            */
             //DataBaseConnect db2 = new DataBaseConnect(3);
             //db2.connection.TestData();
 

@@ -21,15 +21,17 @@ namespace Spottyfy
         int AddData(AuthorData x);
         int AddData(UserData x);
 
-        int UpdateData(SongData x, int id);
-        int UpdateData(AlbumData x, int id);
-        int UpdateData(AuthorData x, int id);
-        int UpdateData(UserData x, int id);
+        int UpdateData(SongData x);
+        int UpdateData(AlbumData x);
+        int UpdateData(AuthorData x);
+        int UpdateData(UserData x);
 
-        int DeleteData(SongData x, int id);
-        int DeleteData(AlbumData x, int id);
-        int DeleteData(AuthorData x, int id);
-        int DeleteData(UserData x, int id);
+        int DeleteData(SongData x);
+        int DeleteData(AlbumData x);
+        int DeleteData(AuthorData x);
+        int DeleteData(UserData x);
+
+        int Authenticate(string login, string password);
 
         int TestData();
         /*

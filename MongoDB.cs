@@ -243,6 +243,15 @@ namespace Spottyfy
             try
             {
                 var collection = db.GetCollection<UserData>("Users");
+
+                bool duplicate = collection.Find(u => u.name == x.name).Any();
+                Console.WriteLine(duplicate);
+                if(duplicate == true)
+                {
+                    Console.WriteLine("Duplicate username");
+                    return -1;
+                }
+
                 if(collection.CountDocuments(Builders<UserData>.Filter.Empty) == 0)
                 {
                     x.rank = "admin";
@@ -258,45 +267,106 @@ namespace Spottyfy
             return 0;
         }
 
-        public int UpdateData(SongData x, int id)
+        public int UpdateData(SongData x)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AlbumData x, int id)
+        public int UpdateData(AlbumData x)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AuthorData x, int id)
+        public int UpdateData(AuthorData x)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(UserData x, int id)
+        public int UpdateData(UserData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(SongData x, int id)
+        public int DeleteData(SongData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<SongData>("Songs");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int DeleteData(AlbumData x, int id)
+        public int DeleteData(AlbumData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<AlbumData>("Albums");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int DeleteData(AuthorData x, int id)
+        public int DeleteData(AuthorData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<AuthorData>("Authors");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int DeleteData(UserData x, int id)
+        public int DeleteData(UserData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<UserData>("Users");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
+
+        public int Authenticate(string login, string password)
+        {
+            try
+            {
+                var collection = db.GetCollection<UserData>("Users");
+                UserData user = collection.Find(e => e.name == login).FirstOrDefault();
+                if(user.password != password)
+                {
+                    Console.WriteLine("Wrong password");
+                    return -1;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
+        }
+
 
     }
 }

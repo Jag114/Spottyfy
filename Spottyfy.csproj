@@ -216,6 +216,7 @@
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="MongoDB.cs" />
+    <Compile Include="MongoIDStandardizer.cs" />
     <Compile Include="MySqlDB.cs" />
     <Compile Include="NavBar.cs">
       <SubType>Component</SubType>
@@ -223,7 +224,6 @@
     <Compile Include="NavBar.Designer.cs">
       <DependentUpon>NavBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="PostgreSqlDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginAndSign\SignUp.cs">
@@ -266,7 +266,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    
     <EmbeddedResource Include="SongDetailView.resx">
       <DependentUpon>SongDetailView.cs</DependentUpon>
     </EmbeddedResource>
