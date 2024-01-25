@@ -29,7 +29,6 @@ namespace Spottyfy
         public MainMenu()
         {
             InitializeComponent();
-            //this.KeyDown += MainMenu_KeyDown;
             resize();
         }
 
@@ -43,22 +42,35 @@ namespace Spottyfy
             if (nightmode)
             {
                 button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.whitemoon;
-                //button_user.BackgroundImage = global::Spottyfy.Properties.Resources.user1;
                 this.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                song.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                nightmode = false;
+                Song.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                foreach (Control control in panel_empty.Controls)
+                {
+                    if (control is Form)
+                    {
+                        Form form = (Form)control;
+                        form.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                    }
+                }
+
+                    nightmode = false;
             }
             else
             {
                 button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.to_night;
-                //button_user.BackgroundImage = global::Spottyfy.Properties.Resources.user0;
                 this.BackColor = ColorTranslator.FromHtml("#1A181B");
-                song.BackColor = ColorTranslator.FromHtml("#1A181B");
+                foreach (Control control in panel_empty.Controls)
+                {
+                    if (control is Form)
+                    {
+                        Form form = (Form)control;
+                        form.BackColor = ColorTranslator.FromHtml("#1A181B");
+                    }
+                }
+
                 nightmode = true;
             }
         }
-
-
         private void button_nightmode_Click(object sender, EventArgs e)
         {
             nightmode_toggle();
@@ -67,7 +79,6 @@ namespace Spottyfy
         {
             Application.Exit();
         }
-
         private void button_user_Click(object sender, EventArgs e)
         {
             if (panel_user.Visible == true)
@@ -75,15 +86,31 @@ namespace Spottyfy
                 panel_user.Visible = false;
             }
             else panel_user.Visible = true;
-
         }
 
-        SongView song = new SongView() { TopLevel = false, TopMost = true };
+        //OTWIERANIE FORMSOW W PANELU
+
+        SongView Song = new SongView() { TopLevel = false, TopMost = true };
+        AppSettings AppSett = new AppSettings() { TopLevel = false, TopMost = true };
         private void button_viewsongs_Click(object sender, EventArgs e)
         {
-            song.FormBorderStyle = FormBorderStyle.None;
-            panel_empty.Controls.Add(song);
-            song.Show();
+            panel_empty.Controls.Clear();
+            Song.FormBorderStyle = FormBorderStyle.None;
+            panel_empty.Controls.Add(Song);
+            nightmode_toggle();
+            nightmode_toggle();
+            Song.Show();
+        }
+
+        private void button_settings_Click(object sender, EventArgs e)
+        {
+            panel_empty.Controls.Clear();
+            AppSett.FormBorderStyle = FormBorderStyle.None;
+            panel_empty.Controls.Add(AppSett);
+            nightmode_toggle();
+            nightmode_toggle();
+            AppSett.Show();
+
         }
 
         //SKROTY KLAWISZOWE

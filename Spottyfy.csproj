@@ -208,6 +208,12 @@
       <DependentUpon>AddSong.cs</DependentUpon>
     </Compile>
     <Compile Include="AlbumData.cs" />
+    <Compile Include="AppSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppSettings.Designer.cs">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="AuthorData.cs" />
     <Compile Include="DataBaseConnect.cs" />
     <Compile Include="Form1.cs">
@@ -262,6 +268,9 @@
     <EmbeddedResource Include="AddSong.resx">
       <DependentUpon>AddSong.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppSettings.resx">
+      <DependentUpon>AppSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
