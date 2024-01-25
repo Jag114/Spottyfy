@@ -17,8 +17,11 @@ namespace Spottyfy
         public MainMenu()
         {
             InitializeComponent();
-            //this.AutoScaleMode = AutoScaleMode.Dpi;
             panel_top.Width = this.Width;
+            int size_width = this.Width;
+            panel_user.Location = new Point(size_width-215, 75);
+            //panel_user.Location = new Point(50, 50);
+            //panel_user.Width = this.Width;
 
             //ni dziala dodawanie obrazu do przycisku ze zmiana size
             //ImageList imageList1 = new ImageList();
@@ -30,6 +33,8 @@ namespace Spottyfy
         private void MainMenu_SizeChanged(object sender, EventArgs e)
         {
             panel_top.Width = this.Width;
+            int size_width = this.Width;
+            panel_user.Location = new Point(size_width - 215, 75);
         }
         private void button_nightmode_Click(object sender, EventArgs e)
         {
@@ -68,7 +73,6 @@ namespace Spottyfy
         SongView song = new SongView() { TopLevel = false, TopMost = true };
         private void button_viewsongs_Click(object sender, EventArgs e)
         {
-            this.AutoScaleMode = AutoScaleMode.Dpi;
             song.FormBorderStyle = FormBorderStyle.None;
             panel_empty.Controls.Add(song);
             song.Show();
