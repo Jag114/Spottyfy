@@ -23,7 +23,7 @@ namespace Spottyfy
 
         private void SongView_Load(object sender, EventArgs e)
         {
-            int type = 2;
+            int type = 1;
             DataBaseConnect db = new DataBaseConnect(type);
             var albums = db.connection.GetAlbumData();
             var songs = db.connection.GetSongDataFromAlbum(albums[0].Id);
@@ -43,7 +43,6 @@ namespace Spottyfy
                 button.Text = albums[i].name;
                 button.Font = new Font("Microsoft Sans Serif", 18);
                 button.Click += (s, ev) => {
-                    System.Diagnostics.Debug.WriteLine(tag);
                     albumTitle.Text = albums[tag].name;
                     albumArtist.Text = albums[tag].author;
                     songs = db.connection.GetSongDataFromAlbum(albums[tag].Id);

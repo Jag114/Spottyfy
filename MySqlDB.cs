@@ -175,27 +175,20 @@ namespace Spottyfy
         public int Authenticate(string login, string password)
         {
             MySqlCommand cmd = connection.CreateCommand();
-                                                                           //login
-            cmd.CommandText = @"SELECT * FROM test.test_table WHERE author = 'me';";
+            cmd.CommandText = $"SELECT * FROM test.users WHERE name = '{login}';";
             MySqlDataReader Reader = cmd.ExecuteReader();
             if (!Reader.HasRows) return -1;
-            SongData u = new SongData();
+            string pass = "";
             while (Reader.Read())
             {
-                string songId = Reader["id"].ToString();
-                string songName = Reader["song"].ToString();
-                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
-                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
-                u.Id = standardizedID;
-                u.name = songName;     
+                pass = Reader["password"].ToString();  
             }
-            if(u.Id == password)
+            if(pass != password)
             {
                 Console.WriteLine("Wrong password");
                 return -1;
             }
             Reader.Close();
-            Console.WriteLine(u.ToJson());
             return 0;
         }
     }
