@@ -132,22 +132,22 @@ namespace Spottyfy
             throw new NotImplementedException();
         }
 
-        public int UpdateData(SongData x)
+        public int UpdateData(SongData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AlbumData x)
+        public int UpdateData(AlbumData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AuthorData x)
+        public int UpdateData(AuthorData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(UserData x)
+        public int UpdateData(UserData x, string id)
         {
             throw new NotImplementedException();
         }

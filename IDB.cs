@@ -21,10 +21,10 @@ namespace Spottyfy
         int AddData(AuthorData x);
         int AddData(UserData x);
 
-        int UpdateData(SongData x);
-        int UpdateData(AlbumData x);
-        int UpdateData(AuthorData x);
-        int UpdateData(UserData x);
+        int UpdateData(SongData x, string id);
+        int UpdateData(AlbumData x, string id);
+        int UpdateData(AuthorData x, string id);
+        int UpdateData(UserData x, string id);
 
         int DeleteData(SongData x);
         int DeleteData(AlbumData x);

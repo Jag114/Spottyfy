@@ -11,6 +11,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Spottyfy
 {
@@ -267,24 +268,71 @@ namespace Spottyfy
             return 0;
         }
 
-        public int UpdateData(SongData x)
+        public int UpdateData(SongData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var songs = db.GetCollection<SongData>("Songs");
+                var filter = Builders<SongData>.Filter.Eq(song => song.Id, id);
+                songs.ReplaceOne(filter, x);
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int UpdateData(AlbumData x)
+        public int UpdateData(AlbumData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var albums = db.GetCollection<AlbumData>("Albums");
+                var filter = Builders<AlbumData>.Filter.Eq(album => album.Id, id);
+                albums.ReplaceOne(filter, x);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+ 
+            return 0;
         }
 
-        public int UpdateData(AuthorData x)
+        public int UpdateData(AuthorData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var authors = db.GetCollection<AuthorData>("Authors");
+                var filter = Builders<AuthorData>.Filter.Eq(author => author.Id, id);
+                authors.ReplaceOne(filter, x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            
+            return 0;
         }
 
-        public int UpdateData(UserData x)
+        public int UpdateData(UserData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var users = db.GetCollection<UserData>("Users");
+                var filter = Builders<UserData>.Filter.Eq(user => user.Id, id);
+                users.ReplaceOne(filter, x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            
+            return 0;
         }
 
         public int DeleteData(SongData x)
