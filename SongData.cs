@@ -24,17 +24,5 @@ namespace Spottyfy
         public string album { get; set; }
 
         public DateTime releaseDate { get; set; }
-
-        public static List<SongData> getSongsFromAlbum(string albumId) {
-            /*
-            List<SongData> songs;
-            DataBaseConnect connection = new DataBaseConnect(2);//enum instead of magical number?
-            connection.Connect();
-            //connection.AddSong(connection.GetSongCollection());
-            songs = connection.GetSongFromAlbum(connection.GetSongCollection(), albumId);
-            return songs;
-            */
-            return null;
-        }
     }
 }

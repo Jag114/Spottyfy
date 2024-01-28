@@ -28,7 +28,6 @@ namespace Spottyfy
                 if (connection == null)
                 {
                     Console.WriteLine("MySqlConnection returned null, no connection");
-                    //stop functions from going off if null
                 }
                 connection.Open();
             }
@@ -65,8 +64,12 @@ namespace Spottyfy
                 string songAlbum = Reader["album"].ToString();
                 DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
                 //songs.Add(Reader["song"].ToString());
-                SongData song = new SongData{
-                    Id = songId,
+
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                SongData song = new SongData {
+                    Id = standardizedID,
                     name = songName,
                     author = songAuthor,        
                     album = songAlbum,
@@ -78,7 +81,7 @@ namespace Spottyfy
             Console.WriteLine("Listy: ");
             foreach (var item in songs)
             {
-                Console.WriteLine(item.ToJson<SongData>());
+                Console.WriteLine(item.ToJson());
             }
             return 0;
             //throw new NotImplementedException();
@@ -88,6 +91,7 @@ namespace Spottyfy
         {
             throw new NotImplementedException();
         }
+
         public List<SongData> GetSongDataFromAlbum(string albumId)
         {
             throw new NotImplementedException();
@@ -128,44 +132,64 @@ namespace Spottyfy
             throw new NotImplementedException();
         }
 
-        public int UpdateData(SongData x, int id)
+        public int UpdateData(SongData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AlbumData x, int id)
+        public int UpdateData(AlbumData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(AuthorData x, int id)
+        public int UpdateData(AuthorData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateData(UserData x, int id)
+        public int UpdateData(UserData x, string id)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(SongData x, int id)
+        public int DeleteData(SongData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(AlbumData x, int id)
+        public int DeleteData(AlbumData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(AuthorData x, int id)
+        public int DeleteData(AuthorData x)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteData(UserData x, int id)
+        public int DeleteData(UserData x)
         {
             throw new NotImplementedException();
+        }
+
+        public int Authenticate(string login, string password)
+        {
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM test.users WHERE name = '{login}';";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return -1;
+            string pass = "";
+            while (Reader.Read())
+            {
+                pass = Reader["password"].ToString();  
+            }
+            if(pass != password)
+            {
+                Console.WriteLine("Wrong password");
+                return -1;
+            }
+            Reader.Close();
+            return 0;
         }
     }
 }

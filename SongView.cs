@@ -43,7 +43,6 @@ namespace Spottyfy
                 button.Text = albums[i].name;
                 button.Font = new Font("Microsoft Sans Serif", 18);
                 button.Click += (s, ev) => {
-                    System.Diagnostics.Debug.WriteLine(tag);
                     albumTitle.Text = albums[tag].name;
                     albumArtist.Text = albums[tag].author;
                     songs = db.connection.GetSongDataFromAlbum(albums[tag].Id);

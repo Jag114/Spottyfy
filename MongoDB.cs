@@ -11,6 +11,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Spottyfy
 {
@@ -243,6 +244,15 @@ namespace Spottyfy
             try
             {
                 var collection = db.GetCollection<UserData>("Users");
+
+                bool duplicate = collection.Find(u => u.name == x.name).Any();
+                Console.WriteLine(duplicate);
+                if(duplicate == true)
+                {
+                    Console.WriteLine("Duplicate username");
+                    return -1;
+                }
+
                 if(collection.CountDocuments(Builders<UserData>.Filter.Empty) == 0)
                 {
                     x.rank = "admin";
@@ -258,45 +268,153 @@ namespace Spottyfy
             return 0;
         }
 
-        public int UpdateData(SongData x, int id)
+        public int UpdateData(SongData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var songs = db.GetCollection<SongData>("Songs");
+                var filter = Builders<SongData>.Filter.Eq(song => song.Id, id);
+                songs.ReplaceOne(filter, x);
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int UpdateData(AlbumData x, int id)
+        public int UpdateData(AlbumData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var albums = db.GetCollection<AlbumData>("Albums");
+                var filter = Builders<AlbumData>.Filter.Eq(album => album.Id, id);
+                albums.ReplaceOne(filter, x);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+ 
+            return 0;
         }
 
-        public int UpdateData(AuthorData x, int id)
+        public int UpdateData(AuthorData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var authors = db.GetCollection<AuthorData>("Authors");
+                var filter = Builders<AuthorData>.Filter.Eq(author => author.Id, id);
+                authors.ReplaceOne(filter, x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            
+            return 0;
         }
 
-        public int UpdateData(UserData x, int id)
+        public int UpdateData(UserData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var users = db.GetCollection<UserData>("Users");
+                var filter = Builders<UserData>.Filter.Eq(user => user.Id, id);
+                users.ReplaceOne(filter, x);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            
+            return 0;
         }
 
-        public int DeleteData(SongData x, int id)
+        public int DeleteData(SongData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<SongData>("Songs");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int DeleteData(AlbumData x, int id)
+        public int DeleteData(AlbumData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<AlbumData>("Albums");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int DeleteData(AuthorData x, int id)
+        public int DeleteData(AuthorData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<AuthorData>("Authors");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
 
-        public int DeleteData(UserData x, int id)
+        public int DeleteData(UserData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var collection = db.GetCollection<UserData>("Users");
+                collection.DeleteOne(e => e.Id == x.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
         }
+
+        public int Authenticate(string login, string password)
+        {
+            try
+            {
+                var collection = db.GetCollection<UserData>("Users");
+                UserData user = collection.Find(e => e.name == login).FirstOrDefault();
+                if(user.password != password)
+                {
+                    Console.WriteLine("Wrong password");
+                    return -1;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            return 0;
+        }
+
 
     }
 }
