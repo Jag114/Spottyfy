@@ -122,5 +122,10 @@ namespace Spottyfy
                 nightmode_toggle();
             }
         }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

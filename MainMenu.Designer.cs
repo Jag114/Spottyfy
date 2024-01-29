@@ -41,9 +41,9 @@ namespace Spottyfy
             this.button_logout = new System.Windows.Forms.Button();
             this.button_usersett = new System.Windows.Forms.Button();
             this.panel_user = new System.Windows.Forms.Panel();
+            this.label_section_line = new System.Windows.Forms.Label();
             this.panel_avatar = new System.Windows.Forms.Panel();
             this.label_username = new System.Windows.Forms.Label();
-            this.label_section_line = new System.Windows.Forms.Label();
             this.panel_top.SuspendLayout();
             this.flowLayoutPanel_right.SuspendLayout();
             this.panel_user.SuspendLayout();
@@ -155,6 +155,7 @@ namespace Spottyfy
             this.button_logout.TabIndex = 2;
             this.button_logout.Text = "Log out";
             this.button_logout.UseVisualStyleBackColor = true;
+            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
             // 
             // button_usersett
             // 
@@ -187,6 +188,16 @@ namespace Spottyfy
             this.panel_user.TabIndex = 1;
             this.panel_user.Visible = false;
             // 
+            // label_section_line
+            // 
+            this.label_section_line.AutoSize = true;
+            this.label_section_line.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.label_section_line.Location = new System.Drawing.Point(4, 125);
+            this.label_section_line.Name = "label_section_line";
+            this.label_section_line.Size = new System.Drawing.Size(187, 13);
+            this.label_section_line.TabIndex = 6;
+            this.label_section_line.Text = "______________________________";
+            // 
             // panel_avatar
             // 
             this.panel_avatar.BackgroundImage = global::Spottyfy.Properties.Resources.blank_avatar;
@@ -206,16 +217,6 @@ namespace Spottyfy
             this.label_username.TabIndex = 4;
             this.label_username.Text = "label1";
             this.label_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_section_line
-            // 
-            this.label_section_line.AutoSize = true;
-            this.label_section_line.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.label_section_line.Location = new System.Drawing.Point(4, 125);
-            this.label_section_line.Name = "label_section_line";
-            this.label_section_line.Size = new System.Drawing.Size(187, 13);
-            this.label_section_line.TabIndex = 6;
-            this.label_section_line.Text = "______________________________";
             // 
             // MainMenu
             // 
