@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,18 +32,24 @@ namespace Spottyfy
             LoginOpen.ShowDialog();
         }
 
-        private void panel_signup_window_Paint(object sender, PaintEventArgs e)
+        int type = 1; //database login
+        private void select_mysql_CheckedChanged(object sender, EventArgs e)
         {
-
+            select_mongo.Checked = false;
+            type = 2;
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void select_mongo_CheckedChanged(object sender, EventArgs e)
         {
-
+            select_mysql.Checked = false;
+            type = 1;
         }
 
-        private void button_signup_login_window_Click(object sender, EventArgs e)
+        private void PerformLogin()
         {
+            DataBaseConnect db = new DataBaseConnect(type);
+            db.connection.GetUserData();
+
 
         }
     }
