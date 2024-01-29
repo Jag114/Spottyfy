@@ -14,18 +14,17 @@ namespace Spottyfy
     public partial class MainMenu : Form
     {
         static bool nightmode = true;
+        public string getUser { get; set; }
 
         public void resize()
         {
             panel_user.BringToFront();
             panel_top.Width = this.Width;
             int size_width = this.Width;
-            int size_height = this.Height;
             panel_user.Location = new Point(size_width - 215, 75);
-            panel_empty.Location = new Point(50, 100);
-            panel_empty.Width = size_width - 100;
-            panel_empty.Height = size_height - 175;
+            panel_empty.Location = new Point((this.ClientSize.Width/2)-(panel_empty.Width/2),120);
         }
+
         public MainMenu()
         {
             InitializeComponent();
@@ -81,6 +80,8 @@ namespace Spottyfy
         }
         private void button_user_Click(object sender, EventArgs e)
         {
+            label_username.Text = this.getUser; //ni wyswietla sie nicccc
+
             if (panel_user.Visible == true)
             {
                 panel_user.Visible = false;

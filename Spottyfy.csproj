@@ -322,6 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\blank_avatar.png" />
     <None Include="Resources\whitemoon.png" />
     <None Include="Resources\user1.png" />
     <None Include="Resources\user0.png" />

@@ -23,7 +23,7 @@ namespace Spottyfy
             int type = 1;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
             db.connection.TestData();
-            
+
             /*
             UserData user = new UserData{
                 name = "user3",
@@ -72,40 +72,56 @@ namespace Spottyfy
             {
                 Console.WriteLine(s.ToJson());
             }
+            */
             var d = db.connection.GetUserData();
             Console.WriteLine("Users:");
             foreach (var s in d)
             {
                 Console.WriteLine(s.ToJson());
             }
-            */
+            
             //DataBaseConnect db2 = new DataBaseConnect(3);
             //db2.connection.TestData();
 
 
         }
 
-        string placeholder_databaseuser = "test";
-        string placeholder_databasepassword = "test123";
-
-
-
         private void button_loggin_window_Click(object sender, EventArgs e)
         {
             PerformLogin();
         }
+
+        int type = 1; //database login
+
+        //CHECKBOXS
+        private void select_mysql_CheckedChanged(object sender, EventArgs e)
+        {
+            select_mongo.Checked = false;
+            type = 2;
+        }
+
+        private void select_mongo_CheckedChanged(object sender, EventArgs e)
+        {
+            select_mysql.Checked = false;
+            type = 1;
+        }
         private void PerformLogin()
         {
-            if (input_username_login_window.Text == placeholder_databaseuser && input_password_login_window.Text == placeholder_databasepassword)
+            DataBaseConnect db = new DataBaseConnect(type);
+            string getUser = input_username_login_window.Text;
+
+            if (db.connection.Authenticate(input_username_login_window.Text, input_password_login_window.Text)==0)
             {
-                this.Hide();
+                //this.Hide();
                 MainMenu MainMenuOpen = new MainMenu();
+                MainMenuOpen.getUser = getUser;
                 MainMenuOpen.ShowDialog();
             }
             else
             {
                 label_failed_login_window.Visible = true;
             }
+
         }
         private void input_password_login_window_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -128,15 +144,7 @@ namespace Spottyfy
             SignUpOpen.ShowDialog();
         }
 
-        private void select_mysql_CheckedChanged(object sender, EventArgs e)
-        {
-            select_mongo.Checked = false;
-        }
-
-        private void select_mongo_CheckedChanged(object sender, EventArgs e)
-        {
-            select_mysql.Checked = false;
-        }
+        
 
     }
 }
