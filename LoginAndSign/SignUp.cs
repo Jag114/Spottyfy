@@ -79,7 +79,7 @@ namespace Spottyfy
 
                     string errorMessage = "Your account has been created";
                     AlertBox alertBox = new AlertBox();
-                    alertBox.UpdateLabelTextAndCenterFAILED(errorMessage);
+                    alertBox.UpdateLabelTextAndCenterSUCCES(errorMessage);
                     alertBox.Show();
 
                 }
