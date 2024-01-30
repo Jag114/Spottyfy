@@ -112,7 +112,7 @@ namespace Spottyfy
 
             if (db.connection.Authenticate(input_username_login_window.Text, input_password_login_window.Text)==0)
             {
-                //this.Hide();
+                this.Hide();
                 MainMenu MainMenuOpen = new MainMenu();
                 MainMenuOpen.getUser = getUser;
                 MainMenuOpen.ShowDialog();

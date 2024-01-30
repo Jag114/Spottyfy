@@ -154,6 +154,7 @@
             this.input_repeatpassword_signup_window.TabIndex = 3;
             this.input_repeatpassword_signup_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_repeatpassword_signup_window.UseSystemPasswordChar = true;
+            this.input_repeatpassword_signup_window.TextChanged += new System.EventHandler(this.input_repeatpassword_signup_window_TextChanged);
             // 
             // button_signup_login_window
             // 
@@ -249,6 +250,7 @@
             this.input_password_signup_window.TabIndex = 2;
             this.input_password_signup_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_password_signup_window.UseSystemPasswordChar = true;
+            this.input_password_signup_window.TextChanged += new System.EventHandler(this.input_password_signup_window_TextChanged);
             // 
             // input_username_signup_window
             // 
@@ -261,6 +263,7 @@
             this.input_username_signup_window.TabIndex = 1;
             this.input_username_signup_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_username_signup_window.WordWrap = false;
+            this.input_username_signup_window.TextChanged += new System.EventHandler(this.input_username_signup_window_TextChanged);
             // 
             // label_password_signup_window
             // 
