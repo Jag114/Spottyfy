@@ -42,17 +42,34 @@ namespace Spottyfy
             {
                 button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.whitemoon;
                 this.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                Song.BackColor = ColorTranslator.FromHtml("#E8F9A3");
                 foreach (Control control in panel_empty.Controls)
                 {
                     if (control is Form)
                     {
                         Form form = (Form)control;
                         form.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+
+                        foreach (Control innerControl in form.Controls)
+                        {
+                            if (innerControl is Label ||  innerControl is TextBox)
+                            {
+                                innerControl.ForeColor = ColorTranslator.FromHtml("#343035");
+                            }
+
+                            /* NI DZIALA FF
+                            if (innerControl.HasChildren)
+                            {
+                                foreach (Control nestedControl in innerControl.Controls)
+                                {
+                                    if (nestedControl is Label || nestedControl is TextBox) { nestedControl.ForeColor = ColorTranslator.FromHtml("#D7F75B"); }
+                                }
+                            }
+                            */
+                        }
                     }
                 }
 
-                    nightmode = false;
+                nightmode = false;
             }
             else
             {
@@ -64,7 +81,26 @@ namespace Spottyfy
                     {
                         Form form = (Form)control;
                         form.BackColor = ColorTranslator.FromHtml("#1A181B");
+
+                        foreach (Control innerControl in form.Controls)
+                        {
+                            if (innerControl is Label || innerControl is TextBox)
+                            {
+                                innerControl.ForeColor = ColorTranslator.FromHtml("#D7F75B");
+                            }
+                            /* NI DZIALA FF
+                            if (innerControl.HasChildren)
+                            {
+                                foreach (Control nestedControl in innerControl.Controls)
+                                {
+                                    if (nestedControl is Label || nestedControl is TextBox) { nestedControl.ForeColor = ColorTranslator.FromHtml("#D7F75B"); }
+                                }
+                            }
+                            */
+                        }
+
                     }
+
                 }
 
                 nightmode = true;
@@ -80,7 +116,7 @@ namespace Spottyfy
         }
         private void button_user_Click(object sender, EventArgs e)
         {
-            label_username.Text = this.getUser; //ni wyswietla sie nicccc
+            label_username.Text = this.getUser; 
 
             if (panel_user.Visible == true)
             {

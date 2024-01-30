@@ -215,7 +215,7 @@ namespace Spottyfy
             this.label_username.Name = "label_username";
             this.label_username.Size = new System.Drawing.Size(190, 20);
             this.label_username.TabIndex = 4;
-            this.label_username.Text = "label1";
+            this.label_username.Text = "username";
             this.label_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainMenu
