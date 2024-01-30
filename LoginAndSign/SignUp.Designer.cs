@@ -32,18 +32,18 @@
             this.select_mysql = new System.Windows.Forms.CheckBox();
             this.select_mongo = new System.Windows.Forms.CheckBox();
             this.label_selectdb = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.label_repeatpassword_signup_window = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.input_repeatpassword_signup_window = new System.Windows.Forms.TextBox();
             this.button_signup_login_window = new System.Windows.Forms.Button();
             this.button_exit_signup_window = new System.Windows.Forms.Button();
             this.label_failed_signup_window = new System.Windows.Forms.Label();
             this.button_cancel_signup_window = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.input_password_signup_window = new System.Windows.Forms.TextBox();
             this.input_username_signup_window = new System.Windows.Forms.TextBox();
             this.label_password_signup_window = new System.Windows.Forms.Label();
@@ -57,18 +57,18 @@
             this.panel_signup_window.Controls.Add(this.select_mysql);
             this.panel_signup_window.Controls.Add(this.select_mongo);
             this.panel_signup_window.Controls.Add(this.label_selectdb);
-            this.panel_signup_window.Controls.Add(this.panel6);
+            this.panel_signup_window.Controls.Add(this.panel5);
             this.panel_signup_window.Controls.Add(this.label_repeatpassword_signup_window);
-            this.panel_signup_window.Controls.Add(this.panel1);
+            this.panel_signup_window.Controls.Add(this.panel6);
             this.panel_signup_window.Controls.Add(this.input_repeatpassword_signup_window);
             this.panel_signup_window.Controls.Add(this.button_signup_login_window);
             this.panel_signup_window.Controls.Add(this.button_exit_signup_window);
             this.panel_signup_window.Controls.Add(this.label_failed_signup_window);
             this.panel_signup_window.Controls.Add(this.button_cancel_signup_window);
-            this.panel_signup_window.Controls.Add(this.panel5);
             this.panel_signup_window.Controls.Add(this.panel4);
-            this.panel_signup_window.Controls.Add(this.panel3);
             this.panel_signup_window.Controls.Add(this.panel2);
+            this.panel_signup_window.Controls.Add(this.panel1);
+            this.panel_signup_window.Controls.Add(this.panel3);
             this.panel_signup_window.Controls.Add(this.input_password_signup_window);
             this.panel_signup_window.Controls.Add(this.input_username_signup_window);
             this.panel_signup_window.Controls.Add(this.label_password_signup_window);
@@ -118,30 +118,30 @@
             this.label_selectdb.TabIndex = 17;
             this.label_selectdb.Text = "Select database:";
             // 
-            // panel6
+            // panel5
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
-            this.panel6.Location = new System.Drawing.Point(17, 279);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(288, 1);
-            this.panel6.TabIndex = 5;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
+            this.panel5.Location = new System.Drawing.Point(22, 264);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(288, 1);
+            this.panel5.TabIndex = 5;
             // 
             // label_repeatpassword_signup_window
             // 
             this.label_repeatpassword_signup_window.AutoSize = true;
-            this.label_repeatpassword_signup_window.Location = new System.Drawing.Point(16, 230);
+            this.label_repeatpassword_signup_window.Location = new System.Drawing.Point(16, 224);
             this.label_repeatpassword_signup_window.Name = "label_repeatpassword_signup_window";
             this.label_repeatpassword_signup_window.Size = new System.Drawing.Size(294, 35);
             this.label_repeatpassword_signup_window.TabIndex = 15;
             this.label_repeatpassword_signup_window.Text = "Repeat Password";
             // 
-            // panel1
+            // panel6
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
-            this.panel1.Location = new System.Drawing.Point(345, 275);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 1);
-            this.panel1.TabIndex = 8;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
+            this.panel6.Location = new System.Drawing.Point(346, 264);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(261, 1);
+            this.panel6.TabIndex = 8;
             // 
             // input_repeatpassword_signup_window
             // 
@@ -166,6 +166,7 @@
             this.button_signup_login_window.TabIndex = 4;
             this.button_signup_login_window.Text = "Sign up";
             this.button_signup_login_window.UseVisualStyleBackColor = false;
+            this.button_signup_login_window.Click += new System.EventHandler(this.button_signup_login_window_Click);
             // 
             // button_exit_signup_window
             // 
@@ -182,14 +183,14 @@
             // 
             // label_failed_signup_window
             // 
-            this.label_failed_signup_window.AutoSize = true;
             this.label_failed_signup_window.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_failed_signup_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label_failed_signup_window.Location = new System.Drawing.Point(139, 28);
+            this.label_failed_signup_window.Location = new System.Drawing.Point(146, 29);
             this.label_failed_signup_window.Name = "label_failed_signup_window";
             this.label_failed_signup_window.Size = new System.Drawing.Size(464, 29);
             this.label_failed_signup_window.TabIndex = 11;
-            this.label_failed_signup_window.Text = "incorrect username and/or password!";
+            this.label_failed_signup_window.Text = "error";
+            this.label_failed_signup_window.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_failed_signup_window.Visible = false;
             // 
             // button_cancel_signup_window
@@ -205,37 +206,37 @@
             this.button_cancel_signup_window.UseVisualStyleBackColor = false;
             this.button_cancel_signup_window.Click += new System.EventHandler(this.button_cancel_signup_window_Click);
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
-            this.panel5.Location = new System.Drawing.Point(346, 190);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(261, 1);
-            this.panel5.TabIndex = 7;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
-            this.panel4.Location = new System.Drawing.Point(345, 117);
+            this.panel4.Location = new System.Drawing.Point(346, 190);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(261, 1);
-            this.panel4.TabIndex = 6;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
-            this.panel3.Location = new System.Drawing.Point(144, 117);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(166, 1);
-            this.panel3.TabIndex = 5;
+            this.panel4.TabIndex = 7;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
-            this.panel2.Location = new System.Drawing.Point(144, 190);
+            this.panel2.Location = new System.Drawing.Point(345, 117);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(166, 1);
-            this.panel2.TabIndex = 4;
+            this.panel2.Size = new System.Drawing.Size(261, 1);
+            this.panel2.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
+            this.panel1.Location = new System.Drawing.Point(144, 117);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(166, 1);
+            this.panel1.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(229)))), ((int)(((byte)(100)))));
+            this.panel3.Location = new System.Drawing.Point(144, 190);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(166, 1);
+            this.panel3.TabIndex = 4;
             // 
             // input_password_signup_window
             // 
@@ -303,18 +304,18 @@
         private System.Windows.Forms.Button button_exit_signup_window;
         private System.Windows.Forms.Label label_failed_signup_window;
         private System.Windows.Forms.Button button_cancel_signup_window;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox input_password_signup_window;
         private System.Windows.Forms.TextBox input_username_signup_window;
         private System.Windows.Forms.Label label_password_signup_window;
         private System.Windows.Forms.Label label_user_signup_window;
         private System.Windows.Forms.Label label_repeatpassword_signup_window;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox input_repeatpassword_signup_window;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox input_repeatpassword_signup_window;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.CheckBox select_mysql;
         private System.Windows.Forms.CheckBox select_mongo;
         private System.Windows.Forms.Label label_selectdb;
