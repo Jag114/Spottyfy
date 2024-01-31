@@ -15,6 +15,11 @@ namespace Spottyfy
     {
         MySqlConnection connection;
         readonly string login, password;
+        const string dbName = "test";
+        const string songsTable = "songs";
+        const string usersTable = "users";
+        const string albumsTable = "albums";
+        const string authorsTable = "authors";
 
         public MySqlDB(string login = "admin", string password = "admin123")
         {
@@ -59,7 +64,7 @@ namespace Spottyfy
             {
                 //Console.WriteLine(Reader["song"]);
                 string songId = Reader["id"].ToString();
-                string songName = Reader["song"].ToString();
+                string songName = Reader["name"].ToString();
                 string songAuthor = Reader["author"].ToString();
                 string songAlbum = Reader["album"].ToString();
                 DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
@@ -84,52 +89,257 @@ namespace Spottyfy
                 Console.WriteLine(item.ToJson());
             }
             return 0;
-            //throw new NotImplementedException();
         }
 
         public List<SongData> GetSongData()
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {dbName}.{songsTable};";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return null;
+            List<SongData> songs = new List<SongData>();
+            while (Reader.Read())
+            {
+                string songId = Reader["id"].ToString();
+                string songName = Reader["name"].ToString();
+                string songAuthor = Reader["author"].ToString();
+                string songAlbum = Reader["album"].ToString();
+                DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
+
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                SongData song = new SongData
+                {
+                    Id = standardizedID,
+                    name = songName,
+                    author = songAuthor,
+                    album = songAlbum,
+                    releaseDate = songReleaseDate
+                };
+                songs.Add(song);
+            }
+            Reader.Close();
+            Console.WriteLine("Listy: ");
+            foreach (var item in songs)
+            {
+                Console.WriteLine(item.ToJson());
+            }
+            return songs;
         }
 
         public List<SongData> GetSongDataFromAlbum(string albumId)
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {dbName}.{songsTable} WHERE id = {albumId};";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return null;
+            List<SongData> songs = new List<SongData>();
+            while (Reader.Read())
+            {
+                string songId = Reader["id"].ToString();
+                string songName = Reader["song"].ToString();
+                string songAuthor = Reader["author"].ToString();
+                string songAlbum = Reader["album"].ToString();
+                DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
+
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                SongData song = new SongData
+                {
+                    Id = standardizedID,
+                    name = songName,
+                    author = songAuthor,
+                    album = songAlbum,
+                    releaseDate = songReleaseDate
+                };
+                songs.Add(song);
+            }
+            Reader.Close();
+            Console.WriteLine("Listy: ");
+            foreach (var item in songs)
+            {
+                Console.WriteLine(item.ToJson());
+            }
+            return songs;
         }
 
         public List<AlbumData> GetAlbumData()
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {dbName}.{albumsTable};";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return null;
+            List<AlbumData> albums = new List<AlbumData>();
+            while (Reader.Read())
+            {
+                string songId = Reader["id"].ToString();
+                string songName = Reader["name"].ToString();
+                string songAuthor = Reader["author"].ToString();
+                
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                AlbumData album = new AlbumData
+                {
+                    Id = standardizedID,
+                    name = songName,
+                    author = songAuthor,
+                };
+                albums.Add(album);
+            }
+            Reader.Close();
+            Console.WriteLine("Listy: ");
+            foreach (var item in albums)
+            {
+                Console.WriteLine(item.ToJson());
+            }
+            return albums;
         }
 
         public List<AuthorData> GetAuthorData()
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {dbName}.{authorsTable};";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return null;
+            List<AuthorData> authors = new List<AuthorData>();
+            while (Reader.Read())
+            {
+                string songId = Reader["id"].ToString();
+                string songName = Reader["name"].ToString();
+
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                AuthorData author = new AuthorData
+                {
+                    Id = standardizedID,
+                    name = songName,
+                };
+                authors.Add(author);
+            }
+            Reader.Close();
+            Console.WriteLine("Listy: ");
+            foreach (var item in authors)
+            {
+                Console.WriteLine(item.ToJson());
+            }
+            return authors;
         }
 
         public List<UserData> GetUserData()
         {
-            throw new NotImplementedException();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM {dbName}.{usersTable};";
+            MySqlDataReader Reader = cmd.ExecuteReader();
+            if (!Reader.HasRows) return null;
+            List<UserData> users = new List<UserData>();
+            while (Reader.Read())
+            {
+                string songId = Reader["id"].ToString();
+                string songName = Reader["name"].ToString();
+                string songAuthor = Reader["password"].ToString();
+                string songAlbum = Reader["rank"].ToString();
+                DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
+
+                MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
+                string standardizedID = mongoIDStandardizer.StandardizeString(songId);
+
+                UserData user = new UserData
+                {
+                    Id = standardizedID,
+                    name = songName,
+                    password = songAuthor,
+                    rank = songAlbum,
+                    creationDate = songReleaseDate
+                };
+                users.Add(user);
+            }
+            Reader.Close();
+            Console.WriteLine("Listy: ");
+            foreach (var item in users)
+            {
+                Console.WriteLine(item.ToJson());
+            }
+            return users;
         }
 
         public int AddData(SongData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+
+                cmd.CommandText = $"INSERT INTO {dbName}.{songsTable}(album, author, song) VALUES ({x.album}, '{x.author}', '{x.name}');";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int AddData(AlbumData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+
+                cmd.CommandText = $"INSERT INTO {dbName}.{albumsTable}(name, author, releaseDate) VALUES ({x.name}, '{x.author}', '{x.releaseDate}');";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int AddData(AuthorData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+
+                cmd.CommandText = $"INSERT INTO {dbName}.{authorsTable}(name) VALUES ('{x.name}');";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int AddData(UserData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"SELECT COUNT(*) FROM {usersTable}";
+                //reader
+                if (true)
+                {
+                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', '{x.rank}', '{x.creationDate});";
+                }
+                else
+                {
+                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', 'admin', '{x.creationDate});";
+                }
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int UpdateData(SongData x, string id)
@@ -175,7 +385,7 @@ namespace Spottyfy
         public int Authenticate(string login, string password)
         {
             MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM test.users WHERE name = '{login}';";
+            cmd.CommandText = $"SELECT * FROM {dbName}.{songsTable} WHERE name = '{login}';";
             MySqlDataReader Reader = cmd.ExecuteReader();
             if (!Reader.HasRows) return -1;
             string pass = "";
