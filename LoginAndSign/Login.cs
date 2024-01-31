@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Spottyfy
 {
@@ -72,14 +73,14 @@ namespace Spottyfy
             {
                 Console.WriteLine(s.ToJson());
             }
-            */
+            
             var d = db.connection.GetUserData();
             Console.WriteLine("Users:");
             foreach (var s in d)
             {
                 Console.WriteLine(s.ToJson());
             }
-            
+            */
             //DataBaseConnect db2 = new DataBaseConnect(3);
             //db2.connection.TestData();
 

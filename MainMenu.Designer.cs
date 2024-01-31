@@ -172,6 +172,7 @@ namespace Spottyfy
             this.button_usersett.TabIndex = 3;
             this.button_usersett.Text = "User Settings";
             this.button_usersett.UseVisualStyleBackColor = true;
+            this.button_usersett.Click += new System.EventHandler(this.button_usersett_Click);
             // 
             // panel_user
             // 

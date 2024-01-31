@@ -15,7 +15,6 @@ namespace Spottyfy
     {
         static bool nightmode = true;
         public string getUser { get; set; }
-
         public void resize()
         {
             panel_user.BringToFront();
@@ -162,6 +161,15 @@ namespace Spottyfy
         private void button_logout_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button_usersett_Click(object sender, EventArgs e)
+        {
+            //string newgetuser = this.getUser;
+            UserSettings userSettings = new UserSettings();
+            userSettings.getUsername = label_username.Text;
+            userSettings.getTheData();
+            userSettings.ShowDialog();
         }
     }
 }
