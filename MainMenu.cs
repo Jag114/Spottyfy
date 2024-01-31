@@ -156,6 +156,18 @@ namespace Spottyfy
             {
                 nightmode_toggle();
             }
+            if (e.KeyCode == Keys.U)
+            {
+                button_user_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.V)
+            {
+                button_viewsongs_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.S)
+            {
+                button_settings_Click(sender, e);
+            }
         }
 
         private void button_logout_Click(object sender, EventArgs e)
@@ -170,6 +182,11 @@ namespace Spottyfy
             userSettings.getUsername = label_username.Text;
             userSettings.getTheData();
             userSettings.ShowDialog();
+        }
+
+        private void nightmodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nightmode_toggle();
         }
     }
 }
