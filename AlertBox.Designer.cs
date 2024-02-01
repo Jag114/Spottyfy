@@ -49,7 +49,6 @@
             this.panel_login_window.Name = "panel_login_window";
             this.panel_login_window.Size = new System.Drawing.Size(574, 308);
             this.panel_login_window.TabIndex = 1;
-            this.panel_login_window.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_login_window_Paint);
             // 
             // label_error_message_alertbox
             // 
@@ -93,7 +92,6 @@
             this.label_title_alertbox.Size = new System.Drawing.Size(425, 35);
             this.label_title_alertbox.TabIndex = 0;
             this.label_title_alertbox.Text = "Something went wrong...";
-            this.label_title_alertbox.Click += new System.EventHandler(this.label_title_alertbox_Click);
             // 
             // AlertBox
             // 
