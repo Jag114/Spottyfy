@@ -1,0 +1,167 @@
+﻿using Spottyfy;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using static MongoDB.Driver.WriteConcern;
+
+public class MainSettings : Form
+{
+    private Button titleChange;
+    private Button iconChange;
+    private TableLayoutPanel tableLayoutPanel2;
+    public MainSettings(Panel p)
+    {
+        InitializeComponent();
+        //this.Resize += new EventHandler(MainSettings_Resize);
+    }
+    private void InitializeComponent()
+    {
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.titleChange = new System.Windows.Forms.Button();
+            this.iconChange = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.titleChange, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.iconChange, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 276F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(199, 152);
+            this.tableLayoutPanel2.TabIndex = 1;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
+            // 
+            // titleChange
+            // 
+            this.titleChange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.titleChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.titleChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.titleChange.Location = new System.Drawing.Point(3, 94);
+            this.titleChange.Name = "titleChange";
+            this.titleChange.Size = new System.Drawing.Size(193, 39);
+            this.titleChange.TabIndex = 2;
+            this.titleChange.Text = "Change App Title...";
+            this.titleChange.UseVisualStyleBackColor = false;
+            this.titleChange.Click += new System.EventHandler(this.titleChange_Click);
+            // 
+            // iconChange
+            // 
+        this.iconChange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.iconChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.iconChange.Location = new System.Drawing.Point(3, 18);
+            this.iconChange.Name = "iconChange";
+            this.iconChange.Size = new System.Drawing.Size(193, 39);
+            this.iconChange.TabIndex = 1;
+            this.iconChange.Text = "Change App Icon...";
+            this.iconChange.UseVisualStyleBackColor = false;
+            this.iconChange.Click += new System.EventHandler(this.iconChange_Click);
+            // 
+            // MainSettings
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Name = "MainSettings";
+            this.Load += new System.EventHandler(this.MainSettings_Load);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+    }
+    /*private void MainSettings_Resize(object sender, EventArgs e)
+    {
+        Console.WriteLine(pa.Width+" "+ pa.Height);
+        flowLayoutPanel1.Size = new Size(pa.Width, pa.Height);
+        tableLayoutPanel1.Size = flowLayoutPanel1.Size;
+        int x = (flowLayoutPanel1.ClientSize.Width - tableLayoutPanel1.Width) / 2;
+        int y = (flowLayoutPanel1.ClientSize.Height - tableLayoutPanel1.Height) / 2;
+        tableLayoutPanel1.Location = new Point(x, y);
+    }*/
+    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
+
+    private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
+    private void iconChange_Click(object sender, EventArgs e)
+    {
+        using (OpenFileDialog openFileDialog = new OpenFileDialog())
+        {
+            openFileDialog.Title = "Wybierz .ico...";
+            openFileDialog.Filter = ".ico|*.ico|All|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                WriteToConfigFile("settings.cfg", "logo", selectedFilePath);
+
+                Program.SetApplicationIcon(selectedFilePath);
+            }
+        }
+    }
+    public static void WriteToConfigFile(string filePath, string key, string value)
+    {
+        bool found = false;
+        try
+        {
+            // Read all lines from the file
+            string[] lines = File.ReadAllLines(filePath);
+
+            // Find the line with the specified key and replace its value
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] parts = lines[i].Split('=');
+
+                if (parts.Length == 2 && parts[0].Trim() == key)
+                {
+                    found = true;
+                    lines[i] = $"{key}={value}";
+                    break; // Assuming each key is unique; stop after finding the first match
+                }
+            }
+
+            // Write the modified content back to the file
+            File.WriteAllLines(filePath, lines);
+            if (!found)
+            {
+                using (StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    // Write the key-value pair in the format "key=value"
+                    writer.WriteLine($"{key}={value}");
+                }
+            }
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine($"File not found: {filePath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating config file: {ex.Message}");
+        }
+    }
+    private void titleChange_Click(object sender, EventArgs e)
+    {
+        TitleChange tcForm = new TitleChange();
+        tcForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+        tcForm.MaximizeBox = false;
+        tcForm.MinimizeBox = false;
+        tcForm.BackColor = this.BackColor;
+        tcForm.Show();
+    }
+        private void MainSettings_Load(object sender, EventArgs e)
+    {
+
+    }
+}
