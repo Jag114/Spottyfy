@@ -60,12 +60,15 @@ namespace Spottyfy
                 songLabel.LinkColor = Color.FromArgb(215, 247, 91);
                 songLabel.LinkClicked += (s, ev) =>
                 {
-                    SongDetailView sdForm = new SongDetailView(song,albumTitle.Text);
-                    sdForm.Location = this.Location;
-                    sdForm.StartPosition = FormStartPosition.Manual;
-                    sdForm.FormClosing += delegate { Application.Exit(); };
+                    SongDetailView sdForm = new SongDetailView(song, albumTitle.Text){ TopLevel = false, TopMost = true };
+                    //sdForm.Location = this.Location;
+                    //sdForm.StartPosition = FormStartPosition.Manual;
+                    sdForm.FormBorderStyle = FormBorderStyle.None;
+                    this.Controls.Clear();
+                    this.Controls.Add(sdForm);
+                    //sdForm.FormClosing += delegate { Application.Exit(); };
                     sdForm.Show();
-                    this.Hide();
+                    //this.Hide();
                 };
                 songLabel.Width = flowLayoutPanel2.Width;
                 songLabel.Height = 30;
@@ -112,6 +115,11 @@ namespace Spottyfy
         private void SongView_Resize(object sender, EventArgs e)
         {
             this.Invalidate();
+        }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

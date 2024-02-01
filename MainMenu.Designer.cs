@@ -66,6 +66,7 @@ namespace Spottyfy
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(807, 81);
             this.panel_top.TabIndex = 0;
+            this.panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_top_Paint);
             // 
             // flowLayoutPanel_right
             // 
@@ -134,7 +135,7 @@ namespace Spottyfy
             this.button_viewsongs.Location = new System.Drawing.Point(27, 24);
             this.button_viewsongs.Margin = new System.Windows.Forms.Padding(2);
             this.button_viewsongs.Name = "button_viewsongs";
-            this.button_viewsongs.Size = new System.Drawing.Size(91, 34);
+            this.button_viewsongs.Size = new System.Drawing.Size(140, 34);
             this.button_viewsongs.TabIndex = 4;
             this.button_viewsongs.Text = "View Songs";
             this.button_viewsongs.UseVisualStyleBackColor = false;
@@ -142,10 +143,11 @@ namespace Spottyfy
             // 
             // panel_empty
             // 
-            this.panel_empty.Location = new System.Drawing.Point(23, 95);
+            this.panel_empty.Location = new System.Drawing.Point(-1, 77);
             this.panel_empty.Name = "panel_empty";
-            this.panel_empty.Size = new System.Drawing.Size(573, 343);
+            this.panel_empty.Size = new System.Drawing.Size(801, 373);
             this.panel_empty.TabIndex = 2;
+            this.panel_empty.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_empty_Paint);
             // 
             // button_logout
             // 
@@ -267,8 +269,8 @@ namespace Spottyfy
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_user);
+            this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_top);
             this.KeyPreview = true;
             this.Name = "MainMenu";
