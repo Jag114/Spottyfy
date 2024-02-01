@@ -209,7 +209,7 @@ namespace Spottyfy
 
         private void nightmodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            nightmode_toggle();
+            nightmode_toggle(this);
         }
 
         private void panel_empty_Paint(object sender, PaintEventArgs e)

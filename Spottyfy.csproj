@@ -227,12 +227,6 @@
     <Compile Include="LoginAndSign\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginAndSign\SignUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginAndSign\SignUp.Designer.cs">
-      <DependentUpon>SignUp.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +241,10 @@
     <Compile Include="MySqlDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LoginAndSign\SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginAndSign\SignUp.Designer.cs" />
     <Compile Include="SongData.cs" />
     <Compile Include="SongDetailView.cs">
       <SubType>Form</SubType>
@@ -279,17 +277,11 @@
     <EmbeddedResource Include="LoginAndSign\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginAndSign\SignUp.resx">
-      <DependentUpon>SignUp.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainSettings.resx">
       <DependentUpon>MainSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NavBar.resx">
-      <DependentUpon>NavBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -307,11 +299,13 @@
     <EmbeddedResource Include="SongDetailView.resx">
       <DependentUpon>SongDetailView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginAndSign\SignUp.resx" />
     <EmbeddedResource Include="SongView.resx">
       <DependentUpon>SongView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TitleChange.resx">
       <DependentUpon>TitleChange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserSettings.resx">
       <DependentUpon>UserSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,9 +350,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserImage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MongoDB.Libmongocrypt.1.8.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('packages\MongoDB.Libmongocrypt.1.8.0\build\MongoDB.Libmongocrypt.targets')" />
