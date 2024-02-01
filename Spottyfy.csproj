@@ -202,6 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlbumData.cs" />
+    <Compile Include="AlertBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlertBox.Designer.cs">
+      <DependentUpon>AlertBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,12 +219,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataBaseConnect.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="getAlbums.cs" />
     <Compile Include="IDB.cs" />
     <Compile Include="LoginAndSign\Login.cs">
@@ -226,6 +226,12 @@
     </Compile>
     <Compile Include="LoginAndSign\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAndSign\SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginAndSign\SignUp.Designer.cs">
+      <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
@@ -239,18 +245,8 @@
     <Compile Include="MongoDB.cs" />
     <Compile Include="MongoIDStandardizer.cs" />
     <Compile Include="MySqlDB.cs" />
-    <Compile Include="NavBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="NavBar.Designer.cs">
-      <DependentUpon>NavBar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoginAndSign\SignUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginAndSign\SignUp.Designer.cs" />
     <Compile Include="SongData.cs" />
     <Compile Include="SongDetailView.cs">
       <SubType>Form</SubType>
@@ -268,14 +264,23 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserData.cs" />
+    <Compile Include="UserSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserSettings.Designer.cs">
+      <DependentUpon>UserSettings.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AlertBox.resx">
+      <DependentUpon>AlertBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AppSettings.resx">
       <DependentUpon>AppSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoginAndSign\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginAndSign\SignUp.resx">
+      <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
@@ -302,12 +307,13 @@
     <EmbeddedResource Include="SongDetailView.resx">
       <DependentUpon>SongDetailView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginAndSign\SignUp.resx" />
     <EmbeddedResource Include="SongView.resx">
       <DependentUpon>SongView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TitleChange.resx">
       <DependentUpon>TitleChange.cs</DependentUpon>
+    <EmbeddedResource Include="UserSettings.resx">
+      <DependentUpon>UserSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
@@ -350,6 +356,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserImage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MongoDB.Libmongocrypt.1.8.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('packages\MongoDB.Libmongocrypt.1.8.0\build\MongoDB.Libmongocrypt.targets')" />

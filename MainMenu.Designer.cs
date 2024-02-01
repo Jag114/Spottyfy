@@ -31,6 +31,7 @@ namespace Spottyfy
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_top = new System.Windows.Forms.Panel();
             this.flowLayoutPanel_right = new System.Windows.Forms.FlowLayoutPanel();
             this.button_nightmode = new System.Windows.Forms.Button();
@@ -44,9 +45,14 @@ namespace Spottyfy
             this.label_section_line = new System.Windows.Forms.Label();
             this.panel_avatar = new System.Windows.Forms.Panel();
             this.label_username = new System.Windows.Forms.Label();
+            this.right_cilck_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nightmodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_top.SuspendLayout();
             this.flowLayoutPanel_right.SuspendLayout();
             this.panel_user.SuspendLayout();
+            this.right_cilck_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_top
@@ -157,6 +163,7 @@ namespace Spottyfy
             this.button_logout.TabIndex = 2;
             this.button_logout.Text = "Log out";
             this.button_logout.UseVisualStyleBackColor = true;
+            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
             // 
             // button_usersett
             // 
@@ -173,6 +180,7 @@ namespace Spottyfy
             this.button_usersett.TabIndex = 3;
             this.button_usersett.Text = "User Settings";
             this.button_usersett.UseVisualStyleBackColor = true;
+            this.button_usersett.Click += new System.EventHandler(this.button_usersett_Click);
             // 
             // panel_user
             // 
@@ -216,8 +224,36 @@ namespace Spottyfy
             this.label_username.Name = "label_username";
             this.label_username.Size = new System.Drawing.Size(190, 20);
             this.label_username.TabIndex = 4;
-            this.label_username.Text = "label1";
+            this.label_username.Text = "username";
             this.label_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // right_cilck_menu
+            // 
+            this.right_cilck_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nightmodeToolStripMenuItem,
+            this.userToolStripMenuItem,
+            this.settingsToolStripMenuItem});
+            this.right_cilck_menu.Name = "right_cilck_menu";
+            this.right_cilck_menu.Size = new System.Drawing.Size(176, 94);
+            // 
+            // nightmodeToolStripMenuItem
+            // 
+            this.nightmodeToolStripMenuItem.Name = "nightmodeToolStripMenuItem";
+            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.nightmodeToolStripMenuItem.Text = "Nightmode";
+            this.nightmodeToolStripMenuItem.Click += new System.EventHandler(this.nightmodeToolStripMenuItem_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.userToolStripMenuItem.Text = "User";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // MainMenu
             // 
@@ -238,6 +274,7 @@ namespace Spottyfy
             this.flowLayoutPanel_right.ResumeLayout(false);
             this.panel_user.ResumeLayout(false);
             this.panel_user.PerformLayout();
+            this.right_cilck_menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,5 +300,9 @@ namespace Spottyfy
         private System.Windows.Forms.Label label_username;
         private System.Windows.Forms.Panel panel_avatar;
         private System.Windows.Forms.Label label_section_line;
+        private System.Windows.Forms.ContextMenuStrip right_cilck_menu;
+        private System.Windows.Forms.ToolStripMenuItem nightmodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }

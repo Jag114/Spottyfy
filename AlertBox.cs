@@ -43,25 +43,19 @@ namespace Spottyfy
             panel_login_window.Location = new Point(x, y);
         }
 
-        public void UpdateLabelTextAndCenter(string new_error_message)
+        public void UpdateLabelTextAndCenterFAILED(string new_error_message)
         {
             label_error_message_alertbox.Text = new_error_message;
             CenterLabel();
         }
-        private void panel_login_window_Paint(object sender, PaintEventArgs e)
-        {
 
+        public void UpdateLabelTextAndCenterSUCCES(string new_error_message)
+        {
+            label_title_alertbox.Text = "Congratulations";
+            label_error_message_alertbox.Text = new_error_message;
+            CenterLabel();
         }
 
-        private void label_title_alertbox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_failed_login_window_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button_okay_alertbox_Click(object sender, EventArgs e)
         {
