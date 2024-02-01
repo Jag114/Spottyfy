@@ -20,9 +20,10 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            int type = 1;
+            int type = 2;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
-            db.connection.TestData();
+            UserData u = new UserData();
+            db.connection.AddData(u);
             
             /*
             UserData user = new UserData{

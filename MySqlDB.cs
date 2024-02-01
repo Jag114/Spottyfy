@@ -323,14 +323,22 @@ namespace Spottyfy
             {
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = $"SELECT COUNT(*) FROM {usersTable}";
-                //reader
-                if (true)
+                MySqlDataReader Reader = cmd.ExecuteReader();
+                bool first = false;
+                while (Reader.Read())
                 {
-                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', '{x.rank}', '{x.creationDate});";
+                    if (Reader[0].ToString() == "0")
+                    {
+                        first = true;
+                    }
+                }
+                if (first)
+                {
+                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', 'admin', '{x.creationDate});";
                 }
                 else
                 {
-                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', 'admin', '{x.creationDate});";
+                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', '{x.rank}', '{x.creationDate});";
                 }
                 cmd.ExecuteNonQuery();
             }
@@ -341,7 +349,7 @@ namespace Spottyfy
             }
             return 0;
         }
-
+        
         public int UpdateData(SongData x, string id)
         {
             throw new NotImplementedException();
@@ -354,12 +362,23 @@ namespace Spottyfy
 
         public int UpdateData(AuthorData x, string id)
         {
-            throw new NotImplementedException();
+            return -1;
         }
-
+        
         public int UpdateData(UserData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE `{usersTable}` SET `rank` = 'admin' WHERE `users`.`id` = {id}; ";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int DeleteData(SongData x)
@@ -367,7 +386,7 @@ namespace Spottyfy
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"DELETE FROM {dbName}.{songsTable} WHERE `songs`.`id` = 3;";
+                cmd.CommandText = $"DELETE FROM {dbName}.{songsTable} WHERE `songs`.`id` = {x.Id}";
                 cmd.ExecuteNonQuery();
             }
             catch(Exception ex)
@@ -383,7 +402,7 @@ namespace Spottyfy
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"DELETE FROM {dbName}.{albumsTable} WHERE `albums`.`id` = 3;";
+                cmd.CommandText = $"DELETE FROM {dbName}.{albumsTable} WHERE `albums`.`id` = {x.Id};";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -399,7 +418,7 @@ namespace Spottyfy
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"DELETE FROM {dbName}.{authorsTable} WHERE `authors`.`id` = 3;";
+                cmd.CommandText = $"DELETE FROM {dbName}.{authorsTable} WHERE `authors`.`id` = {x.Id};";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -415,7 +434,7 @@ namespace Spottyfy
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"DELETE FROM {dbName}.{usersTable} WHERE `users`.`id` = 3;";
+                cmd.CommandText = $"DELETE FROM {dbName}.{usersTable} WHERE `users`.`id` = {x.Id};";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
