@@ -364,22 +364,66 @@ namespace Spottyfy
 
         public int DeleteData(SongData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"DELETE FROM {dbName}.{songsTable} WHERE `songs`.`id` = 3;";
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int DeleteData(AlbumData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"DELETE FROM {dbName}.{albumsTable} WHERE `albums`.`id` = 3;";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int DeleteData(AuthorData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"DELETE FROM {dbName}.{authorsTable} WHERE `authors`.`id` = 3;";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int DeleteData(UserData x)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"DELETE FROM {dbName}.{usersTable} WHERE `users`.`id` = 3;";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int Authenticate(string login, string password)
