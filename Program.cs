@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using MongoDB.Driver;
 
 namespace Spottyfy
@@ -22,6 +23,7 @@ namespace Spottyfy
             Application.SetCompatibleTextRenderingDefault(false);
             mainMenuInstance = new MainMenu();
             SetApplicationIcon(ReadFromConfigFile("settings.cfg", "logo"));
+            SetApplicationLanguage(ReadFromConfigFile("settings.cfg", "lang"));
             SetApplicationTitle(ReadFromConfigFile("settings.cfg", "title"));
             Application.Run(mainMenuInstance);
         }
@@ -63,6 +65,20 @@ namespace Spottyfy
 
             // Return null if the key is not found or an error occurs
             return null;
+        }
+        public static XDocument SetApplicationLanguage(string lang)
+        {
+            string xmlFilePath = lang;
+
+            // Load the XML file
+            XDocument doc = XDocument.Load(xmlFilePath);
+            return doc;
+
+
+        }
+        public static XDocument GetLangInstance()
+        {
+            return SetApplicationLanguage(ReadFromConfigFile("settings.cfg", "lang"));
         }
         public static void SetApplicationTitle(string title) {
             mainMenuInstance.Text = title;

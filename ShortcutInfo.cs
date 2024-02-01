@@ -20,6 +20,10 @@ namespace Spottyfy
         public ShortcutInfo()
         {
             InitializeComponent();
+            label1.Text = Program.GetLangInstance().Descendants("N").FirstOrDefault()?.Value;
+            label2.Text = Program.GetLangInstance().Descendants("U").FirstOrDefault()?.Value;
+            label3.Text = Program.GetLangInstance().Descendants("S").FirstOrDefault()?.Value;
+            label4.Text = Program.GetLangInstance().Descendants("V").FirstOrDefault()?.Value;
         }
         private void InitializeComponent()
         {

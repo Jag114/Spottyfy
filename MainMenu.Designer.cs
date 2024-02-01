@@ -128,7 +128,7 @@ namespace Spottyfy
             this.button_viewsongs.Location = new System.Drawing.Point(27, 24);
             this.button_viewsongs.Margin = new System.Windows.Forms.Padding(2);
             this.button_viewsongs.Name = "button_viewsongs";
-            this.button_viewsongs.Size = new System.Drawing.Size(91, 34);
+            this.button_viewsongs.Size = new System.Drawing.Size(140, 34);
             this.button_viewsongs.TabIndex = 4;
             this.button_viewsongs.Text = "View Songs";
             this.button_viewsongs.UseVisualStyleBackColor = false;
@@ -225,8 +225,8 @@ namespace Spottyfy
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_user);
+            this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_top);
             this.KeyPreview = true;
             this.Name = "MainMenu";

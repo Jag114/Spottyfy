@@ -17,7 +17,6 @@ namespace Spottyfy
     {
         static bool nightmode = true;
         public string getUser { get; set; }
-        private static MainMenu mainFormInstance;
 
         public void resize()
         {
@@ -34,6 +33,9 @@ namespace Spottyfy
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             InitializeComponent();
+            button_viewsongs.Text = Program.GetLangInstance().Descendants("ViewSongs").FirstOrDefault()?.Value;
+            button_usersett.Text = Program.GetLangInstance().Descendants("UserSettings").FirstOrDefault()?.Value;
+            button_logout.Text = Program.GetLangInstance().Descendants("Logout").FirstOrDefault()?.Value;
             resize();
         }
 
