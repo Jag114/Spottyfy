@@ -23,7 +23,6 @@ namespace Spottyfy
             //test
             int type = 2;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
-            db.connection.TestData();
 
             /*
             UserData user = new UserData{

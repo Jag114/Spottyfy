@@ -12,6 +12,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "El
 		TitleChange.cs = TitleChange.cs
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8231E7D2-F63E-4EDC-94AF-69F0CE37774C}"
+	ProjectSection(SolutionItems) = preProject
+		AppSettings.cs = AppSettings.cs
+		AppSettings.Designer.cs = AppSettings.Designer.cs
+		AppSettings.resx = AppSettings.resx
+		UserSettings.cs = UserSettings.cs
+		UserSettings.Designer.cs = UserSettings.Designer.cs
+		UserSettings.resx = UserSettings.resx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

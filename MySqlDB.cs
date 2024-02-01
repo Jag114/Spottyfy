@@ -56,7 +56,7 @@ namespace Spottyfy
             cmd.CommandText = @"INSERT INTO test.test_table(album, author, song) VALUES (1, 'visual', 'ms song');";
             //cmd.ExecuteNonQuery();
 
-            cmd.CommandText = @"SELECT * FROM test.test_table;";
+            cmd.CommandText = $"SELECT * FROM test.{dbName};";
             MySqlDataReader Reader = cmd.ExecuteReader();
             if (!Reader.HasRows) return -1;
             List<SongData> songs = new List<SongData>();
@@ -242,7 +242,7 @@ namespace Spottyfy
                 string songName = Reader["name"].ToString();
                 string songAuthor = Reader["password"].ToString();
                 string songAlbum = Reader["rank"].ToString();
-                DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
+                
 
                 MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
                 string standardizedID = mongoIDStandardizer.StandardizeString(songId);
@@ -253,7 +253,7 @@ namespace Spottyfy
                     name = songName,
                     password = songAuthor,
                     rank = songAlbum,
-                    creationDate = songReleaseDate
+                    //creationDate = songReleaseDate
                 };
                 users.Add(user);
             }
@@ -352,7 +352,18 @@ namespace Spottyfy
         
         public int UpdateData(SongData x, string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE `{dbName}.{songsTable}` SET `name` = '{x.name}', author = {x.author}, album = {x.album}, releaseDate = '{x.releaseDate} WHERE `{songsTable}`.`id` = {id};";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
         }
 
         public int UpdateData(AlbumData x, string id)
@@ -367,6 +378,7 @@ namespace Spottyfy
         
         public int UpdateData(UserData x, string id)
         {
+            //finish
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();

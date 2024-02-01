@@ -25,7 +25,7 @@ namespace Spottyfy
             SetApplicationIcon(ReadFromConfigFile("settings.cfg", "logo"));
             SetApplicationLanguage(ReadFromConfigFile("settings.cfg", "lang"));
             SetApplicationTitle(ReadFromConfigFile("settings.cfg", "title"));
-            Application.Run(mainMenuInstance);
+            Application.Run(new Login());
         }
         public static MainMenu GetMainMenuInstance()
         {

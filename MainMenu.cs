@@ -65,6 +65,27 @@ namespace Spottyfy
                 activeForm.BackColor = ColorTranslator.FromHtml("#E8F9A3");
                 foreach (Control control in panel_empty.Controls)
                 {
+                    if (control is Panel)
+                    {
+                        foreach (Control innerControl in control.Controls)
+                        {
+                            if (control is Form)
+                            {
+                                Form form = (Form)control;
+                                form.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+
+                                foreach (Control inner2Control in form.Controls)
+                                {
+                                    inner2Control.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                    if (inner2Control is Label || inner2Control is TextBox)
+                                    {
+                                        inner2Control.ForeColor = ColorTranslator.FromHtml("#343035");
+                                    }
+
+                                }
+                            }
+                        }
+                    }
                     if (control is Form)
                     {
                         Form form = (Form)control;
@@ -72,8 +93,10 @@ namespace Spottyfy
 
                         foreach (Control innerControl in form.Controls)
                         {
-                            if (innerControl is Label ||  innerControl is TextBox)
+                            innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                            if (innerControl is Label || innerControl is TextBox)
                             {
+
                                 innerControl.ForeColor = ColorTranslator.FromHtml("#343035");
                             }
 
@@ -98,6 +121,26 @@ namespace Spottyfy
                 this.BackColor = ColorTranslator.FromHtml("#1A181B");
                 foreach (Control control in panel_empty.Controls)
                 {
+                    if (control is Panel) {
+                        foreach (Control innerControl in control.Controls)
+                        {
+                            if (control is Form)
+                            {
+                                Form form = (Form)control;
+                                form.BackColor = ColorTranslator.FromHtml("#1A181B");
+
+                                foreach (Control inner2Control in form.Controls)
+                                {
+                                    inner2Control.BackColor = ColorTranslator.FromHtml("#1A181B");
+                                    if (inner2Control is Label || inner2Control is TextBox)
+                                    {
+                                        inner2Control.ForeColor = ColorTranslator.FromHtml("#D7F75B");
+                                    }
+
+                                }
+                            }
+                        }
+                    }
                     if (control is Form)
                     {
                         Form form = (Form)control;
@@ -105,6 +148,7 @@ namespace Spottyfy
 
                         foreach (Control innerControl in form.Controls)
                         {
+                            innerControl.BackColor = ColorTranslator.FromHtml("#1A181B");
                             if (innerControl is Label || innerControl is TextBox)
                             {
                                 innerControl.ForeColor = ColorTranslator.FromHtml("#D7F75B");
@@ -225,6 +269,16 @@ namespace Spottyfy
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             right_cilck_menu.Visible = true;
+        }
+
+        private void addSongs_Click(object sender, EventArgs e)
+        {
+            TitleChange tcForm = new TitleChange();
+            tcForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            tcForm.MaximizeBox = false;
+            tcForm.MinimizeBox = false;
+            tcForm.BackColor = this.BackColor;
+            tcForm.Show();
         }
     }
 }

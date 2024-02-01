@@ -34,22 +34,23 @@ namespace Spottyfy
             this.components = new System.ComponentModel.Container();
             this.panel_top = new System.Windows.Forms.Panel();
             this.flowLayoutPanel_right = new System.Windows.Forms.FlowLayoutPanel();
-            this.button_nightmode = new System.Windows.Forms.Button();
-            this.button_user = new System.Windows.Forms.Button();
-            this.button_settings = new System.Windows.Forms.Button();
             this.button_viewsongs = new System.Windows.Forms.Button();
             this.panel_empty = new System.Windows.Forms.Panel();
             this.button_logout = new System.Windows.Forms.Button();
             this.button_usersett = new System.Windows.Forms.Button();
             this.panel_user = new System.Windows.Forms.Panel();
             this.label_section_line = new System.Windows.Forms.Label();
-            this.panel_avatar = new System.Windows.Forms.Panel();
             this.label_username = new System.Windows.Forms.Label();
             this.right_cilck_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nightmodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.addSongs = new System.Windows.Forms.Button();
+            this.panel_avatar = new System.Windows.Forms.Panel();
+            this.button_nightmode = new System.Windows.Forms.Button();
+            this.button_user = new System.Windows.Forms.Button();
+            this.button_settings = new System.Windows.Forms.Button();
             this.panel_top.SuspendLayout();
             this.flowLayoutPanel_right.SuspendLayout();
             this.panel_user.SuspendLayout();
@@ -80,52 +81,6 @@ namespace Spottyfy
             this.flowLayoutPanel_right.Padding = new System.Windows.Forms.Padding(7, 13, 7, 6);
             this.flowLayoutPanel_right.Size = new System.Drawing.Size(223, 81);
             this.flowLayoutPanel_right.TabIndex = 5;
-            // 
-            // button_nightmode
-            // 
-            this.button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.to_night;
-            this.button_nightmode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_nightmode.FlatAppearance.BorderSize = 0;
-            this.button_nightmode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_nightmode.Location = new System.Drawing.Point(14, 19);
-            this.button_nightmode.Margin = new System.Windows.Forms.Padding(7, 6, 13, 6);
-            this.button_nightmode.Name = "button_nightmode";
-            this.button_nightmode.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.button_nightmode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button_nightmode.Size = new System.Drawing.Size(50, 50);
-            this.button_nightmode.TabIndex = 1;
-            this.button_nightmode.UseVisualStyleBackColor = true;
-            this.button_nightmode.Click += new System.EventHandler(this.button_nightmode_Click);
-            // 
-            // button_user
-            // 
-            this.button_user.BackgroundImage = global::Spottyfy.Properties.Resources.user0;
-            this.button_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_user.FlatAppearance.BorderSize = 0;
-            this.button_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_user.Location = new System.Drawing.Point(84, 19);
-            this.button_user.Margin = new System.Windows.Forms.Padding(7, 6, 13, 6);
-            this.button_user.Name = "button_user";
-            this.button_user.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button_user.Size = new System.Drawing.Size(50, 50);
-            this.button_user.TabIndex = 2;
-            this.button_user.UseVisualStyleBackColor = true;
-            this.button_user.Click += new System.EventHandler(this.button_user_Click);
-            // 
-            // button_settings
-            // 
-            this.button_settings.BackgroundImage = global::Spottyfy.Properties.Resources.settings;
-            this.button_settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_settings.FlatAppearance.BorderSize = 0;
-            this.button_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_settings.Location = new System.Drawing.Point(154, 19);
-            this.button_settings.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.button_settings.Name = "button_settings";
-            this.button_settings.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button_settings.Size = new System.Drawing.Size(50, 50);
-            this.button_settings.TabIndex = 3;
-            this.button_settings.UseVisualStyleBackColor = true;
-            this.button_settings.Click += new System.EventHandler(this.button_settings_Click);
             // 
             // button_viewsongs
             // 
@@ -208,15 +163,6 @@ namespace Spottyfy
             this.label_section_line.TabIndex = 6;
             this.label_section_line.Text = "______________________________";
             // 
-            // panel_avatar
-            // 
-            this.panel_avatar.BackgroundImage = global::Spottyfy.Properties.Resources.blank_avatar;
-            this.panel_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_avatar.Location = new System.Drawing.Point(51, 32);
-            this.panel_avatar.Name = "panel_avatar";
-            this.panel_avatar.Size = new System.Drawing.Size(90, 90);
-            this.panel_avatar.TabIndex = 5;
-            // 
             // label_username
             // 
             this.label_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -230,30 +176,31 @@ namespace Spottyfy
             // 
             // right_cilck_menu
             // 
+            this.right_cilck_menu.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.right_cilck_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nightmodeToolStripMenuItem,
             this.userToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.right_cilck_menu.Name = "right_cilck_menu";
-            this.right_cilck_menu.Size = new System.Drawing.Size(136, 70);
+            this.right_cilck_menu.Size = new System.Drawing.Size(148, 76);
             // 
             // nightmodeToolStripMenuItem
             // 
             this.nightmodeToolStripMenuItem.Name = "nightmodeToolStripMenuItem";
-            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.nightmodeToolStripMenuItem.Text = "Nightmode";
             this.nightmodeToolStripMenuItem.Click += new System.EventHandler(this.nightmodeToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.userToolStripMenuItem.Text = "User";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // notifyIcon1
@@ -263,12 +210,83 @@ namespace Spottyfy
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // addSongs
+            // 
+            this.addSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.addSongs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.addSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.addSongs.Location = new System.Drawing.Point(179, 20);
+            this.addSongs.Margin = new System.Windows.Forms.Padding(2);
+            this.addSongs.Name = "addSongs";
+            this.addSongs.Size = new System.Drawing.Size(140, 34);
+            this.addSongs.TabIndex = 6;
+            this.addSongs.Text = "Add Songs";
+            this.addSongs.UseVisualStyleBackColor = false;
+            this.addSongs.Click += new System.EventHandler(this.addSongs_Click);
+            // 
+            // panel_avatar
+            // 
+            this.panel_avatar.BackgroundImage = global::Spottyfy.Properties.Resources.blank_avatar;
+            this.panel_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_avatar.Location = new System.Drawing.Point(51, 32);
+            this.panel_avatar.Name = "panel_avatar";
+            this.panel_avatar.Size = new System.Drawing.Size(90, 90);
+            this.panel_avatar.TabIndex = 5;
+            // 
+            // button_nightmode
+            // 
+            this.button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.to_night;
+            this.button_nightmode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_nightmode.FlatAppearance.BorderSize = 0;
+            this.button_nightmode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_nightmode.Location = new System.Drawing.Point(14, 19);
+            this.button_nightmode.Margin = new System.Windows.Forms.Padding(7, 6, 13, 6);
+            this.button_nightmode.Name = "button_nightmode";
+            this.button_nightmode.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.button_nightmode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button_nightmode.Size = new System.Drawing.Size(50, 50);
+            this.button_nightmode.TabIndex = 1;
+            this.button_nightmode.UseVisualStyleBackColor = true;
+            this.button_nightmode.Click += new System.EventHandler(this.button_nightmode_Click);
+            // 
+            // button_user
+            // 
+            this.button_user.BackgroundImage = global::Spottyfy.Properties.Resources.user0;
+            this.button_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_user.FlatAppearance.BorderSize = 0;
+            this.button_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_user.Location = new System.Drawing.Point(84, 19);
+            this.button_user.Margin = new System.Windows.Forms.Padding(7, 6, 13, 6);
+            this.button_user.Name = "button_user";
+            this.button_user.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button_user.Size = new System.Drawing.Size(50, 50);
+            this.button_user.TabIndex = 2;
+            this.button_user.UseVisualStyleBackColor = true;
+            this.button_user.Click += new System.EventHandler(this.button_user_Click);
+            // 
+            // button_settings
+            // 
+            this.button_settings.BackgroundImage = global::Spottyfy.Properties.Resources.settings;
+            this.button_settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_settings.FlatAppearance.BorderSize = 0;
+            this.button_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_settings.Location = new System.Drawing.Point(154, 19);
+            this.button_settings.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.button_settings.Name = "button_settings";
+            this.button_settings.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button_settings.Size = new System.Drawing.Size(50, 50);
+            this.button_settings.TabIndex = 3;
+            this.button_settings.UseVisualStyleBackColor = true;
+            this.button_settings.Click += new System.EventHandler(this.button_settings_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.addSongs);
             this.Controls.Add(this.panel_user);
             this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_top);
@@ -313,5 +331,6 @@ namespace Spottyfy
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button addSongs;
     }
 }

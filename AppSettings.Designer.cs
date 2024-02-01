@@ -33,7 +33,7 @@
             this.button_main_settings = new System.Windows.Forms.Button();
             this.button_app_info = new System.Windows.Forms.Button();
             this.label_app_sett = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.displayPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,20 +106,20 @@
             this.label_app_sett.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.label_app_sett.Location = new System.Drawing.Point(239, 12);
             this.label_app_sett.Name = "label_app_sett";
-            this.label_app_sett.Size = new System.Drawing.Size(262, 38);
+            this.label_app_sett.Size = new System.Drawing.Size(304, 45);
             this.label_app_sett.TabIndex = 1;
             this.label_app_sett.Text = "Main Settings";
             this.label_app_sett.Click += new System.EventHandler(this.label_app_sett_Click);
             // 
-            // panel1
+            // displayPanel
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.AutoScroll = true;
-            this.panel1.Location = new System.Drawing.Point(239, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(549, 386);
-            this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.displayPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.displayPanel.AutoScroll = true;
+            this.displayPanel.Location = new System.Drawing.Point(239, 52);
+            this.displayPanel.Name = "displayPanel";
+            this.displayPanel.Size = new System.Drawing.Size(549, 386);
+            this.displayPanel.TabIndex = 3;
+            this.displayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // AppSettings
             // 
@@ -127,7 +127,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.displayPanel);
             this.Controls.Add(this.label_app_sett);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AppSettings";
@@ -146,6 +146,6 @@
         private System.Windows.Forms.Label label_app_sett;
         private System.Windows.Forms.Button button_shortcut_info;
         private System.Windows.Forms.Button button_app_info;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel displayPanel;
     }
 }

@@ -27,10 +27,10 @@ namespace Spottyfy
         {
             ShortcutInfo siForm = new ShortcutInfo() { TopLevel = false, TopMost = true };
             label_app_sett.Text=button_shortcut_info.Text;
-            panel1.Controls.Clear();
+            displayPanel.Controls.Clear();
             siForm.FormBorderStyle = FormBorderStyle.None;
-            panel1.Controls.Clear();
-            panel1.Controls.Add(siForm);
+            displayPanel.Controls.Clear();
+            displayPanel.Controls.Add(siForm);
             siForm.BackColor = this.BackColor;
             siForm.Show();
         }
@@ -40,11 +40,11 @@ namespace Spottyfy
             ShowMainSettings();
         }
         private void ShowMainSettings() {
-            MainSettings msForm = new MainSettings(panel1) { TopLevel = false, TopMost = true };
+            MainSettings msForm = new MainSettings(displayPanel) { TopLevel = false, TopMost = true };
             label_app_sett.Text = button_main_settings.Text;
             msForm.FormBorderStyle = FormBorderStyle.None;
-            panel1.Controls.Clear();
-            panel1.Controls.Add(msForm);
+            displayPanel.Controls.Clear();
+            displayPanel.Controls.Add(msForm);
             Console.WriteLine(this.BackColor);
             msForm.BackColor = this.BackColor;
             msForm.Show();
@@ -53,7 +53,7 @@ namespace Spottyfy
         private void button_app_info_Click(object sender, EventArgs e)
         {
             label_app_sett.Text=button_app_info.Text;
-            panel1.Controls.Clear();
+            displayPanel.Controls.Clear();
         }
 
         private void label_app_sett_Click(object sender, EventArgs e)
