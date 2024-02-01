@@ -15,6 +15,8 @@ namespace Spottyfy
     {
         static bool nightmode = true;
         public string getUser { get; set; }
+        public int getTypeOfConnection { get; set; }
+        public string getRank { get; set; }
         public void resize()
         {
             panel_user.BringToFront();
@@ -113,9 +115,11 @@ namespace Spottyfy
         {
             Application.Exit();
         }
+
+        //USER PANEL HERE
         private void button_user_Click(object sender, EventArgs e)
         {
-            label_username.Text = this.getUser; 
+            label_username.Text = this.getUser;
 
             if (panel_user.Visible == true)
             {
@@ -180,6 +184,8 @@ namespace Spottyfy
             //string newgetuser = this.getUser;
             UserSettings userSettings = new UserSettings();
             userSettings.getUsername = label_username.Text;
+            userSettings.getRank = getRank;
+            userSettings.getTypeOfConnection = getTypeOfConnection;
             userSettings.getTheData();
             userSettings.ShowDialog();
         }

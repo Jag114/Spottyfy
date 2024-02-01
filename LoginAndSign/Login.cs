@@ -110,19 +110,30 @@ namespace Spottyfy
         {
             DataBaseConnect db = new DataBaseConnect(type);
             string getUser = input_username_login_window.Text;
+            string getRank = "rank";
 
             if (db.connection.Authenticate(input_username_login_window.Text, input_password_login_window.Text)==0)
             {
+                var username = db.connection.GetUserData();
+                foreach (var item in username)
+                {
+                    if (item.name == input_username_login_window.Text)
+                    {
+                        getRank = item.rank;
+                    }
+                }
+
                 this.Hide();
                 MainMenu MainMenuOpen = new MainMenu();
                 MainMenuOpen.getUser = getUser;
+                MainMenuOpen.getRank = getRank;
+                MainMenuOpen.getTypeOfConnection = type;
                 MainMenuOpen.ShowDialog();
             }
             else
             {
                 label_failed_login_window.Visible = true;
             }
-
         }
         private void input_password_login_window_KeyPress(object sender, KeyPressEventArgs e)
         {

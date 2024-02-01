@@ -232,25 +232,25 @@ namespace Spottyfy
             this.userToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.right_cilck_menu.Name = "right_cilck_menu";
-            this.right_cilck_menu.Size = new System.Drawing.Size(181, 116);
+            this.right_cilck_menu.Size = new System.Drawing.Size(176, 94);
             // 
             // nightmodeToolStripMenuItem
             // 
             this.nightmodeToolStripMenuItem.Name = "nightmodeToolStripMenuItem";
-            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
             this.nightmodeToolStripMenuItem.Text = "Nightmode";
             this.nightmodeToolStripMenuItem.Click += new System.EventHandler(this.nightmodeToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
             this.userToolStripMenuItem.Text = "User";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // MainMenu
