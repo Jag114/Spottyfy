@@ -124,8 +124,13 @@ namespace Spottyfy
                 }
 
                 this.Hide();
+                List <UserData> userDatas = new List<UserData>();
+                userDatas = db.connection.GetUserData();
                 MainMenu MainMenuOpen = new MainMenu();
+                MainMenuOpen.users = userDatas;
                 MainMenuOpen.getUser = getUser;
+                Console.WriteLine(userDatas.Count);
+                Console.WriteLine(MainMenuOpen.users[0].ToJson());
                 MainMenuOpen.getRank = getRank;
                 MainMenuOpen.getTypeOfConnection = type;
                 MainMenuOpen.ShowDialog();
