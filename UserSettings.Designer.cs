@@ -145,6 +145,7 @@
             this.button_changpassword.TabIndex = 8;
             this.button_changpassword.Text = "Confirm change";
             this.button_changpassword.UseVisualStyleBackColor = true;
+            this.button_changpassword.Click += new System.EventHandler(this.button_changpassword_Click);
             // 
             // label_username
             // 

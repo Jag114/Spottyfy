@@ -19,10 +19,11 @@ namespace Spottyfy
         public string getRank { get; set; }
 
         private int type;
-
+        private const string ProfilePictureFilePath = "profilePicturePath.txt";
         public UserSettings()
         {   
             InitializeComponent();
+            LoadProfilePicture();
             
         }
         public void getTheData()
@@ -33,16 +34,45 @@ namespace Spottyfy
             
         }
 
-        private void button_usersett_Click(object sender, EventArgs e)
+        private void LoadProfilePicture()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (File.Exists(ProfilePictureFilePath))
             {
-                panel_avatar.BackgroundImage=Image.FromFile(openFileDialog.FileName);
+                string imagePath = File.ReadAllText(ProfilePictureFilePath);
+                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                {
+                    panel_avatar.BackgroundImage = Image.FromFile(imagePath);
+                }
+                if (Application.OpenForms["MainMenu"] is MainMenu mainMenuForm)
+                {
+                    mainMenuForm.SetProfilePicture(imagePath);
+                }
             }
         }
 
+        public string user_picture = "";
+        private void button_usersett_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = openFileDialog.FileName;
+                    panel_avatar.BackgroundImage = Image.FromFile(imagePath);
+
+                    // Save the chosen path to a file
+                    File.WriteAllText(ProfilePictureFilePath, imagePath);
+                }
+            }
+        }
+
+        private void button_changpassword_Click(object sender, EventArgs e)
+        {
+            if (user_picture.Length > 0)
+            {
+                panel_avatar.BackgroundImage = Image.FromFile(user_picture);
+            }
+        }
     }
 }

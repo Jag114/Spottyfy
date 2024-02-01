@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Spottyfy
 {
@@ -32,6 +33,13 @@ namespace Spottyfy
             resize();
         }
 
+        public void SetProfilePicture(string imagePath)
+        {
+            if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+            {
+                panel_avatar.BackgroundImage = Image.FromFile(imagePath);
+            }
+        }
         private void MainMenu_SizeChanged(object sender, EventArgs e)
         {
             resize();
