@@ -201,12 +201,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddSong.Designer.cs">
-      <DependentUpon>AddSong.cs</DependentUpon>
-    </Compile>
     <Compile Include="AlbumData.cs" />
     <Compile Include="AppSettings.cs">
       <SubType>Form</SubType>
@@ -215,6 +209,9 @@
       <DependentUpon>AppSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="AuthorData.cs" />
+    <Compile Include="ShortcutInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataBaseConnect.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -235,6 +232,9 @@
     </Compile>
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainSettings.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="MongoDB.cs" />
     <Compile Include="MongoIDStandardizer.cs" />
@@ -264,11 +264,10 @@
     <Compile Include="SongView.Designer.cs">
       <DependentUpon>SongView.cs</DependentUpon>
     </Compile>
+    <Compile Include="TitleChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserData.cs" />
-    <EmbeddedResource Include="AddSong.resx">
-      <DependentUpon>AddSong.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="AppSettings.resx">
       <DependentUpon>AppSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainSettings.resx">
+      <DependentUpon>MainSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NavBar.resx">
       <DependentUpon>NavBar.cs</DependentUpon>
@@ -294,12 +296,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ShortcutInfo.resx">
+      <DependentUpon>ShortcutInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SongDetailView.resx">
       <DependentUpon>SongDetailView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginAndSign\SignUp.resx" />
     <EmbeddedResource Include="SongView.resx">
       <DependentUpon>SongView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TitleChange.resx">
+      <DependentUpon>TitleChange.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />

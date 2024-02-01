@@ -41,9 +41,9 @@ namespace Spottyfy
             this.button_logout = new System.Windows.Forms.Button();
             this.button_usersett = new System.Windows.Forms.Button();
             this.panel_user = new System.Windows.Forms.Panel();
+            this.label_section_line = new System.Windows.Forms.Label();
             this.panel_avatar = new System.Windows.Forms.Panel();
             this.label_username = new System.Windows.Forms.Label();
-            this.label_section_line = new System.Windows.Forms.Label();
             this.panel_top.SuspendLayout();
             this.flowLayoutPanel_right.SuspendLayout();
             this.panel_user.SuspendLayout();
@@ -59,6 +59,7 @@ namespace Spottyfy
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(807, 81);
             this.panel_top.TabIndex = 0;
+            this.panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_top_Paint);
             // 
             // flowLayoutPanel_right
             // 
@@ -127,7 +128,7 @@ namespace Spottyfy
             this.button_viewsongs.Location = new System.Drawing.Point(27, 24);
             this.button_viewsongs.Margin = new System.Windows.Forms.Padding(2);
             this.button_viewsongs.Name = "button_viewsongs";
-            this.button_viewsongs.Size = new System.Drawing.Size(91, 34);
+            this.button_viewsongs.Size = new System.Drawing.Size(140, 34);
             this.button_viewsongs.TabIndex = 4;
             this.button_viewsongs.Text = "View Songs";
             this.button_viewsongs.UseVisualStyleBackColor = false;
@@ -135,10 +136,11 @@ namespace Spottyfy
             // 
             // panel_empty
             // 
-            this.panel_empty.Location = new System.Drawing.Point(23, 95);
+            this.panel_empty.Location = new System.Drawing.Point(-1, 77);
             this.panel_empty.Name = "panel_empty";
-            this.panel_empty.Size = new System.Drawing.Size(573, 343);
+            this.panel_empty.Size = new System.Drawing.Size(801, 373);
             this.panel_empty.TabIndex = 2;
+            this.panel_empty.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_empty_Paint);
             // 
             // button_logout
             // 
@@ -187,6 +189,16 @@ namespace Spottyfy
             this.panel_user.TabIndex = 1;
             this.panel_user.Visible = false;
             // 
+            // label_section_line
+            // 
+            this.label_section_line.AutoSize = true;
+            this.label_section_line.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.label_section_line.Location = new System.Drawing.Point(4, 125);
+            this.label_section_line.Name = "label_section_line";
+            this.label_section_line.Size = new System.Drawing.Size(187, 13);
+            this.label_section_line.TabIndex = 6;
+            this.label_section_line.Text = "______________________________";
+            // 
             // panel_avatar
             // 
             this.panel_avatar.BackgroundImage = global::Spottyfy.Properties.Resources.blank_avatar;
@@ -207,24 +219,14 @@ namespace Spottyfy
             this.label_username.Text = "label1";
             this.label_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_section_line
-            // 
-            this.label_section_line.AutoSize = true;
-            this.label_section_line.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.label_section_line.Location = new System.Drawing.Point(4, 125);
-            this.label_section_line.Name = "label_section_line";
-            this.label_section_line.Size = new System.Drawing.Size(187, 13);
-            this.label_section_line.TabIndex = 6;
-            this.label_section_line.Text = "______________________________";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_user);
+            this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_top);
             this.KeyPreview = true;
             this.Name = "MainMenu";

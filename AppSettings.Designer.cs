@@ -55,6 +55,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(221, 426);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // button_shortcut_info
             // 
@@ -108,25 +109,30 @@
             this.label_app_sett.Size = new System.Drawing.Size(262, 38);
             this.label_app_sett.TabIndex = 1;
             this.label_app_sett.Text = "Main Settings";
+            this.label_app_sett.Click += new System.EventHandler(this.label_app_sett_Click);
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(239, 52);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(549, 386);
             this.panel1.TabIndex = 3;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // AppSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label_app_sett);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AppSettings";
             this.Text = "AppSettings";
+            this.Load += new System.EventHandler(this.AppSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

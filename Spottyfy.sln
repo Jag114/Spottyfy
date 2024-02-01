@@ -5,6 +5,13 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spottyfy", "Spottyfy.csproj", "{0994FD3E-7100-42CA-A7AE-686FD5ED0E59}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementy rozwiązania", "Elementy rozwiązania", "{9D684843-4DBC-433F-8B1A-7B9579D90F21}"
+	ProjectSection(SolutionItems) = preProject
+		Class1.cs = Class1.cs
+		MainSettings.cs = MainSettings.cs
+		TitleChange.cs = TitleChange.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,22 +29,29 @@ namespace Spottyfy
 
         public MainMenu()
         {
+            this.FormBorderStyle= FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             InitializeComponent();
+            button_viewsongs.Text = Program.GetLangInstance().Descendants("ViewSongs").FirstOrDefault()?.Value;
+            button_usersett.Text = Program.GetLangInstance().Descendants("UserSettings").FirstOrDefault()?.Value;
+            button_logout.Text = Program.GetLangInstance().Descendants("Logout").FirstOrDefault()?.Value;
             resize();
         }
+
 
         private void MainMenu_SizeChanged(object sender, EventArgs e)
         {
             resize();
         }
 
-        public void nightmode_toggle()
+        public void nightmode_toggle(Form activeForm)
         {
             if (nightmode)
             {
                 button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.whitemoon;
                 this.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                Song.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                activeForm.BackColor = ColorTranslator.FromHtml("#E8F9A3");
                 foreach (Control control in panel_empty.Controls)
                 {
                     if (control is Form)
@@ -72,7 +81,7 @@ namespace Spottyfy
         }
         private void button_nightmode_Click(object sender, EventArgs e)
         {
-            nightmode_toggle();
+            nightmode_toggle(this);
         }
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -91,15 +100,15 @@ namespace Spottyfy
 
         //OTWIERANIE FORMSOW W PANELU
 
-        SongView Song = new SongView() { TopLevel = false, TopMost = true };
         AppSettings AppSett = new AppSettings() { TopLevel = false, TopMost = true };
         private void button_viewsongs_Click(object sender, EventArgs e)
         {
+            SongView Song = new SongView() { TopLevel = false, TopMost = true };
             panel_empty.Controls.Clear();
             Song.FormBorderStyle = FormBorderStyle.None;
             panel_empty.Controls.Add(Song);
-            nightmode_toggle();
-            nightmode_toggle();
+            nightmode_toggle(Song);
+            nightmode_toggle(Song);
             Song.Show();
         }
 
@@ -108,8 +117,8 @@ namespace Spottyfy
             panel_empty.Controls.Clear();
             AppSett.FormBorderStyle = FormBorderStyle.None;
             panel_empty.Controls.Add(AppSett);
-            nightmode_toggle();
-            nightmode_toggle();
+            nightmode_toggle(AppSett);
+            nightmode_toggle(AppSett);
             AppSett.Show();
 
         }
@@ -119,8 +128,18 @@ namespace Spottyfy
         {
             if (e.KeyCode == Keys.N)
             {
-                nightmode_toggle();
+                nightmode_toggle(this);
             }
+        }
+
+        private void panel_empty_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel_top_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

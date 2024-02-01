@@ -47,12 +47,11 @@ namespace Spottyfy
         }
         private void backButton_Click(object sender, EventArgs e)
         {
-            SongView svForm = new SongView();
-            svForm.Location = this.Location;
-            svForm.StartPosition = FormStartPosition.Manual;
-            svForm.FormClosing += delegate { Application.Exit(); };
-            svForm.Show();
-            this.Hide();
+            SongView Song = new SongView() { TopLevel = false, TopMost = true };
+            this.Controls.Clear();
+            Song.FormBorderStyle = FormBorderStyle.None;
+            this.Controls.Add(Song);
+            Song.Show();
         }
     }
 }
