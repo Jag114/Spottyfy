@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
 using System;
@@ -20,7 +20,7 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            int type = 1;
+            int type = 2;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
             db.connection.TestData();
 
