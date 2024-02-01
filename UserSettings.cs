@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,12 +19,28 @@ namespace Spottyfy
         public int getTypeOfConnection { get; set; }
         public string getRank { get; set; }
 
+        public List<UserData> users { get; set; }
+
         private int type;
         private const string ProfilePictureFilePath = "profilePicturePath.txt";
         public UserSettings()
         {   
             InitializeComponent();
             LoadProfilePicture();
+            if (label_rank.Text == "admin")
+            {
+                flowLayout_admin.Visible = false;
+            }
+            else { flowLayout_admin.Visible = false; }
+
+            //Console.WriteLine(users);
+            //Console.WriteLine(users[0].ToJson());
+
+           //foreach (UserData item in users)
+           //{
+           //   comboBox_users.Items.Add(item);
+           //}
+           // Console.WriteLine(users);
             
         }
         public void getTheData()
@@ -31,6 +48,7 @@ namespace Spottyfy
             label_username.Text = this.getUsername;
             label_rank.Text = this.getRank;
             type = this.getTypeOfConnection;
+            users = this.users;
             
         }
 
@@ -73,6 +91,11 @@ namespace Spottyfy
             {
                 panel_avatar.BackgroundImage = Image.FromFile(user_picture);
             }
+        }
+
+        private void UserSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadProfilePicture();
         }
     }
 }

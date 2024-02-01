@@ -49,6 +49,7 @@ namespace Spottyfy
             this.nightmodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel_top.SuspendLayout();
             this.flowLayoutPanel_right.SuspendLayout();
             this.panel_user.SuspendLayout();
@@ -232,26 +233,33 @@ namespace Spottyfy
             this.userToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.right_cilck_menu.Name = "right_cilck_menu";
-            this.right_cilck_menu.Size = new System.Drawing.Size(176, 94);
+            this.right_cilck_menu.Size = new System.Drawing.Size(136, 70);
             // 
             // nightmodeToolStripMenuItem
             // 
             this.nightmodeToolStripMenuItem.Name = "nightmodeToolStripMenuItem";
-            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.nightmodeToolStripMenuItem.Text = "Nightmode";
             this.nightmodeToolStripMenuItem.Click += new System.EventHandler(this.nightmodeToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.userToolStripMenuItem.Text = "User";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // MainMenu
             // 
@@ -302,5 +310,6 @@ namespace Spottyfy
         private System.Windows.Forms.ToolStripMenuItem nightmodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

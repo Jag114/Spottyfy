@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MongoDB.Bson;
 
 namespace Spottyfy
 {
@@ -18,6 +19,8 @@ namespace Spottyfy
         public string getUser { get; set; }
         public int getTypeOfConnection { get; set; }
         public string getRank { get; set; }
+
+        public List <UserData> users { get; set; }
         public void resize()
         {
             panel_user.BringToFront();
@@ -97,15 +100,7 @@ namespace Spottyfy
                             {
                                 innerControl.ForeColor = ColorTranslator.FromHtml("#D7F75B");
                             }
-                            /* NI DZIALA FF
-                            if (innerControl.HasChildren)
-                            {
-                                foreach (Control nestedControl in innerControl.Controls)
-                                {
-                                    if (nestedControl is Label || nestedControl is TextBox) { nestedControl.ForeColor = ColorTranslator.FromHtml("#D7F75B"); }
-                                }
-                            }
-                            */
+                           
                         }
 
                     }
@@ -193,6 +188,11 @@ namespace Spottyfy
             UserSettings userSettings = new UserSettings();
             userSettings.getUsername = label_username.Text;
             userSettings.getRank = getRank;
+            userSettings.users = users;
+            Console.WriteLine("owo");
+            Console.WriteLine(users.Count());
+            Console.WriteLine(userSettings.users.Count());
+            Console.WriteLine(userSettings.users[0].ToJson());
             userSettings.getTypeOfConnection = getTypeOfConnection;
             userSettings.getTheData();
             userSettings.ShowDialog();
@@ -201,6 +201,11 @@ namespace Spottyfy
         private void nightmodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nightmode_toggle();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            right_cilck_menu.Visible = true;
         }
     }
 }
