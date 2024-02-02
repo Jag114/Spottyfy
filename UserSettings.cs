@@ -24,7 +24,10 @@ namespace Spottyfy
         private int type;
         private const string ProfilePictureFilePath = "profilePicturePath.txt";
         public UserSettings()
-        {   
+        {
+            this.FormBorderStyle= FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             InitializeComponent();
             LoadProfilePicture();
             if (label_rank.Text == "admin")

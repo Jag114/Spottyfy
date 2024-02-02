@@ -34,9 +34,9 @@ namespace Spottyfy
 
         public MainMenu()
         {
-            this.FormBorderStyle= FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            //this.FormBorderStyle= FormBorderStyle.FixedSingle;
+            //this.MaximizeBox = false;
+            //this.MinimizeBox = false;
             InitializeComponent();
             button_viewsongs.Text = Program.GetLangInstance().Descendants("ViewSongs").FirstOrDefault()?.Value;
             button_usersett.Text = Program.GetLangInstance().Descendants("UserSettings").FirstOrDefault()?.Value;
@@ -254,16 +254,6 @@ namespace Spottyfy
         private void nightmodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nightmode_toggle(this);
-        }
-
-        private void panel_empty_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel_top_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)

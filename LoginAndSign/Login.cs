@@ -21,7 +21,7 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            int type = 2;
+            int type = 1;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
 
             /*

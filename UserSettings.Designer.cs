@@ -57,7 +57,7 @@
             this.button_change_profpic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_change_profpic.ForeColor = System.Drawing.Color.Black;
             this.button_change_profpic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_change_profpic.Location = new System.Drawing.Point(17, 196);
+            this.button_change_profpic.Location = new System.Drawing.Point(17, 197);
             this.button_change_profpic.Name = "button_change_profpic";
             this.button_change_profpic.Size = new System.Drawing.Size(307, 34);
             this.button_change_profpic.TabIndex = 7;
@@ -166,7 +166,7 @@
             // 
             this.label_rank.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_rank.Location = new System.Drawing.Point(117, 170);
+            this.label_rank.Location = new System.Drawing.Point(117, 171);
             this.label_rank.Name = "label_rank";
             this.label_rank.Size = new System.Drawing.Size(100, 23);
             this.label_rank.TabIndex = 10;
@@ -226,7 +226,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(334, 454);
+            this.ClientSize = new System.Drawing.Size(334, 456);
             this.Controls.Add(this.flowLayout_admin);
             this.Controls.Add(this.button_change_profpic);
             this.Controls.Add(this.panel_avatar);
