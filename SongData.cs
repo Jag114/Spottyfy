@@ -24,5 +24,7 @@ namespace Spottyfy
         public string album { get; set; }
 
         public DateTime releaseDate { get; set; }
+        
+        public int cost { get; set; }
     }
 }

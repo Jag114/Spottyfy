@@ -22,5 +22,7 @@ namespace Spottyfy
         public string rank { get; set; }
 
         public DateTime creationDate { get; set; }
+
+        public int money { get; set; }
     }
 }

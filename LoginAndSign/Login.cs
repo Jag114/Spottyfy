@@ -23,67 +23,40 @@ namespace Spottyfy
             //test
             int type = 1;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
-
-            /*
-            UserData user = new UserData{
-                name = "user3",
+            UserData u = new UserData
+            {
+                name = "user",
+                password = "123",
+                rank = "user",
                 creationDate = DateTime.Now,
-                password = "password",
-                rank = "newbie"
+                money = 1000
             };
-            db.connection.AddData(user);
-            SongData song = new SongData
+            SongData s = new SongData
             {
-                name = "song1",
+                name = "user",
+                author = "1",
                 album = "1",
-                author = "someone",
-                releaseDate = DateTime.Now
+                releaseDate = DateTime.Now,
+                cost = 50
             };
-            db.connection.AddData(song);
-            AlbumData album = new AlbumData
-            {
-                name = "aaaalbum",
-                author = "somebody",
-                releaseDate = DateTime.Now
-            };
-            db.connection.AddData(album);
-            AuthorData author = new AuthorData
-            {
-                name = "author2",
-            };
-            db.connection.AddData(author);
-            */
-            /*
-            var a = db.connection.GetSongData();
+            //add song
+            //db.connection.AddData(s);
+            //display song
+            List<SongData> list = db.connection.GetSongData();
             Console.WriteLine("Songs:");
-            foreach (var s in a)
+            foreach(SongData song in list)
             {
-                Console.WriteLine(s.ToJson());
+                Console.WriteLine(song.ToJson());
             }
-            var b = db.connection.GetAlbumData();
-            Console.WriteLine("Albums:");
-            foreach (var s in b)
-            {
-                Console.WriteLine(s.ToJson());
-            }
-            var c = db.connection.GetAuthorData();
-            Console.WriteLine("Authors:");
-            foreach (var s in c)
-            {
-                Console.WriteLine(s.ToJson());
-            }
-            
-            var d = db.connection.GetUserData();
+            //add user
+            //db.connection.AddData(u);
+            //display user
             Console.WriteLine("Users:");
-            foreach (var s in d)
+            List<UserData> list2 = db.connection.GetUserData();
+            foreach (UserData user in list2)
             {
-                Console.WriteLine(s.ToJson());
+                Console.WriteLine(user.ToJson());
             }
-            */
-            //DataBaseConnect db2 = new DataBaseConnect(3);
-            //db2.connection.TestData();
-
-
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)
