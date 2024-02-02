@@ -30,7 +30,7 @@ namespace Spottyfy
             try
             {
                 connection = new MongoClient($"mongodb+srv://{this.login}:{this.password}@spottyfy.teapla0.mongodb.net/?retryWrites=true&w=majority");
-                db = connection.GetDatabase(dbName);
+                db = connection.GetDatabase(this.dbName);
             }
             catch (Exception e)
             {
