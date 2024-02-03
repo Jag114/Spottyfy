@@ -368,26 +368,47 @@ namespace Spottyfy
 
         public int UpdateData(AlbumData x, string id)
         {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateData(AuthorData x, string id)
-        {
-            return -1;
-        }
-        
-        public int UpdateData(UserData x, string id)
-        {
-            //finish
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"UPDATE `{usersTable}` SET `rank` = 'admin' WHERE `users`.`id` = {id}; ";
+                cmd.CommandText = $"UPDATE `{dbName}.{albumsTable}` SET `name` = '{x.name}', author = {x.author}, releaseDate = '{x.releaseDate} WHERE `{albumsTable}`.`id` = {id};";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
+        }
+
+        public int UpdateData(AuthorData x, string id)
+        {
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE `{dbName}.{authorsTable}` SET `name` = '{x.name}' WHERE `{authorsTable}`.`id` = {id};";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
+        }
+        
+        public int UpdateData(UserData x, string id)
+        {
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE `{usersTable}` SET `name` = '{x.name}', rank = '{x.rank}', password = '{x.password}', money = '{x.money}' WHERE `{usersTable}`.`id` = {id};";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Update" + ex.Message);
                 return -1;
             }
             return 0;

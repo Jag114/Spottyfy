@@ -401,6 +401,10 @@ namespace Spottyfy
             {
                 var collection = db.GetCollection<UserData>("Users");
                 UserData user = collection.Find(e => e.name == login).FirstOrDefault();
+                if(user == null) {
+                    Console.WriteLine("User does not exist");
+                    return -1;
+                }
                 if(user.password != password)
                 {
                     Console.WriteLine("Wrong password");
