@@ -30,7 +30,10 @@ namespace Spottyfy
             panel_top.Width = this.Width;
             int size_width = this.Width;
             panel_user.Location = new Point(size_width - 215, 75);
+            //panel_empty.Location = new Point((this.ClientSize.Width / 2) - (panel_empty.Width / 2), 120);
+            //panel_empty.Size = new Size((int)(this.ClientSize.Width*0.9), (int)(this.ClientSize.Height*0.9));
             panel_empty.Location = new Point((this.ClientSize.Width/2)-(panel_empty.Width/2),120);
+            
         }
 
         public MainMenu()
@@ -224,6 +227,18 @@ namespace Spottyfy
 
         }
 
+        private void button_shoppingcart_Click(object sender, EventArgs e)
+        {
+            Shop shop = new Shop() { TopLevel = false, TopMost=true };
+            shop.FormBorderStyle = FormBorderStyle.None;
+            panel_empty.Controls.Clear();
+            panel_empty.Controls.Add(shop);
+            nightmode_toggle(shop);
+            nightmode_toggle(shop);
+            shop.Show();
+
+        }
+
         //SKROTY KLAWISZOWE
         private void MainMenu_KeyDown(object sender, KeyEventArgs e)
         {
@@ -268,6 +283,8 @@ namespace Spottyfy
             userSettings.ShowDialog();
         }
 
+        
+
         private void nightmodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nightmode_toggle(this);
@@ -286,6 +303,11 @@ namespace Spottyfy
             tcForm.MinimizeBox = false;
             tcForm.BackColor = this.BackColor;
             tcForm.Show();
+        }
+
+        private void panel_top_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

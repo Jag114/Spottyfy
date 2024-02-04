@@ -266,7 +266,7 @@
             this.button_confirmchange.Name = "button_confirmchange";
             this.button_confirmchange.Size = new System.Drawing.Size(300, 34);
             this.button_confirmchange.TabIndex = 15;
-            this.button_confirmchange.Text = "Confirm change";
+            this.button_confirmchange.Text = "Confirm user change";
             this.button_confirmchange.UseVisualStyleBackColor = false;
             this.button_confirmchange.Click += new System.EventHandler(this.button_confirmchange_Click);
             // 

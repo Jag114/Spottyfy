@@ -64,6 +64,7 @@ namespace Spottyfy
             // panel_top
             // 
             this.panel_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.panel_top.Controls.Add(this.addSongs);
             this.panel_top.Controls.Add(this.button_shoppingcart);
             this.panel_top.Controls.Add(this.flowLayoutPanel_right);
             this.panel_top.Controls.Add(this.button_viewsongs);
@@ -72,6 +73,7 @@ namespace Spottyfy
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(807, 81);
             this.panel_top.TabIndex = 0;
+            this.panel_top.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_top_Paint);
             // 
             // flowLayoutPanel_right
             // 
@@ -91,7 +93,7 @@ namespace Spottyfy
             this.button_viewsongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_viewsongs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_viewsongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_viewsongs.Location = new System.Drawing.Point(27, 24);
+            this.button_viewsongs.Location = new System.Drawing.Point(69, 27);
             this.button_viewsongs.Margin = new System.Windows.Forms.Padding(2);
             this.button_viewsongs.Name = "button_viewsongs";
             this.button_viewsongs.Size = new System.Drawing.Size(140, 34);
@@ -261,7 +263,7 @@ namespace Spottyfy
             this.addSongs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.addSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.addSongs.Location = new System.Drawing.Point(179, 20);
+            this.addSongs.Location = new System.Drawing.Point(225, 27);
             this.addSongs.Margin = new System.Windows.Forms.Padding(2);
             this.addSongs.Name = "addSongs";
             this.addSongs.Size = new System.Drawing.Size(140, 34);
@@ -331,7 +333,7 @@ namespace Spottyfy
             this.button_shoppingcart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_shoppingcart.FlatAppearance.BorderSize = 0;
             this.button_shoppingcart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_shoppingcart.Location = new System.Drawing.Point(341, 24);
+            this.button_shoppingcart.Location = new System.Drawing.Point(20, 24);
             this.button_shoppingcart.Margin = new System.Windows.Forms.Padding(7, 6, 13, 6);
             this.button_shoppingcart.Name = "button_shoppingcart";
             this.button_shoppingcart.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -339,6 +341,7 @@ namespace Spottyfy
             this.button_shoppingcart.Size = new System.Drawing.Size(34, 34);
             this.button_shoppingcart.TabIndex = 6;
             this.button_shoppingcart.UseVisualStyleBackColor = true;
+            this.button_shoppingcart.Click += new System.EventHandler(this.button_shoppingcart_Click);
             // 
             // MainMenu
             // 
@@ -346,7 +349,6 @@ namespace Spottyfy
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(834, 506);
-            this.Controls.Add(this.addSongs);
             this.Controls.Add(this.panel_user);
             this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_top);

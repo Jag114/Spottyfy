@@ -233,6 +233,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginAndSign\SignUp.Designer.cs" />
+    <Compile Include="Shop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shop.Designer.cs">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShortcutInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Shop.resx">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShortcutInfo.resx">
       <DependentUpon>ShortcutInfo.cs</DependentUpon>
     </EmbeddedResource>
