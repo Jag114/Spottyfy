@@ -134,9 +134,6 @@ namespace Spottyfy
                             user.money= item.money;
                             user.creationDate = item.creationDate;
                             user.rank = setRank;
-                            Console.WriteLine("owowowowd");
-                            Console.WriteLine(user.rank.ToString());
-                            Console.WriteLine(user.name.ToString());
                             db.connection.UpdateData(user, item.Id);
 
                             string errorMessage = "User rank has been updated";

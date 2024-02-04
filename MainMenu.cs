@@ -66,7 +66,7 @@ namespace Spottyfy
             {
                 button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.whitemoon;
                 this.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                activeForm.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                //activeForm.BackColor = ColorTranslator.FromHtml("#E8F9A3");
                 foreach (Control control in panel_empty.Controls)
                 {
                     if (control is Panel)
@@ -75,20 +75,20 @@ namespace Spottyfy
                         {
                             if (innerControl.HasChildren)
                             {
-                                innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                //innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
 
                                 foreach(Control child in innerControl.Controls)
                                 {
                                     child.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                                    if (child is Label)
+                                    if (child is Label || child is RadioButton)
                                     {
-                                        child.ForeColor = ColorTranslator.FromHtml("#343035");
+                                        child.ForeColor = ColorTranslator.FromHtml("#E8F9A3");
                                     }
                                     if (child.HasChildren)
                                     {
                                         foreach (Control childe in child.Controls)
                                         {
-                                            if (childe is Label)
+                                            if (childe is Label || childe is RadioButton)
                                             { childe.ForeColor = ColorTranslator.FromHtml("#E8F9A3"); } 
                                         }
                                     }
@@ -104,16 +104,18 @@ namespace Spottyfy
 
                         foreach (Control innerControl in form.Controls)
                         {
-                            innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                            if (innerControl is Label || innerControl is TextBox)
+                            //innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                            if (innerControl is Label || innerControl is RadioButton)
                             {
                                 innerControl.ForeColor = ColorTranslator.FromHtml("#343035");
                             }
 
                             foreach (Control inner2Control in form.Controls)
                             {
-                                inner2Control.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                                if (inner2Control is Label || inner2Control is TextBox)
+                                Form newform = new Form();
+                                newform.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                //inner2Control.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                if (inner2Control is Label || inner2Control is RadioButton)
                                 {
                                     inner2Control.ForeColor = ColorTranslator.FromHtml("#343035");
                                 }
@@ -121,39 +123,42 @@ namespace Spottyfy
                                 {
                                     foreach (Control childe in inner2Control.Controls)
                                     {
-                                        childe.ForeColor = ColorTranslator.FromHtml("#343035");
+                                        if(childe is Label || childe is RadioButton)childe.ForeColor = ColorTranslator.FromHtml("#343035");
                                     }
                                 }
-
                             }
                         }
                     }
                 }
-
                 nightmode = false;
             }
             else
             {
                 button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.to_night;
                 this.BackColor = ColorTranslator.FromHtml("#1A181B");
+
                 foreach (Control control in panel_empty.Controls)
                 {
-                    if (control is Panel) {
+                    if (control is Panel)
+                    {
                         foreach (Control innerControl in control.Controls)
                         {
-                            if (control is Form)
+                            if (innerControl.HasChildren)
                             {
-                                Form form = (Form)control;
-                                form.BackColor = ColorTranslator.FromHtml("#1A181B");
-
-                                foreach (Control inner2Control in form.Controls)
+                                foreach (Control child in innerControl.Controls)
                                 {
-                                    inner2Control.BackColor = ColorTranslator.FromHtml("#1A181B");
-                                    if (inner2Control is Label || inner2Control is TextBox)
+                                    if (child is Label || child is RadioButton)
                                     {
-                                        inner2Control.ForeColor = ColorTranslator.FromHtml("#D7F75B");
+                                        child.ForeColor = ColorTranslator.FromHtml("#E8F9A3");
                                     }
-
+                                    if (child.HasChildren)
+                                    {
+                                        foreach (Control childe in child.Controls)
+                                        {
+                                            if (childe is Label || childe is RadioButton)
+                                            { childe.ForeColor = ColorTranslator.FromHtml("#E8F9A3"); }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -165,18 +170,34 @@ namespace Spottyfy
 
                         foreach (Control innerControl in form.Controls)
                         {
-                            innerControl.BackColor = ColorTranslator.FromHtml("#1A181B");
-                            if (innerControl is Label || innerControl is TextBox)
+                            if (innerControl is Label || innerControl is RadioButton)
                             {
-                                innerControl.ForeColor = ColorTranslator.FromHtml("#D7F75B");
+                                innerControl.ForeColor = ColorTranslator.FromHtml("#343035");
                             }
-                           
+
+                            foreach (Control inner2Control in form.Controls)
+                            {
+                                Form newform = new Form();
+                                newform.BackColor = ColorTranslator.FromHtml("#1A181B");
+                                //inner2Control.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                if (inner2Control is Label || inner2Control is RadioButton)
+                                {
+                                    inner2Control.ForeColor = ColorTranslator.FromHtml("#E8F9A3");
+                                }
+                                if (inner2Control.HasChildren)
+                                {
+                                    foreach (Control childe in inner2Control.Controls)
+                                    {
+                                        if (childe is Label || childe is RadioButton)
+                                        {
+                                            childe.ForeColor = ColorTranslator.FromHtml("#E8F9A3");
+                                        } 
+                                    }
+                                }
+                            }
                         }
-
                     }
-
                 }
-
                 nightmode = true;
             }
         }
@@ -231,8 +252,10 @@ namespace Spottyfy
         {
             Shop shop = new Shop() { TopLevel = false, TopMost=true };
             shop.FormBorderStyle = FormBorderStyle.None;
+            shop.getTypeOfConnection = getTypeOfConnection;
             panel_empty.Controls.Clear();
             panel_empty.Controls.Add(shop);
+            shop.getData();
             nightmode_toggle(shop);
             nightmode_toggle(shop);
             shop.Show();
