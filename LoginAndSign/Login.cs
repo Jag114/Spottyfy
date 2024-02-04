@@ -21,27 +21,19 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
+            /*
             int type = 2;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
-            List<UserData> list = db.connection.GetUserData();
-            UserData old = new UserData();
-            MongoIDStandardizer standardizer = new MongoIDStandardizer();
-            list[1].Id = standardizer.StandardizeString(list[1].Id);
-            old = list[1];
-            Console.WriteLine("Old money: " + old.money);
+            List<UserData> users = db.connection.GetUserData();
+            UserData user = users[2];
             List<SongData> songs = db.connection.GetSongData();
-            old.Buy(songs[0]);
-            Console.WriteLine("New money: " + old.money);
-            UserData u = new UserData
-            {
-                name = "updateduser",
-                password = old.password,
-                rank = old.rank,
-                creationDate = old.creationDate,
-                money = old.money
-            };
-            db.connection.UpdateData(u, "2");
-            
+            SongData song = songs[0];
+            user.Buy(song);
+            Console.WriteLine(user.money);
+            user.money = 10;
+            user.Buy(song);
+            Console.WriteLine(user.money);
+            */
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)

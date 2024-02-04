@@ -31,6 +31,7 @@ namespace Spottyfy
             {
                 if(song.cost > this.money)
                 {
+                    Console.WriteLine("User does not have enough money");
                     AlertBox alertBox = new AlertBox();
                     alertBox.UpdateLabelTextAndCenterFAILED("User does not have enough money");
                     alertBox.Show();
@@ -42,6 +43,7 @@ namespace Spottyfy
             }
             catch (Exception ex) 
             {
+                Console.WriteLine(ex.Message);
                 AlertBox alertBox = new AlertBox();
                 alertBox.UpdateLabelTextAndCenterFAILED(ex.Message);
                 alertBox.Show();
