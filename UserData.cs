@@ -24,5 +24,32 @@ namespace Spottyfy
         public DateTime creationDate { get; set; }
 
         public int money { get; set; }
+
+        public int Buy(SongData song)
+        {
+            try
+            {
+                if(song.cost > this.money)
+                {
+                    Console.WriteLine("User does not have enough money");
+                    AlertBox alertBox = new AlertBox();
+                    alertBox.UpdateLabelTextAndCenterFAILED("User does not have enough money");
+                    alertBox.Show();
+                }
+                else
+                {
+                    this.money -= song.cost;
+                }
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                AlertBox alertBox = new AlertBox();
+                alertBox.UpdateLabelTextAndCenterFAILED(ex.Message);
+                alertBox.Show();
+                return -1;
+            }
+            return 0;
+        }
     }
 }

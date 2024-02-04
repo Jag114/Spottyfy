@@ -21,12 +21,12 @@ namespace Spottyfy
         const string albumsTable = "albums";
         const string authorsTable = "authors";
 
-        public MySqlDB(string login = "admin", string password = "admin123")
+        public MySqlDB(string login = "root", string password = "")
         {
             this.login = login;
             this.password = password;
 
-            string myConnectionString = $"server=127.0.0.1;uid={this.login};pwd={this.password};database=test";
+            string myConnectionString = $"server=127.0.0.1;uid={this.login};pwd={this.password};database=test;";
             try
             {
                 connection = new MySqlConnection(myConnectionString);
@@ -105,6 +105,7 @@ namespace Spottyfy
                 string songAuthor = Reader["author"].ToString();
                 string songAlbum = Reader["album"].ToString();
                 DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
+                int songCost = Int32.Parse(Reader["cost"].ToString());
 
                 MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
                 string standardizedID = mongoIDStandardizer.StandardizeString(songId);
@@ -115,7 +116,8 @@ namespace Spottyfy
                     name = songName,
                     author = songAuthor,
                     album = songAlbum,
-                    releaseDate = songReleaseDate
+                    releaseDate = songReleaseDate,
+                    cost = songCost 
                 };
                 songs.Add(song);
             }
@@ -142,6 +144,7 @@ namespace Spottyfy
                 string songAuthor = Reader["author"].ToString();
                 string songAlbum = Reader["album"].ToString();
                 DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
+                int songCost = Int32.Parse(Reader["cost"].ToString());
 
                 MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
                 string standardizedID = mongoIDStandardizer.StandardizeString(songId);
@@ -152,7 +155,8 @@ namespace Spottyfy
                     name = songName,
                     author = songAuthor,
                     album = songAlbum,
-                    releaseDate = songReleaseDate
+                    releaseDate = songReleaseDate,
+                    cost = songCost
                 };
                 songs.Add(song);
             }
@@ -242,7 +246,8 @@ namespace Spottyfy
                 string songName = Reader["name"].ToString();
                 string songAuthor = Reader["password"].ToString();
                 string songAlbum = Reader["rank"].ToString();
-                
+                DateTime songReleaseDate = DateTime.Parse(Reader["creationDate"].ToString());
+                int money = Int32.Parse(Reader["money"].ToString());
 
                 MongoIDStandardizer mongoIDStandardizer = new MongoIDStandardizer();
                 string standardizedID = mongoIDStandardizer.StandardizeString(songId);
@@ -253,7 +258,8 @@ namespace Spottyfy
                     name = songName,
                     password = songAuthor,
                     rank = songAlbum,
-                    //creationDate = songReleaseDate
+                    creationDate = songReleaseDate,
+                    money = money
                 };
                 users.Add(user);
             }
@@ -272,7 +278,7 @@ namespace Spottyfy
             {
                 MySqlCommand cmd = connection.CreateCommand();
 
-                cmd.CommandText = $"INSERT INTO {dbName}.{songsTable}(album, author, song) VALUES ({x.album}, '{x.author}', '{x.name}');";
+                cmd.CommandText = $"INSERT INTO {dbName}.{songsTable}(album, author, name, cost) VALUES ({x.album}, '{x.author}', '{x.name}', '{x.cost}');";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -332,13 +338,14 @@ namespace Spottyfy
                         first = true;
                     }
                 }
+                Reader.Close();
                 if (first)
                 {
-                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', 'admin', '{x.creationDate});";
+                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate, money) VALUES ('{x.name}', '{x.password}', 'admin', '{x.creationDate}', '{x.money}');";
                 }
                 else
                 {
-                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate) VALUES ({x.name}, '{x.password}', '{x.rank}', '{x.creationDate});";
+                    cmd.CommandText = $"INSERT INTO {dbName}.{usersTable}(name, password, rank, creationDate, money) VALUES ('{x.name}', '{x.password}', '{x.rank}', '{x.creationDate}', '{x.money}');";
                 }
                 cmd.ExecuteNonQuery();
             }
@@ -355,7 +362,7 @@ namespace Spottyfy
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"UPDATE `{dbName}.{songsTable}` SET `name` = '{x.name}', author = {x.author}, album = {x.album}, releaseDate = '{x.releaseDate} WHERE `{songsTable}`.`id` = {id};";
+                cmd.CommandText = $"UPDATE `{dbName}.{songsTable}` SET `name` = '{x.name}', author = {x.author}, album = {x.album}, releaseDate = '{x.releaseDate}, cost = '{x.cost}' WHERE `{songsTable}`.`id` = {id};";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -368,26 +375,47 @@ namespace Spottyfy
 
         public int UpdateData(AlbumData x, string id)
         {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateData(AuthorData x, string id)
-        {
-            return -1;
-        }
-        
-        public int UpdateData(UserData x, string id)
-        {
-            //finish
             try
             {
                 MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"UPDATE `{usersTable}` SET `rank` = 'admin' WHERE `users`.`id` = {id}; ";
+                cmd.CommandText = $"UPDATE `{dbName}.{albumsTable}` SET `name` = '{x.name}', author = {x.author}, releaseDate = '{x.releaseDate} WHERE `{albumsTable}`.`id` = {id};";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
+        }
+
+        public int UpdateData(AuthorData x, string id)
+        {
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE `{dbName}.{authorsTable}` SET `name` = '{x.name}' WHERE `{authorsTable}`.`id` = {id};";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -1;
+            }
+            return 0;
+        }
+        
+        public int UpdateData(UserData x, string id)
+        {
+            try
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE `{usersTable}` SET `name` = '{x.name}', rank = '{x.rank}', password = '{x.password}', money = '{x.money}' WHERE `{usersTable}`.`id` = {id};";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Update" + ex.Message);
                 return -1;
             }
             return 0;
@@ -460,7 +488,7 @@ namespace Spottyfy
         public int Authenticate(string login, string password)
         {
             MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {dbName}.{songsTable} WHERE name = '{login}';";
+            cmd.CommandText = $"SELECT * FROM {dbName}.{usersTable} WHERE name = '{login}';";
             MySqlDataReader Reader = cmd.ExecuteReader();
             if (!Reader.HasRows) return -1;
             string pass = "";
@@ -468,12 +496,12 @@ namespace Spottyfy
             {
                 pass = Reader["password"].ToString();  
             }
-            if(pass != password)
+            Reader.Close();
+            if (pass != password)
             {
                 Console.WriteLine("Wrong password");
                 return -1;
             }
-            Reader.Close();
             return 0;
         }
     }

@@ -21,42 +21,19 @@ namespace Spottyfy
             InitializeComponent();
 
             //test
-            int type = 1;
+            /*
+            int type = 2;
             DataBaseConnect db = new DataBaseConnect(type);//1-mongo, 2-mysql
-            UserData u = new UserData
-            {
-                name = "user",
-                password = "123",
-                rank = "user",
-                creationDate = DateTime.Now,
-                money = 1000
-            };
-            SongData s = new SongData
-            {
-                name = "user",
-                author = "1",
-                album = "1",
-                releaseDate = DateTime.Now,
-                cost = 50
-            };
-            //add song
-            //db.connection.AddData(s);
-            //display song
-            List<SongData> list = db.connection.GetSongData();
-            Console.WriteLine("Songs:");
-            foreach(SongData song in list)
-            {
-                Console.WriteLine(song.ToJson());
-            }
-            //add user
-            //db.connection.AddData(u);
-            //display user
-            Console.WriteLine("Users:");
-            List<UserData> list2 = db.connection.GetUserData();
-            foreach (UserData user in list2)
-            {
-                Console.WriteLine(user.ToJson());
-            }
+            List<UserData> users = db.connection.GetUserData();
+            UserData user = users[2];
+            List<SongData> songs = db.connection.GetSongData();
+            SongData song = songs[0];
+            user.Buy(song);
+            Console.WriteLine(user.money);
+            user.money = 10;
+            user.Buy(song);
+            Console.WriteLine(user.money);
+            */
         }
 
         private void button_loggin_window_Click(object sender, EventArgs e)
