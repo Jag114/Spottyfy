@@ -108,6 +108,7 @@ namespace Spottyfy
                 MainMenuOpen.getRank = getRank;
                 MainMenuOpen.getMoney = getMoney;
                 MainMenuOpen.getTypeOfConnection = type;
+                MainMenuOpen.getTheData();
                 MainMenuOpen.ShowDialog();
             }
             else

@@ -24,6 +24,13 @@ namespace Spottyfy
         public int getMoney { get; set; }
 
         public List <UserData> users { get; set; }
+
+        public void getTheData()
+        {
+            getUser = this.getUser;
+            getMoney = this.getMoney;
+            getTypeOfConnection = this.getTypeOfConnection;
+        }
         public void resize()
         {
             panel_user.BringToFront();
@@ -255,7 +262,12 @@ namespace Spottyfy
             shop.getTypeOfConnection = getTypeOfConnection;
             panel_empty.Controls.Clear();
             panel_empty.Controls.Add(shop);
+            shop.getUser = getUser;
             shop.getData();
+            Console.WriteLine("TUTAJ MAIN MENU SHOP DEKLARACJA PRZEKAZANIA DANYCH OWO");
+            Console.WriteLine(getTypeOfConnection);
+            Console.WriteLine(shop.getTypeOfConnection);
+            Console.WriteLine(shop.getUser);
             nightmode_toggle(shop);
             nightmode_toggle(shop);
             shop.Show();
@@ -302,6 +314,10 @@ namespace Spottyfy
             Console.WriteLine(userSettings.users.Count());
             Console.WriteLine(userSettings.users[0].ToJson());
             userSettings.getTypeOfConnection = getTypeOfConnection;
+            Console.WriteLine("TUTAJ MAIN MENU USER DEKLARACJA PRZEKAZANIA DANYCH OWO");
+            Console.WriteLine(getTypeOfConnection);
+            Console.WriteLine(userSettings.getTypeOfConnection);
+            Console.WriteLine(userSettings.getUsername);
             userSettings.getTheData();
             userSettings.ShowDialog();
         }

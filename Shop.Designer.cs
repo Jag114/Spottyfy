@@ -44,7 +44,7 @@
             this.label_shop.AutoSize = true;
             this.label_shop.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_shop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_shop.Location = new System.Drawing.Point(12, 9);
+            this.label_shop.Location = new System.Drawing.Point(75, 9);
             this.label_shop.Name = "label_shop";
             this.label_shop.Size = new System.Drawing.Size(117, 38);
             this.label_shop.TabIndex = 2;
@@ -66,18 +66,15 @@
             this.table_shop.Controls.Add(this.label1, 4, 0);
             this.table_shop.Location = new System.Drawing.Point(19, 50);
             this.table_shop.Name = "table_shop";
-            this.table_shop.RowCount = 7;
+            this.table_shop.RowCount = 1;
             this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.table_shop.Size = new System.Drawing.Size(464, 368);
+            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.table_shop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.table_shop.Size = new System.Drawing.Size(547, 368);
             this.table_shop.TabIndex = 3;
             // 
             // label_info
@@ -86,7 +83,7 @@
             this.label_info.AutoSize = true;
             this.label_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_info.Location = new System.Drawing.Point(293, 8);
+            this.label_info.Location = new System.Drawing.Point(352, 172);
             this.label_info.Name = "label_info";
             this.label_info.Size = new System.Drawing.Size(58, 24);
             this.label_info.TabIndex = 3;
@@ -98,9 +95,9 @@
             this.label_info3.AutoSize = true;
             this.label_info3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_info3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_info3.Location = new System.Drawing.Point(197, 0);
+            this.label_info3.Location = new System.Drawing.Point(240, 160);
             this.label_info3.Name = "label_info3";
-            this.label_info3.Size = new System.Drawing.Size(65, 40);
+            this.label_info3.Size = new System.Drawing.Size(65, 48);
             this.label_info3.TabIndex = 2;
             this.label_info3.Text = "Song name";
             // 
@@ -110,9 +107,9 @@
             this.label_info2.AutoSize = true;
             this.label_info2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_info2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_info2.Location = new System.Drawing.Point(99, 0);
+            this.label_info2.Location = new System.Drawing.Point(124, 160);
             this.label_info2.Name = "label_info2";
-            this.label_info2.Size = new System.Drawing.Size(78, 40);
+            this.label_info2.Size = new System.Drawing.Size(78, 48);
             this.label_info2.TabIndex = 1;
             this.label_info2.Text = "Author name";
             // 
@@ -122,9 +119,9 @@
             this.label_info1.AutoSize = true;
             this.label_info1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_info1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_info1.Location = new System.Drawing.Point(8, 0);
+            this.label_info1.Location = new System.Drawing.Point(16, 160);
             this.label_info1.Name = "label_info1";
-            this.label_info1.Size = new System.Drawing.Size(76, 40);
+            this.label_info1.Size = new System.Drawing.Size(76, 48);
             this.label_info1.TabIndex = 0;
             this.label_info1.Text = "Album name";
             // 
@@ -134,7 +131,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label1.Location = new System.Drawing.Point(373, 8);
+            this.label1.Location = new System.Drawing.Point(448, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 24);
             this.label1.TabIndex = 4;
@@ -144,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 450);
+            this.ClientSize = new System.Drawing.Size(629, 450);
             this.Controls.Add(this.table_shop);
             this.Controls.Add(this.label_shop);
             this.Name = "Shop";
