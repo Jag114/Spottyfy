@@ -39,10 +39,14 @@
             this.label_username = new System.Windows.Forms.Label();
             this.label_rank = new System.Windows.Forms.Label();
             this.openFile_picutre = new System.Windows.Forms.OpenFileDialog();
-            this.panel_avatar = new System.Windows.Forms.Panel();
             this.comboBox_users = new System.Windows.Forms.ComboBox();
             this.flowLayout_admin = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkBox_user = new System.Windows.Forms.CheckBox();
+            this.checkBox_admin = new System.Windows.Forms.CheckBox();
+            this.button_confirmchange = new System.Windows.Forms.Button();
+            this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
+            this.panel_avatar = new System.Windows.Forms.Panel();
             this.flowLayoutPanel_user_sett.SuspendLayout();
             this.flowLayout_admin.SuspendLayout();
             this.SuspendLayout();
@@ -50,19 +54,19 @@
             // button_change_profpic
             // 
             this.button_change_profpic.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_change_profpic.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_change_profpic.FlatAppearance.BorderSize = 0;
+            this.button_change_profpic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.button_change_profpic.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_change_profpic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.button_change_profpic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_change_profpic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_change_profpic.ForeColor = System.Drawing.Color.Black;
+            this.button_change_profpic.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_change_profpic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_change_profpic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_change_profpic.Location = new System.Drawing.Point(17, 197);
+            this.button_change_profpic.Location = new System.Drawing.Point(15, 198);
             this.button_change_profpic.Name = "button_change_profpic";
-            this.button_change_profpic.Size = new System.Drawing.Size(307, 34);
+            this.button_change_profpic.Size = new System.Drawing.Size(300, 34);
             this.button_change_profpic.TabIndex = 7;
             this.button_change_profpic.Text = "Change profile picture";
-            this.button_change_profpic.UseVisualStyleBackColor = true;
+            this.button_change_profpic.UseVisualStyleBackColor = false;
             this.button_change_profpic.Click += new System.EventHandler(this.button_usersett_Click);
             // 
             // flowLayoutPanel_user_sett
@@ -74,9 +78,9 @@
             this.flowLayoutPanel_user_sett.Controls.Add(this.input_newpass);
             this.flowLayoutPanel_user_sett.Controls.Add(this.button_changpassword);
             this.flowLayoutPanel_user_sett.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel_user_sett.Location = new System.Drawing.Point(312, 270);
+            this.flowLayoutPanel_user_sett.Location = new System.Drawing.Point(21, 424);
             this.flowLayoutPanel_user_sett.Name = "flowLayoutPanel_user_sett";
-            this.flowLayoutPanel_user_sett.Size = new System.Drawing.Size(310, 246);
+            this.flowLayoutPanel_user_sett.Size = new System.Drawing.Size(310, 249);
             this.flowLayoutPanel_user_sett.TabIndex = 8;
             this.flowLayoutPanel_user_sett.Visible = false;
             // 
@@ -153,8 +157,8 @@
             // 
             // label_username
             // 
-            this.label_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_username.ForeColor = System.Drawing.Color.Black;
+            this.label_username.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.label_username.Location = new System.Drawing.Point(12, 135);
             this.label_username.Name = "label_username";
             this.label_username.Size = new System.Drawing.Size(310, 35);
@@ -165,8 +169,9 @@
             // label_rank
             // 
             this.label_rank.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label_rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_rank.Location = new System.Drawing.Point(117, 171);
+            this.label_rank.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_rank.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.label_rank.Location = new System.Drawing.Point(116, 160);
             this.label_rank.Name = "label_rank";
             this.label_rank.Size = new System.Drawing.Size(100, 23);
             this.label_rank.TabIndex = 10;
@@ -177,6 +182,99 @@
             // 
             this.openFile_picutre.FileName = "openFileDialog1";
             // 
+            // comboBox_users
+            // 
+            this.comboBox_users.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.comboBox_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_users.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox_users.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.comboBox_users.FormattingEnabled = true;
+            this.comboBox_users.Location = new System.Drawing.Point(4, 29);
+            this.comboBox_users.Name = "comboBox_users";
+            this.comboBox_users.Size = new System.Drawing.Size(300, 28);
+            this.comboBox_users.TabIndex = 13;
+            // 
+            // flowLayout_admin
+            // 
+            this.flowLayout_admin.Controls.Add(this.label1);
+            this.flowLayout_admin.Controls.Add(this.comboBox_users);
+            this.flowLayout_admin.Controls.Add(this.checkBox_user);
+            this.flowLayout_admin.Controls.Add(this.checkBox_admin);
+            this.flowLayout_admin.Controls.Add(this.button_confirmchange);
+            this.flowLayout_admin.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayout_admin.Location = new System.Drawing.Point(12, 253);
+            this.flowLayout_admin.Name = "flowLayout_admin";
+            this.flowLayout_admin.Size = new System.Drawing.Size(319, 165);
+            this.flowLayout_admin.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(302, 26);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Choose user to edit:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkBox_user
+            // 
+            this.checkBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox_user.AutoSize = true;
+            this.checkBox_user.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.checkBox_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox_user.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.checkBox_user.Location = new System.Drawing.Point(124, 63);
+            this.checkBox_user.Name = "checkBox_user";
+            this.checkBox_user.Size = new System.Drawing.Size(59, 22);
+            this.checkBox_user.TabIndex = 15;
+            this.checkBox_user.Text = "user";
+            this.checkBox_user.UseVisualStyleBackColor = true;
+            this.checkBox_user.CheckedChanged += new System.EventHandler(this.checkBox_user_CheckedChanged);
+            // 
+            // checkBox_admin
+            // 
+            this.checkBox_admin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox_admin.AutoSize = true;
+            this.checkBox_admin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.checkBox_admin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox_admin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox_admin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.checkBox_admin.Location = new System.Drawing.Point(117, 91);
+            this.checkBox_admin.Name = "checkBox_admin";
+            this.checkBox_admin.Size = new System.Drawing.Size(74, 22);
+            this.checkBox_admin.TabIndex = 16;
+            this.checkBox_admin.Text = "admin";
+            this.checkBox_admin.UseVisualStyleBackColor = true;
+            this.checkBox_admin.CheckedChanged += new System.EventHandler(this.checkBox_admin_CheckedChanged);
+            // 
+            // button_confirmchange
+            // 
+            this.button_confirmchange.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_confirmchange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(53)))));
+            this.button_confirmchange.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.button_confirmchange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.button_confirmchange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_confirmchange.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_confirmchange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.button_confirmchange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_confirmchange.Location = new System.Drawing.Point(4, 119);
+            this.button_confirmchange.Name = "button_confirmchange";
+            this.button_confirmchange.Size = new System.Drawing.Size(300, 34);
+            this.button_confirmchange.TabIndex = 15;
+            this.button_confirmchange.Text = "Confirm change";
+            this.button_confirmchange.UseVisualStyleBackColor = false;
+            this.button_confirmchange.Click += new System.EventHandler(this.button_confirmchange_Click);
+            // 
+            // npgsqlCommandBuilder1
+            // 
+            this.npgsqlCommandBuilder1.QuotePrefix = "\"";
+            this.npgsqlCommandBuilder1.QuoteSuffix = "\"";
+            // 
             // panel_avatar
             // 
             this.panel_avatar.BackgroundImage = global::Spottyfy.Properties.Resources.blank_avatar;
@@ -186,53 +284,21 @@
             this.panel_avatar.Size = new System.Drawing.Size(120, 120);
             this.panel_avatar.TabIndex = 12;
             // 
-            // comboBox_users
-            // 
-            this.comboBox_users.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox_users.FormattingEnabled = true;
-            this.comboBox_users.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c"});
-            this.comboBox_users.Location = new System.Drawing.Point(3, 16);
-            this.comboBox_users.Name = "comboBox_users";
-            this.comboBox_users.Size = new System.Drawing.Size(197, 21);
-            this.comboBox_users.TabIndex = 13;
-            // 
-            // flowLayout_admin
-            // 
-            this.flowLayout_admin.Controls.Add(this.label1);
-            this.flowLayout_admin.Controls.Add(this.comboBox_users);
-            this.flowLayout_admin.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayout_admin.Location = new System.Drawing.Point(70, 270);
-            this.flowLayout_admin.Name = "flowLayout_admin";
-            this.flowLayout_admin.Size = new System.Drawing.Size(200, 100);
-            this.flowLayout_admin.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Choose user";
-            // 
             // UserSettings
             // 
             this.AcceptButton = this.button_changpassword;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(334, 456);
             this.Controls.Add(this.flowLayout_admin);
+            this.Controls.Add(this.flowLayoutPanel_user_sett);
             this.Controls.Add(this.button_change_profpic);
             this.Controls.Add(this.panel_avatar);
             this.Controls.Add(this.label_rank);
             this.Controls.Add(this.label_username);
-            this.Controls.Add(this.flowLayoutPanel_user_sett);
             this.Name = "UserSettings";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "UserSettings";
@@ -261,5 +327,9 @@
         private System.Windows.Forms.ComboBox comboBox_users;
         private System.Windows.Forms.FlowLayoutPanel flowLayout_admin;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox_user;
+        private System.Windows.Forms.CheckBox checkBox_admin;
+        private System.Windows.Forms.Button button_confirmchange;
+        private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
     }
 }

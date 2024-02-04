@@ -21,6 +21,7 @@ namespace Spottyfy
         public string getUser { get; set; }
         public int getTypeOfConnection { get; set; }
         public string getRank { get; set; }
+        public int getMoney { get; set; }
 
         public List <UserData> users { get; set; }
         public void resize()
@@ -69,17 +70,24 @@ namespace Spottyfy
                     {
                         foreach (Control innerControl in control.Controls)
                         {
-                            if (control is Form)
+                            if (innerControl.HasChildren)
                             {
-                                Form form = (Form)control;
-                                form.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
 
-                                foreach (Control inner2Control in form.Controls)
+                                foreach(Control child in innerControl.Controls)
                                 {
-                                    inner2Control.BackColor = ColorTranslator.FromHtml("#E8F9A3");
-                                    if (inner2Control is Label || inner2Control is TextBox)
+                                    child.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                    if (child is Label)
                                     {
-                                        inner2Control.ForeColor = ColorTranslator.FromHtml("#343035");
+                                        child.ForeColor = ColorTranslator.FromHtml("#343035");
+                                    }
+                                    if (child.HasChildren)
+                                    {
+                                        foreach (Control childe in child.Controls)
+                                        {
+                                            if (childe is Label)
+                                            { childe.ForeColor = ColorTranslator.FromHtml("#E8F9A3"); } 
+                                        }
                                     }
 
                                 }
@@ -96,19 +104,25 @@ namespace Spottyfy
                             innerControl.BackColor = ColorTranslator.FromHtml("#E8F9A3");
                             if (innerControl is Label || innerControl is TextBox)
                             {
-
                                 innerControl.ForeColor = ColorTranslator.FromHtml("#343035");
                             }
 
-                            /* NI DZIALA FF
-                            if (innerControl.HasChildren)
+                            foreach (Control inner2Control in form.Controls)
                             {
-                                foreach (Control nestedControl in innerControl.Controls)
+                                inner2Control.BackColor = ColorTranslator.FromHtml("#E8F9A3");
+                                if (inner2Control is Label || inner2Control is TextBox)
                                 {
-                                    if (nestedControl is Label || nestedControl is TextBox) { nestedControl.ForeColor = ColorTranslator.FromHtml("#D7F75B"); }
+                                    inner2Control.ForeColor = ColorTranslator.FromHtml("#343035");
                                 }
+                                if (inner2Control.HasChildren)
+                                {
+                                    foreach (Control childe in inner2Control.Controls)
+                                    {
+                                        childe.ForeColor = ColorTranslator.FromHtml("#343035");
+                                    }
+                                }
+
                             }
-                            */
                         }
                     }
                 }
@@ -176,6 +190,7 @@ namespace Spottyfy
         private void button_user_Click(object sender, EventArgs e)
         {
             label_username.Text = this.getUser;
+            label_creditscore.Text = this.getMoney.ToString();
 
             if (panel_user.Visible == true)
             {
@@ -232,7 +247,9 @@ namespace Spottyfy
 
         private void button_logout_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
         }
 
         private void button_usersett_Click(object sender, EventArgs e)
