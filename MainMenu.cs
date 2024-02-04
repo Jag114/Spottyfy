@@ -221,13 +221,27 @@ namespace Spottyfy
         private void button_user_Click(object sender, EventArgs e)
         {
             label_username.Text = this.getUser;
-            label_creditscore.Text = this.getMoney.ToString();
+            moneyupdate();
 
             if (panel_user.Visible == true)
             {
                 panel_user.Visible = false;
             }
             else panel_user.Visible = true;
+        }
+
+        private void moneyupdate()
+        {
+            DataBaseConnect db = new DataBaseConnect(getTypeOfConnection);
+            var username = db.connection.GetUserData();
+            foreach (var item in username)
+            {
+                if (item.name == label_username.Text)
+                {
+                    getMoney = item.money;
+                }
+            }
+            label_creditscore.Text = getMoney.ToString();
         }
 
         //OTWIERANIE FORMSOW W PANELU
@@ -257,7 +271,7 @@ namespace Spottyfy
 
         private void button_shoppingcart_Click(object sender, EventArgs e)
         {
-            Shop shop = new Shop() { TopLevel = false, TopMost=true };
+            Shop shop = new Shop(getTypeOfConnection) { TopLevel = false, TopMost = true };
             shop.FormBorderStyle = FormBorderStyle.None;
             shop.getTypeOfConnection = getTypeOfConnection;
             panel_empty.Controls.Clear();

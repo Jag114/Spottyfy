@@ -78,6 +78,7 @@ namespace Spottyfy
             select_mysql.Checked = false;
             type = 1;
         }
+
         private void PerformLogin()
         {
             DataBaseConnect db = new DataBaseConnect(type);

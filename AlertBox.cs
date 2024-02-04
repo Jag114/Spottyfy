@@ -45,13 +45,17 @@ namespace Spottyfy
 
         public void UpdateLabelTextAndCenterFAILED(string new_error_message)
         {
+            this.BackColor = ColorTranslator.FromHtml("FF8080");
+            label_error_message_alertbox.ForeColor = ColorTranslator.FromHtml("FF8080");
             label_error_message_alertbox.Text = new_error_message;
             CenterLabel();
         }
 
         public void UpdateLabelTextAndCenterSUCCES(string new_error_message)
         {
+            this.BackColor = ColorTranslator.FromHtml("#E8F9A3");
             label_title_alertbox.Text = "Congratulations";
+            label_error_message_alertbox.ForeColor = ColorTranslator.FromHtml("#E8F9A3");
             label_error_message_alertbox.Text = new_error_message;
             CenterLabel();
         }

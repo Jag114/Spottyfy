@@ -15,8 +15,8 @@ namespace Spottyfy
     {
         public int getTypeOfConnection { get; set; }
         public string getUser {  get; set; }
-        int type = 1;
-        public Shop()
+        int type;
+        public Shop(int getTypeOfConnection)
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace Spottyfy
             Console.WriteLine(getUser);
 
             
-            DataBaseConnect db = new DataBaseConnect(type);
+            DataBaseConnect db = new DataBaseConnect(getTypeOfConnection);
             var songs = db.connection.GetSongData();
             var albums = db.connection.GetAlbumData();
             var users = db.connection.GetUserData();
