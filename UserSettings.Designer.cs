@@ -42,11 +42,11 @@
             this.comboBox_users = new System.Windows.Forms.ComboBox();
             this.flowLayout_admin = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox_user = new System.Windows.Forms.CheckBox();
-            this.checkBox_admin = new System.Windows.Forms.CheckBox();
             this.button_confirmchange = new System.Windows.Forms.Button();
             this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
             this.panel_avatar = new System.Windows.Forms.Panel();
+            this.checkBox_user = new System.Windows.Forms.RadioButton();
+            this.checkBox_admin = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel_user_sett.SuspendLayout();
             this.flowLayout_admin.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +112,7 @@
             this.input_oldpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.input_oldpassword.Location = new System.Drawing.Point(42, 49);
             this.input_oldpassword.Name = "input_oldpassword";
-            this.input_oldpassword.Size = new System.Drawing.Size(228, 26);
+            this.input_oldpassword.Size = new System.Drawing.Size(228, 28);
             this.input_oldpassword.TabIndex = 9;
             this.input_oldpassword.UseSystemPasswordChar = true;
             // 
@@ -120,7 +120,7 @@
             // 
             this.label_newpass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_newpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_newpass.Location = new System.Drawing.Point(35, 78);
+            this.label_newpass.Location = new System.Drawing.Point(35, 80);
             this.label_newpass.Name = "label_newpass";
             this.label_newpass.Size = new System.Drawing.Size(242, 23);
             this.label_newpass.TabIndex = 12;
@@ -131,9 +131,9 @@
             // 
             this.input_newpass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.input_newpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.input_newpass.Location = new System.Drawing.Point(42, 104);
+            this.input_newpass.Location = new System.Drawing.Point(42, 106);
             this.input_newpass.Name = "input_newpass";
-            this.input_newpass.Size = new System.Drawing.Size(228, 26);
+            this.input_newpass.Size = new System.Drawing.Size(228, 28);
             this.input_newpass.TabIndex = 11;
             this.input_newpass.UseSystemPasswordChar = true;
             // 
@@ -147,7 +147,7 @@
             this.button_changpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_changpassword.ForeColor = System.Drawing.Color.Black;
             this.button_changpassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_changpassword.Location = new System.Drawing.Point(3, 136);
+            this.button_changpassword.Location = new System.Drawing.Point(3, 140);
             this.button_changpassword.Name = "button_changpassword";
             this.button_changpassword.Size = new System.Drawing.Size(307, 34);
             this.button_changpassword.TabIndex = 8;
@@ -192,7 +192,7 @@
             this.comboBox_users.FormattingEnabled = true;
             this.comboBox_users.Location = new System.Drawing.Point(4, 29);
             this.comboBox_users.Name = "comboBox_users";
-            this.comboBox_users.Size = new System.Drawing.Size(300, 28);
+            this.comboBox_users.Size = new System.Drawing.Size(300, 30);
             this.comboBox_users.TabIndex = 13;
             // 
             // flowLayout_admin
@@ -220,38 +220,6 @@
             this.label1.Text = "Choose user to edit:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // checkBox_user
-            // 
-            this.checkBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox_user.AutoSize = true;
-            this.checkBox_user.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.checkBox_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox_user.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.checkBox_user.Location = new System.Drawing.Point(124, 63);
-            this.checkBox_user.Name = "checkBox_user";
-            this.checkBox_user.Size = new System.Drawing.Size(59, 22);
-            this.checkBox_user.TabIndex = 15;
-            this.checkBox_user.Text = "user";
-            this.checkBox_user.UseVisualStyleBackColor = true;
-            this.checkBox_user.CheckedChanged += new System.EventHandler(this.checkBox_user_CheckedChanged);
-            // 
-            // checkBox_admin
-            // 
-            this.checkBox_admin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox_admin.AutoSize = true;
-            this.checkBox_admin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.checkBox_admin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox_admin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox_admin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.checkBox_admin.Location = new System.Drawing.Point(117, 91);
-            this.checkBox_admin.Name = "checkBox_admin";
-            this.checkBox_admin.Size = new System.Drawing.Size(74, 22);
-            this.checkBox_admin.TabIndex = 16;
-            this.checkBox_admin.Text = "admin";
-            this.checkBox_admin.UseVisualStyleBackColor = true;
-            this.checkBox_admin.CheckedChanged += new System.EventHandler(this.checkBox_admin_CheckedChanged);
-            // 
             // button_confirmchange
             // 
             this.button_confirmchange.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -262,7 +230,7 @@
             this.button_confirmchange.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_confirmchange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_confirmchange.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_confirmchange.Location = new System.Drawing.Point(4, 119);
+            this.button_confirmchange.Location = new System.Drawing.Point(311, 3);
             this.button_confirmchange.Name = "button_confirmchange";
             this.button_confirmchange.Size = new System.Drawing.Size(300, 34);
             this.button_confirmchange.TabIndex = 15;
@@ -284,6 +252,36 @@
             this.panel_avatar.Size = new System.Drawing.Size(120, 120);
             this.panel_avatar.TabIndex = 12;
             // 
+            // checkBox_user
+            // 
+            this.checkBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox_user.AutoSize = true;
+            this.checkBox_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox_user.Font = new System.Drawing.Font("Verdana", 12F);
+            this.checkBox_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.checkBox_user.Location = new System.Drawing.Point(119, 65);
+            this.checkBox_user.Name = "checkBox_user";
+            this.checkBox_user.Size = new System.Drawing.Size(69, 27);
+            this.checkBox_user.TabIndex = 17;
+            this.checkBox_user.TabStop = true;
+            this.checkBox_user.Text = "user";
+            this.checkBox_user.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_admin
+            // 
+            this.checkBox_admin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox_admin.AutoSize = true;
+            this.checkBox_admin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox_admin.Font = new System.Drawing.Font("Verdana", 12F);
+            this.checkBox_admin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.checkBox_admin.Location = new System.Drawing.Point(110, 98);
+            this.checkBox_admin.Name = "checkBox_admin";
+            this.checkBox_admin.Size = new System.Drawing.Size(87, 27);
+            this.checkBox_admin.TabIndex = 18;
+            this.checkBox_admin.TabStop = true;
+            this.checkBox_admin.Text = "admin";
+            this.checkBox_admin.UseVisualStyleBackColor = true;
+            // 
             // UserSettings
             // 
             this.AcceptButton = this.button_changpassword;
@@ -303,6 +301,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "UserSettings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserSettings_FormClosing);
+            this.Load += new System.EventHandler(this.UserSettings_Load);
             this.flowLayoutPanel_user_sett.ResumeLayout(false);
             this.flowLayoutPanel_user_sett.PerformLayout();
             this.flowLayout_admin.ResumeLayout(false);
@@ -327,9 +326,9 @@
         private System.Windows.Forms.ComboBox comboBox_users;
         private System.Windows.Forms.FlowLayoutPanel flowLayout_admin;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox_user;
-        private System.Windows.Forms.CheckBox checkBox_admin;
         private System.Windows.Forms.Button button_confirmchange;
         private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
+        private System.Windows.Forms.RadioButton checkBox_user;
+        private System.Windows.Forms.RadioButton checkBox_admin;
     }
 }

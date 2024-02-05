@@ -31,8 +31,8 @@ namespace Spottyfy
         private void InitializeComponent()
         {
             this.panel_login_window = new System.Windows.Forms.Panel();
-            this.select_mysql = new System.Windows.Forms.CheckBox();
-            this.select_mongo = new System.Windows.Forms.CheckBox();
+            this.select_mysql = new System.Windows.Forms.RadioButton();
+            this.select_mongo = new System.Windows.Forms.RadioButton();
             this.label_selectdb = new System.Windows.Forms.Label();
             this.button_singup_login_window = new System.Windows.Forms.Button();
             this.button_exit_login_window = new System.Windows.Forms.Button();
@@ -80,13 +80,12 @@ namespace Spottyfy
             // select_mysql
             // 
             this.select_mysql.AutoSize = true;
-            this.select_mysql.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.select_mysql.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.select_mysql.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.select_mysql.Location = new System.Drawing.Point(429, 271);
+            this.select_mysql.Font = new System.Drawing.Font("Verdana", 15F);
+            this.select_mysql.Location = new System.Drawing.Point(454, 271);
             this.select_mysql.Name = "select_mysql";
-            this.select_mysql.Size = new System.Drawing.Size(98, 29);
-            this.select_mysql.TabIndex = 16;
+            this.select_mysql.Size = new System.Drawing.Size(110, 32);
+            this.select_mysql.TabIndex = 18;
             this.select_mysql.Text = "MySQL";
             this.select_mysql.UseVisualStyleBackColor = true;
             this.select_mysql.CheckedChanged += new System.EventHandler(this.select_mysql_CheckedChanged);
@@ -94,13 +93,13 @@ namespace Spottyfy
             // select_mongo
             // 
             this.select_mongo.AutoSize = true;
-            this.select_mongo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.select_mongo.Checked = true;
             this.select_mongo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.select_mongo.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.select_mongo.Location = new System.Drawing.Point(297, 271);
+            this.select_mongo.Font = new System.Drawing.Font("Verdana", 15F);
+            this.select_mongo.Location = new System.Drawing.Point(298, 271);
             this.select_mongo.Name = "select_mongo";
-            this.select_mongo.Size = new System.Drawing.Size(123, 29);
-            this.select_mongo.TabIndex = 15;
+            this.select_mongo.Size = new System.Drawing.Size(140, 32);
+            this.select_mongo.TabIndex = 17;
             this.select_mongo.Text = "MongoDB";
             this.select_mongo.UseVisualStyleBackColor = true;
             this.select_mongo.CheckedChanged += new System.EventHandler(this.select_mongo_CheckedChanged);
@@ -109,9 +108,9 @@ namespace Spottyfy
             // 
             this.label_selectdb.AutoSize = true;
             this.label_selectdb.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_selectdb.Location = new System.Drawing.Point(99, 272);
+            this.label_selectdb.Location = new System.Drawing.Point(66, 271);
             this.label_selectdb.Name = "label_selectdb";
-            this.label_selectdb.Size = new System.Drawing.Size(191, 25);
+            this.label_selectdb.Size = new System.Drawing.Size(225, 31);
             this.label_selectdb.TabIndex = 14;
             this.label_selectdb.Text = "Select database:";
             // 
@@ -122,7 +121,7 @@ namespace Spottyfy
             this.button_singup_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.button_singup_login_window.Location = new System.Drawing.Point(12, 333);
             this.button_singup_login_window.Name = "button_singup_login_window";
-            this.button_singup_login_window.Size = new System.Drawing.Size(310, 50);
+            this.button_singup_login_window.Size = new System.Drawing.Size(265, 50);
             this.button_singup_login_window.TabIndex = 13;
             this.button_singup_login_window.Text = "Sign up";
             this.button_singup_login_window.UseVisualStyleBackColor = false;
@@ -133,9 +132,9 @@ namespace Spottyfy
             this.button_exit_login_window.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_exit_login_window.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_exit_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_exit_login_window.Location = new System.Drawing.Point(328, 333);
+            this.button_exit_login_window.Location = new System.Drawing.Point(283, 333);
             this.button_exit_login_window.Name = "button_exit_login_window";
-            this.button_exit_login_window.Size = new System.Drawing.Size(120, 50);
+            this.button_exit_login_window.Size = new System.Drawing.Size(165, 50);
             this.button_exit_login_window.TabIndex = 12;
             this.button_exit_login_window.Text = "Close";
             this.button_exit_login_window.UseVisualStyleBackColor = false;
@@ -148,7 +147,7 @@ namespace Spottyfy
             this.label_failed_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.label_failed_login_window.Location = new System.Drawing.Point(88, 59);
             this.label_failed_login_window.Name = "label_failed_login_window";
-            this.label_failed_login_window.Size = new System.Drawing.Size(464, 29);
+            this.label_failed_login_window.Size = new System.Drawing.Size(550, 34);
             this.label_failed_login_window.TabIndex = 11;
             this.label_failed_login_window.Text = "incorrect username and/or password!";
             this.label_failed_login_window.Visible = false;
@@ -161,7 +160,7 @@ namespace Spottyfy
             this.linkLabel_forgot_password.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.linkLabel_forgot_password.Location = new System.Drawing.Point(325, 228);
             this.linkLabel_forgot_password.Name = "linkLabel_forgot_password";
-            this.linkLabel_forgot_password.Size = new System.Drawing.Size(193, 18);
+            this.linkLabel_forgot_password.Size = new System.Drawing.Size(230, 23);
             this.linkLabel_forgot_password.TabIndex = 10;
             this.linkLabel_forgot_password.TabStop = true;
             this.linkLabel_forgot_password.Text = "Forgot your password?";
@@ -220,7 +219,7 @@ namespace Spottyfy
             this.input_password_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.input_password_login_window.Location = new System.Drawing.Point(297, 173);
             this.input_password_login_window.Name = "input_password_login_window";
-            this.input_password_login_window.Size = new System.Drawing.Size(262, 43);
+            this.input_password_login_window.Size = new System.Drawing.Size(262, 48);
             this.input_password_login_window.TabIndex = 3;
             this.input_password_login_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_password_login_window.UseSystemPasswordChar = true;
@@ -233,7 +232,7 @@ namespace Spottyfy
             this.input_username_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.input_username_login_window.Location = new System.Drawing.Point(297, 100);
             this.input_username_login_window.Name = "input_username_login_window";
-            this.input_username_login_window.Size = new System.Drawing.Size(262, 43);
+            this.input_username_login_window.Size = new System.Drawing.Size(262, 48);
             this.input_username_login_window.TabIndex = 2;
             this.input_username_login_window.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input_username_login_window.WordWrap = false;
@@ -243,7 +242,7 @@ namespace Spottyfy
             this.label_password_login_window.AutoSize = true;
             this.label_password_login_window.Location = new System.Drawing.Point(87, 173);
             this.label_password_login_window.Name = "label_password_login_window";
-            this.label_password_login_window.Size = new System.Drawing.Size(171, 35);
+            this.label_password_login_window.Size = new System.Drawing.Size(203, 41);
             this.label_password_login_window.TabIndex = 1;
             this.label_password_login_window.Text = "Password";
             // 
@@ -252,7 +251,7 @@ namespace Spottyfy
             this.label_user_login_window.AutoSize = true;
             this.label_user_login_window.Location = new System.Drawing.Point(87, 103);
             this.label_user_login_window.Name = "label_user_login_window";
-            this.label_user_login_window.Size = new System.Drawing.Size(179, 35);
+            this.label_user_login_window.Size = new System.Drawing.Size(212, 41);
             this.label_user_login_window.TabIndex = 0;
             this.label_user_login_window.Text = "Username";
             // 
@@ -296,8 +295,8 @@ namespace Spottyfy
         private System.Windows.Forms.Button button_exit_login_window;
         private System.Windows.Forms.Button button_singup_login_window;
         private System.Windows.Forms.Label label_selectdb;
-        private System.Windows.Forms.CheckBox select_mongo;
-        private System.Windows.Forms.CheckBox select_mysql;
+        private RadioButton select_mongo;
+        private RadioButton select_mysql;
     }
 }
 

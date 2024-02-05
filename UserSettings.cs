@@ -104,13 +104,11 @@ namespace Spottyfy
         private void checkBox_admin_CheckedChanged(object sender, EventArgs e)
         {
             setRank = "admin";
-            checkBox_user.Checked = false;
         }
 
         private void checkBox_user_CheckedChanged(object sender, EventArgs e)
         {
             setRank = "user";
-            checkBox_admin.Checked = false;
         }
 
         private void button_confirmchange_Click(object sender, EventArgs e)
@@ -163,6 +161,9 @@ namespace Spottyfy
             }
         }
 
-        
+        private void UserSettings_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

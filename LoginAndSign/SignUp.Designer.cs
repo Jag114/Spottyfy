@@ -163,7 +163,7 @@
             this.button_signup_login_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.button_signup_login_window.Location = new System.Drawing.Point(345, 368);
             this.button_signup_login_window.Name = "button_signup_login_window";
-            this.button_signup_login_window.Size = new System.Drawing.Size(310, 50);
+            this.button_signup_login_window.Size = new System.Drawing.Size(265, 50);
             this.button_signup_login_window.TabIndex = 4;
             this.button_signup_login_window.Text = "Sign up";
             this.button_signup_login_window.UseVisualStyleBackColor = false;
@@ -176,7 +176,7 @@
             this.button_exit_signup_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.button_exit_signup_window.Location = new System.Drawing.Point(219, 368);
             this.button_exit_signup_window.Name = "button_exit_signup_window";
-            this.button_exit_signup_window.Size = new System.Drawing.Size(120, 50);
+            this.button_exit_signup_window.Size = new System.Drawing.Size(165, 50);
             this.button_exit_signup_window.TabIndex = 5;
             this.button_exit_signup_window.Text = "Close";
             this.button_exit_signup_window.UseVisualStyleBackColor = false;
@@ -188,7 +188,7 @@
             this.label_failed_signup_window.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.label_failed_signup_window.Location = new System.Drawing.Point(146, 29);
             this.label_failed_signup_window.Name = "label_failed_signup_window";
-            this.label_failed_signup_window.Size = new System.Drawing.Size(464, 29);
+            this.label_failed_signup_window.Size = new System.Drawing.Size(265, 29);
             this.label_failed_signup_window.TabIndex = 11;
             this.label_failed_signup_window.Text = "error";
             this.label_failed_signup_window.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

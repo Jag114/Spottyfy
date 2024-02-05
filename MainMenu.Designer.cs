@@ -49,7 +49,6 @@ namespace Spottyfy
             this.label_section_line = new System.Windows.Forms.Label();
             this.panel_avatar = new System.Windows.Forms.Panel();
             this.label_username = new System.Windows.Forms.Label();
-            this.button_UserLibrary = new System.Windows.Forms.Button();
             this.right_cilck_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nightmodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,6 +185,7 @@ namespace Spottyfy
             this.panel_empty.Name = "panel_empty";
             this.panel_empty.Size = new System.Drawing.Size(804, 373);
             this.panel_empty.TabIndex = 2;
+            this.panel_empty.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_empty_Paint);
             // 
             // button_logout
             // 
@@ -290,23 +290,6 @@ namespace Spottyfy
             this.label_username.Text = "username";
             this.label_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button_UserLibrary
-            // 
-            this.button_UserLibrary.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_UserLibrary.FlatAppearance.BorderSize = 0;
-            this.button_UserLibrary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_UserLibrary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_UserLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_UserLibrary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.button_UserLibrary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_UserLibrary.Location = new System.Drawing.Point(602, 378);
-            this.button_UserLibrary.Name = "button_UserLibrary";
-            this.button_UserLibrary.Size = new System.Drawing.Size(193, 31);
-            this.button_UserLibrary.TabIndex = 7;
-            this.button_UserLibrary.Text = "My Library";
-            this.button_UserLibrary.UseVisualStyleBackColor = true;
-            this.button_UserLibrary.Visible = false;
-            // 
             // right_cilck_menu
             // 
             this.right_cilck_menu.ImageScalingSize = new System.Drawing.Size(18, 18);
@@ -315,25 +298,25 @@ namespace Spottyfy
             this.userToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.right_cilck_menu.Name = "right_cilck_menu";
-            this.right_cilck_menu.Size = new System.Drawing.Size(136, 70);
+            this.right_cilck_menu.Size = new System.Drawing.Size(148, 76);
             // 
             // nightmodeToolStripMenuItem
             // 
             this.nightmodeToolStripMenuItem.Name = "nightmodeToolStripMenuItem";
-            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.nightmodeToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.nightmodeToolStripMenuItem.Text = "Nightmode";
             this.nightmodeToolStripMenuItem.Click += new System.EventHandler(this.nightmodeToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.userToolStripMenuItem.Text = "User";
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // notifyIcon1
@@ -347,16 +330,17 @@ namespace Spottyfy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(834, 506);
             this.Controls.Add(this.panel_user);
-            this.Controls.Add(this.button_UserLibrary);
             this.Controls.Add(this.panel_empty);
             this.Controls.Add(this.panel_top);
             this.KeyPreview = true;
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.SizeChanged += new System.EventHandler(this.MainMenu_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainMenu_KeyDown);
             this.panel_top.ResumeLayout(false);
@@ -395,7 +379,6 @@ namespace Spottyfy
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button addSongs;
-        private System.Windows.Forms.Button button_UserLibrary;
         private System.Windows.Forms.Label label_creditscore;
         private System.Windows.Forms.Label label_creditinfo;
         private System.Windows.Forms.Button button_shoppingcart;

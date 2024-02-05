@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using MongoDB.Bson;
 
 namespace Spottyfy
@@ -39,7 +38,7 @@ namespace Spottyfy
             panel_user.Location = new Point(size_width - 215, 75);
             //panel_empty.Location = new Point((this.ClientSize.Width / 2) - (panel_empty.Width / 2), 120);
             //panel_empty.Size = new Size((int)(this.ClientSize.Width*0.9), (int)(this.ClientSize.Height*0.9));
-            panel_empty.Location = new Point((this.ClientSize.Width/2)-(panel_empty.Width/2),120);
+            //panel_empty.Location = new Point((this.ClientSize.Width/2)-(panel_empty.Width/2),120);
             
         }
 
@@ -118,6 +117,8 @@ namespace Spottyfy
                 else if (child is LinkLabel linkLabel) {
                     linkLabel.ForeColor = foreColor;
                     linkLabel.LinkColor = foreColor;
+                    linkLabel.ActiveLinkColor = foreColor;
+                    linkLabel.VisitedLinkColor = foreColor;
                 }
 
                 RecursiveColorChange(child, backColor, foreColor);
@@ -168,9 +169,9 @@ namespace Spottyfy
             panel_empty.Controls.Clear();
             Song.FormBorderStyle = FormBorderStyle.None;
             panel_empty.Controls.Add(Song);
-            nightmode_toggle();
-            nightmode_toggle();
             Song.Show();
+            nightmode_toggle();
+            nightmode_toggle();
         }
 
         private void button_settings_Click(object sender, EventArgs e)
@@ -178,9 +179,9 @@ namespace Spottyfy
             panel_empty.Controls.Clear();
             AppSett.FormBorderStyle = FormBorderStyle.None;
             panel_empty.Controls.Add(AppSett);
-            nightmode_toggle();
-            nightmode_toggle();
             AppSett.Show();
+            nightmode_toggle();
+            nightmode_toggle();
 
         }
 
@@ -193,9 +194,9 @@ namespace Spottyfy
             shop.getUser = getUser;
             shop.getData();
             Console.WriteLine("TUTAJ MAIN MENU SHOP DEKLARACJA PRZEKAZANIA DANYCH OWO");
-            nightmode_toggle();
-            nightmode_toggle();
             shop.Show();
+            nightmode_toggle();
+            nightmode_toggle();
 
         }
 
@@ -267,6 +268,16 @@ namespace Spottyfy
         }
 
         private void panel_top_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel_empty_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
         {
 
         }

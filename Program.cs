@@ -23,6 +23,8 @@ namespace Spottyfy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             mainMenuInstance = new MainMenu();
+            mainMenuInstance.FormBorderStyle = FormBorderStyle.FixedSingle;
+            mainMenuInstance.MaximizeBox = false;
             SetApplicationIcon(ReadFromConfigFile("settings.cfg", "logo"));
             SetApplicationLanguage(ReadFromConfigFile("settings.cfg", "lang"));
             SetApplicationTitle(ReadFromConfigFile("settings.cfg", "title"));

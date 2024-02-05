@@ -133,14 +133,14 @@ namespace Spottyfy
         public List<SongData> GetSongDataFromAlbum(string albumId)
         {
             MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM {dbName}.{songsTable} WHERE id = {albumId};";
+            cmd.CommandText = $"SELECT * FROM {dbName}.{songsTable} WHERE album = {albumId};";
             MySqlDataReader Reader = cmd.ExecuteReader();
             if (!Reader.HasRows) return null;
             List<SongData> songs = new List<SongData>();
             while (Reader.Read())
             {
                 string songId = Reader["id"].ToString();
-                string songName = Reader["song"].ToString();
+                string songName = Reader["name"].ToString();
                 string songAuthor = Reader["author"].ToString();
                 string songAlbum = Reader["album"].ToString();
                 DateTime songReleaseDate = DateTime.Parse(Reader["releaseDate"].ToString());
@@ -278,7 +278,7 @@ namespace Spottyfy
             {
                 MySqlCommand cmd = connection.CreateCommand();
 
-                cmd.CommandText = $"INSERT INTO {dbName}.{songsTable}(album, author, name, cost) VALUES ({x.album}, '{x.author}', '{x.name}', '{x.cost}');";
+                cmd.CommandText = $"INSERT INTO {dbName}.{songsTable}(album, author, name, cost, releaseDate) VALUES ({x.album}, '{x.author}', '{x.name}', '{x.cost}', '{x.releaseDate.ToString("yyyy-MM-dd HH:mm:ss")}');";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)

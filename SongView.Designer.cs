@@ -83,7 +83,7 @@ namespace Spottyfy
             this.albumArtist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.albumArtist.Location = new System.Drawing.Point(18, 63);
             this.albumArtist.Name = "albumArtist";
-            this.albumArtist.Size = new System.Drawing.Size(66, 29);
+            this.albumArtist.Size = new System.Drawing.Size(79, 32);
             this.albumArtist.TabIndex = 1;
             this.albumArtist.Text = "Artist";
             this.albumArtist.Click += new System.EventHandler(this.label2_Click);
@@ -96,7 +96,7 @@ namespace Spottyfy
             this.albumTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.albumTitle.Location = new System.Drawing.Point(15, 9);
             this.albumTitle.Name = "albumTitle";
-            this.albumTitle.Size = new System.Drawing.Size(95, 46);
+            this.albumTitle.Size = new System.Drawing.Size(110, 53);
             this.albumTitle.TabIndex = 0;
             this.albumTitle.Text = "Title";
             this.albumTitle.Click += new System.EventHandler(this.label1_Click);

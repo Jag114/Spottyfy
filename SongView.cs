@@ -26,7 +26,6 @@ namespace Spottyfy
             DataBaseConnect db = Program.GetDBInstance();
             var albums = db.connection.GetAlbumData();
             var songs = db.connection.GetSongDataFromAlbum(albums[0].Id);
-            Console.WriteLine(string.Join(",",songs));
             albumTitle.Text = albums[0].name;
             albumArtist.Text = albums[0].author;
             loadSongs(songs);

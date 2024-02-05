@@ -46,14 +46,18 @@ namespace Spottyfy
         //CHECKBOXS
         private void select_mysql_CheckedChanged(object sender, EventArgs e)
         {
-            select_mongo.Checked = false;
-            type = 2;
+            if (select_mysql.Checked)
+            {
+                type = 2;
+            }
         }
 
         private void select_mongo_CheckedChanged(object sender, EventArgs e)
         {
-            select_mysql.Checked = false;
-            type = 1;
+            if (select_mongo.Checked)
+            {
+                type = 1;
+            }
         }
 
         private void PerformLogin()

@@ -18,7 +18,11 @@ namespace Spottyfy
         public Shop(int getTypeOfConnection)
         {
             InitializeComponent();
-
+            label_info1.Text = Program.GetLangInstance().Descendants("Album").FirstOrDefault()?.Value;
+            label_info2.Text = Program.GetLangInstance().Descendants("Author").FirstOrDefault()?.Value;
+            label_info3.Text = Program.GetLangInstance().Descendants("Song").FirstOrDefault()?.Value;
+            label_info.Text = Program.GetLangInstance().Descendants("Price").FirstOrDefault()?.Value;
+            label_shop.Text = Program.GetLangInstance().Descendants("Szop").FirstOrDefault()?.Value;
             Console.WriteLine("OWOWOWOWO");
             Console.WriteLine(type.ToString());
             Console.WriteLine(getTypeOfConnection);
@@ -38,7 +42,10 @@ namespace Spottyfy
                 foreach (AlbumData item in albums) 
                 {
                     if (songs[i].album == item.Id)
-                    { label_album.Text = item.name; }
+                    {
+                        label_album.Text = item.name;
+                    }
+
                 }
                 label_album.Font = new System.Drawing.Font("Arial", 14, System.Drawing.FontStyle.Regular);
                 table_shop.Controls.Add(label_album, 0, i);
