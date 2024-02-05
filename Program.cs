@@ -16,6 +16,7 @@ namespace Spottyfy
         /// The main entry point for the application.
         /// </summary>
         private static MainMenu mainMenuInstance;
+        private static DataBaseConnect dbInstance;
         [STAThread]
         static void Main()
         {
@@ -30,6 +31,13 @@ namespace Spottyfy
         public static MainMenu GetMainMenuInstance()
         {
             return mainMenuInstance;
+        }
+        public static void InitializeDB(int type) { 
+            dbInstance=new DataBaseConnect(type);
+        }
+        public static DataBaseConnect GetDBInstance()
+        {
+            return dbInstance;
         }
         public static string ReadFromConfigFile(string filePath, string key)
         {

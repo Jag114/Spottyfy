@@ -323,7 +323,6 @@ namespace Spottyfy
             userSettings.getUsername = label_username.Text;
             userSettings.getRank = getRank;
             userSettings.users = users;
-            Console.WriteLine("owo");
             Console.WriteLine(users.Count());
             Console.WriteLine(userSettings.users.Count());
             Console.WriteLine(userSettings.users[0].ToJson());
@@ -350,12 +349,12 @@ namespace Spottyfy
 
         private void addSongs_Click(object sender, EventArgs e)
         {
-            TitleChange tcForm = new TitleChange();
-            tcForm.FormBorderStyle = FormBorderStyle.FixedSingle;
-            tcForm.MaximizeBox = false;
-            tcForm.MinimizeBox = false;
-            tcForm.BackColor = this.BackColor;
-            tcForm.Show();
+            AddSong asForm = new AddSong();
+            asForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            asForm.MaximizeBox = false;
+            asForm.MinimizeBox = false;
+            asForm.BackColor = ColorTranslator.FromHtml("#1A181B");
+            asForm.Show();
         }
 
         private void panel_top_Paint(object sender, PaintEventArgs e)

@@ -55,8 +55,7 @@ namespace Spottyfy
             }
 
         }
-
-        private void LoadProfilePicture()
+        public void LoadProfilePicture()
         {
             if (File.Exists(ProfilePictureFilePath))
             {

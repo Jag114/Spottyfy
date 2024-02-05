@@ -104,9 +104,9 @@
             this.label_app_sett.AutoSize = true;
             this.label_app_sett.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_app_sett.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_app_sett.Location = new System.Drawing.Point(239, 12);
+            this.label_app_sett.Location = new System.Drawing.Point(239, 9);
             this.label_app_sett.Name = "label_app_sett";
-            this.label_app_sett.Size = new System.Drawing.Size(304, 45);
+            this.label_app_sett.Size = new System.Drawing.Size(262, 38);
             this.label_app_sett.TabIndex = 1;
             this.label_app_sett.Text = "Main Settings";
             this.label_app_sett.Click += new System.EventHandler(this.label_app_sett_Click);
@@ -127,8 +127,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.displayPanel);
             this.Controls.Add(this.label_app_sett);
+            this.Controls.Add(this.displayPanel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AppSettings";
             this.Text = "AppSettings";

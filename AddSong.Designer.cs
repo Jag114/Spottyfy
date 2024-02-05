@@ -35,16 +35,21 @@
             this.songDate = new System.Windows.Forms.DateTimePicker();
             this.songAuthor = new System.Windows.Forms.TextBox();
             this.songName = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.albumList = new System.Windows.Forms.ListBox();
+            this.addSongBtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.songCost = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.songCost)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.label1.Location = new System.Drawing.Point(80, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
@@ -52,9 +57,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.label2.Location = new System.Drawing.Point(80, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 20);
+            this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Album";
             // 
@@ -62,9 +68,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.label3.Location = new System.Drawing.Point(80, 99);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.Size = new System.Drawing.Size(50, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Author";
             // 
@@ -72,9 +79,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(30, 135);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.label4.Location = new System.Drawing.Point(36, 134);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.Size = new System.Drawing.Size(94, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Release Date";
             // 
@@ -99,21 +107,63 @@
             this.songName.Size = new System.Drawing.Size(100, 20);
             this.songName.TabIndex = 6;
             // 
-            // listBox1
+            // albumList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(159, 60);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(120, 30);
-            this.listBox1.TabIndex = 7;
+            this.albumList.FormattingEnabled = true;
+            this.albumList.Location = new System.Drawing.Point(159, 60);
+            this.albumList.Name = "albumList";
+            this.albumList.ScrollAlwaysVisible = true;
+            this.albumList.Size = new System.Drawing.Size(120, 30);
+            this.albumList.TabIndex = 7;
+            this.albumList.SelectedIndexChanged += new System.EventHandler(this.albumList_SelectedIndexChanged);
+            // 
+            // addSongBtn
+            // 
+            this.addSongBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.addSongBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addSongBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.addSongBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.addSongBtn.Location = new System.Drawing.Point(346, 230);
+            this.addSongBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.addSongBtn.Name = "addSongBtn";
+            this.addSongBtn.Size = new System.Drawing.Size(140, 34);
+            this.addSongBtn.TabIndex = 8;
+            this.addSongBtn.Text = "Add Song";
+            this.addSongBtn.UseVisualStyleBackColor = false;
+            this.addSongBtn.Click += new System.EventHandler(this.addSongBtn_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.label5.Location = new System.Drawing.Point(88, 170);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Cost";
+            // 
+            // songCost
+            // 
+            this.songCost.Location = new System.Drawing.Point(159, 170);
+            this.songCost.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.songCost.Name = "songCost";
+            this.songCost.Size = new System.Drawing.Size(120, 20);
+            this.songCost.TabIndex = 11;
             // 
             // AddSong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 228);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(497, 275);
+            this.Controls.Add(this.songCost);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.addSongBtn);
+            this.Controls.Add(this.albumList);
             this.Controls.Add(this.songName);
             this.Controls.Add(this.songAuthor);
             this.Controls.Add(this.songDate);
@@ -123,6 +173,8 @@
             this.Controls.Add(this.label1);
             this.Name = "AddSong";
             this.Text = "AddSong";
+            this.Load += new System.EventHandler(this.AddSong_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.songCost)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,6 +189,9 @@
         private System.Windows.Forms.DateTimePicker songDate;
         private System.Windows.Forms.TextBox songAuthor;
         private System.Windows.Forms.TextBox songName;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox albumList;
+        private System.Windows.Forms.Button addSongBtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown songCost;
     }
 }

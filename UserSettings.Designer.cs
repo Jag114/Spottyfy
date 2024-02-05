@@ -283,6 +283,7 @@
             this.panel_avatar.Name = "panel_avatar";
             this.panel_avatar.Size = new System.Drawing.Size(120, 120);
             this.panel_avatar.TabIndex = 12;
+            this.panel_avatar.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_avatar_Paint);
             // 
             // UserSettings
             // 
@@ -303,6 +304,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "UserSettings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserSettings_FormClosing);
+            this.Load += new System.EventHandler(this.UserSettings_Load);
             this.flowLayoutPanel_user_sett.ResumeLayout(false);
             this.flowLayoutPanel_user_sett.PerformLayout();
             this.flowLayout_admin.ResumeLayout(false);
