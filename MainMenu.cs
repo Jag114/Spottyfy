@@ -76,7 +76,6 @@ namespace Spottyfy
             {
                  bg = ColorTranslator.FromHtml("#E8F9A3");
                  fg = ColorTranslator.FromHtml("#343035");
-                button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.whitemoon;
                 this.BackColor = ColorTranslator.FromHtml("#E8F9A3");
                 nightmode = false;
             }
@@ -84,7 +83,6 @@ namespace Spottyfy
             {
                  bg = ColorTranslator.FromHtml("#1A181B");
                  fg = ColorTranslator.FromHtml("#E8F9A3");
-                button_nightmode.BackgroundImage = global::Spottyfy.Properties.Resources.to_night;
                 this.BackColor = ColorTranslator.FromHtml("#1A181B");
                 nightmode = true;
             }
