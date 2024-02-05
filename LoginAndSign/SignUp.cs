@@ -73,8 +73,8 @@ namespace Spottyfy
                     newUser.name = input_username_signup_window.Text;
                     newUser.password = input_password_signup_window.Text;
                     newUser.rank = "user";
+                    newUser.money = 1500;
                     newUser.creationDate = DateTime.Now;
-
                     db.connection.AddData(newUser);
 
                     string errorMessage = "Your account has been created";

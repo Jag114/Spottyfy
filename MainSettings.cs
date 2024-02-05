@@ -40,18 +40,17 @@ public class MainSettings : Form
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.titleChange, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.iconChange, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.radioButton1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.radioButton2, 0, 3);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(199, 214);
             this.tableLayoutPanel2.TabIndex = 1;
@@ -61,8 +60,9 @@ public class MainSettings : Form
             // 
             this.titleChange.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.titleChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.titleChange.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.titleChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.titleChange.Location = new System.Drawing.Point(3, 69);
+            this.titleChange.Location = new System.Drawing.Point(3, 61);
             this.titleChange.Name = "titleChange";
             this.titleChange.Size = new System.Drawing.Size(193, 39);
             this.titleChange.TabIndex = 2;
@@ -74,8 +74,9 @@ public class MainSettings : Form
             // 
             this.iconChange.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.iconChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.iconChange.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.iconChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.iconChange.Location = new System.Drawing.Point(3, 10);
+            this.iconChange.Location = new System.Drawing.Point(3, 7);
             this.iconChange.Name = "iconChange";
             this.iconChange.Size = new System.Drawing.Size(193, 39);
             this.iconChange.TabIndex = 1;
@@ -86,9 +87,11 @@ public class MainSettings : Form
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 121);
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.radioButton1.Location = new System.Drawing.Point(3, 111);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 17);
+            this.radioButton1.Size = new System.Drawing.Size(79, 24);
             this.radioButton1.TabIndex = 3;
             this.radioButton1.Text = "English";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -97,9 +100,11 @@ public class MainSettings : Form
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.radioButton2.Location = new System.Drawing.Point(3, 144);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(53, 17);
+            this.radioButton2.Size = new System.Drawing.Size(68, 24);
             this.radioButton2.TabIndex = 4;
             this.radioButton2.Text = "Polski";
             this.radioButton2.UseVisualStyleBackColor = true;

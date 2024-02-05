@@ -55,11 +55,13 @@ namespace Spottyfy
             select_mysql.Checked = false;
             type = 1;
         }
+
         private void PerformLogin()
         {
             DataBaseConnect db = new DataBaseConnect(type);
             string getUser = input_username_login_window.Text;
             string getRank = "rank";
+            int getMoney = 0;
 
             if (db.connection.Authenticate(input_username_login_window.Text, input_password_login_window.Text)==0)
             {
@@ -69,6 +71,7 @@ namespace Spottyfy
                     if (item.name == input_username_login_window.Text)
                     {
                         getRank = item.rank;
+                        getMoney = item.money;
                     }
                 }
 
@@ -81,7 +84,9 @@ namespace Spottyfy
                 Console.WriteLine(userDatas.Count);
                 Console.WriteLine(MainMenuOpen.users[0].ToJson());
                 MainMenuOpen.getRank = getRank;
+                MainMenuOpen.getMoney = getMoney;
                 MainMenuOpen.getTypeOfConnection = type;
+                MainMenuOpen.getTheData();
                 MainMenuOpen.ShowDialog();
             }
             else

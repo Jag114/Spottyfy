@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Spottyfy
@@ -18,30 +19,18 @@ namespace Spottyfy
         public string getUsername { get; set; }
         public int getTypeOfConnection { get; set; }
         public string getRank { get; set; }
-
         public List<UserData> users { get; set; }
 
         private int type;
         private const string ProfilePictureFilePath = "profilePicturePath.txt";
         public UserSettings()
-        {   
+        {
+            this.FormBorderStyle= FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             InitializeComponent();
             LoadProfilePicture();
-            if (label_rank.Text == "admin")
-            {
-                flowLayout_admin.Visible = false;
-            }
-            else { flowLayout_admin.Visible = false; }
 
-            //Console.WriteLine(users);
-            //Console.WriteLine(users[0].ToJson());
-
-           //foreach (UserData item in users)
-           //{
-           //   comboBox_users.Items.Add(item);
-           //}
-           // Console.WriteLine(users);
-            
         }
         public void getTheData()
         {
@@ -49,7 +38,22 @@ namespace Spottyfy
             label_rank.Text = this.getRank;
             type = this.getTypeOfConnection;
             users = this.users;
-            
+
+            comboBox_users.Items.Clear();
+            foreach (UserData item in users)
+            {
+                if (item.name != this.getUsername) comboBox_users.Items.Add(item.name);
+            }
+
+            if (label_rank.Text.Equals("admin", StringComparison.Ordinal))
+            {
+                flowLayout_admin.Visible = true;
+            }
+            else
+            {
+                flowLayout_admin.Visible = false;
+            }
+
         }
 
         private void LoadProfilePicture()
@@ -79,7 +83,6 @@ namespace Spottyfy
                     string imagePath = openFileDialog.FileName;
                     panel_avatar.BackgroundImage = Image.FromFile(imagePath);
 
-                    // Save the chosen path to a file
                     File.WriteAllText(ProfilePictureFilePath, imagePath);
                 }
             }
@@ -97,5 +100,70 @@ namespace Spottyfy
         {
             LoadProfilePicture();
         }
+
+        string setRank;
+        private void checkBox_admin_CheckedChanged(object sender, EventArgs e)
+        {
+            setRank = "admin";
+            checkBox_user.Checked = false;
+        }
+
+        private void checkBox_user_CheckedChanged(object sender, EventArgs e)
+        {
+            setRank = "user";
+            checkBox_admin.Checked = false;
+        }
+
+        private void button_confirmchange_Click(object sender, EventArgs e)
+        {
+
+            if (comboBox_users.SelectedIndex > -1)
+            {
+                if (checkBox_user.Checked == true || checkBox_admin.Checked == true)
+                {
+                    DataBaseConnect db = new DataBaseConnect(type);
+                    var username = db.connection.GetUserData();
+                    foreach (var item in username)
+                    {
+                        if (item.name == comboBox_users.SelectedItem.ToString())
+                        {
+                            UserData user = new UserData();
+                            user.Id = item.Id;
+                            user.name = item.name;
+                            user.password = item.password;
+                            user.money= item.money;
+                            user.creationDate = item.creationDate;
+                            user.rank = setRank;
+                            db.connection.UpdateData(user, item.Id);
+
+                            string errorMessage = "User rank has been updated";
+                            AlertBox alertBox = new AlertBox();
+                            alertBox.UpdateLabelTextAndCenterSUCCES(errorMessage);
+                            alertBox.Show();
+
+                            checkBox_admin.Checked = false;
+                            checkBox_user.Checked = false;
+                            comboBox_users.Text = String.Empty;
+                        }
+                    }
+                }
+                else
+                {
+                    string errorMessage = "Please select the option: admin or user";
+                    AlertBox alertBox = new AlertBox();
+                    alertBox.UpdateLabelTextAndCenterFAILED(errorMessage);
+                    alertBox.Show();
+                }
+            }
+            else
+            {
+                string errorMessage = "Please select the user to modify";
+                AlertBox alertBox = new AlertBox();
+                alertBox.UpdateLabelTextAndCenterFAILED(errorMessage);
+                alertBox.Show();
+            }
+        }
+
+        
     }
 }
