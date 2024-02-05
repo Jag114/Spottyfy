@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+	<TopMenu>
+		<ViewSongs>Pokaż Albumy</ViewSongs>
+		<AddSongs>Dodaj piosenki</AddSongs>
+		<Credit>Twoje fundusze:</Credit>
+		<UserSettings>Ustawienia Użytkownika</UserSettings>
+		<Logout>Wyloguj</Logout>
+	</TopMenu>
+	<UserMenu>
+		<pfpChange>Zmień profilowe</pfpChange>
+		<chooseUser>Wybierz profil do edycji:</chooseUser>
+		<confirmUser>Potwierdź</confirmUser>
+	</UserMenu>
+	<Settings>
+		<Main>Główne</Main>
+		<SInfo>Skróty Klawiszowe</SInfo>
+		<AInfo>O Aplikacji</AInfo>
+	</Settings>
+	<MainSettings>
+		<Icon>Zmień ikonę...</Icon>
+		<Title>Zmień tytuł...</Title>
+	</MainSettings>
+	<Shortcuts>
+		<N>N = Tryb nocny</N>
+		<U>U = Panel Użytkownika</U>
+		<S>S = Ustawienia</S>
+		<V>V = Pokaż Albumy</V>
+	</Shortcuts>
+	<Shop>
+		<Name>Nazwa</Name>
+		<Album>Album</Album>
+		<Author>Autor</Author>
+		<Song>Piosenka</Song>
+		<Price>Cena</Price>
+		<ReleaseDate>Data wydania</ReleaseDate>
+		<AddSong>Dodaj</AddSong>
+	</Shop>
+</App>

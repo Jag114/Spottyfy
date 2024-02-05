@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App>
+	<TopMenu>
+		<ViewSongs>View Albums</ViewSongs>
+		<AddSongs>Add Songs</AddSongs>
+		<Credit>Your funds:</Credit>
+		<UserSettings>User Settings</UserSettings>
+		<Logout>Logout</Logout>
+	</TopMenu>
+	<UserMenu>
+		<pfpChange>Change profile picture</pfpChange>
+		<chooseUser>Choose user to edit:</chooseUser>
+		<confirmUser>Confirm user change</confirmUser>
+	</UserMenu>
+	<Settings>
+		<Main>Main Settings</Main>
+		<SInfo>Shortcut Information</SInfo>
+		<AInfo>App Information</AInfo>
+	</Settings>
+	<MainSettings>
+		<Icon>Change App Icon...</Icon>
+		<Title>Change App Title</Title>
+	</MainSettings>
+	<Shortcuts>
+		<N>N = Nightmode</N>
+		<U>U = User Panel</U>
+		<S>S = Settings</S>
+		<V>V = View Songs</V>
+	</Shortcuts>
+	<Shop>
+		<Name>Name</Name>
+		<Album>Album</Album>
+		<Author>Author</Author>
+		<Song>Song</Song>
+		<Price>Price</Price>
+		<ReleaseDate>Release Date</ReleaseDate>
+		<AddSong>Add</AddSong>
+	</Shop>
+</App>
