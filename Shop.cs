@@ -13,7 +13,6 @@ namespace Spottyfy
 {
     public partial class Shop : Form
     {
-        public int getTypeOfConnection { get; set; }
         public string getUser {  get; set; }
         int type;
         public Shop(int getTypeOfConnection)
@@ -26,7 +25,7 @@ namespace Spottyfy
             Console.WriteLine(getUser);
 
             
-            DataBaseConnect db = new DataBaseConnect(getTypeOfConnection);
+            DataBaseConnect db = Program.GetDBInstance();
             var songs = db.connection.GetSongData();
             var albums = db.connection.GetAlbumData();
             var users = db.connection.GetUserData();
@@ -81,14 +80,13 @@ namespace Spottyfy
 
         public void getData()
         {
-            type = this.getTypeOfConnection;
             getUser = this.getUser;
         }
 
         private void Button_Click(object sender, EventArgs e)
         { 
             
-            DataBaseConnect db = new DataBaseConnect(type);
+            DataBaseConnect db = Program.GetDBInstance();
             var users = db.connection.GetUserData();
             var songs = db.connection.GetSongData();
 
@@ -141,5 +139,14 @@ namespace Spottyfy
             }
         }
 
+        private void Shop_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_info3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -61,7 +61,7 @@
             this.button_change_profpic.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_change_profpic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
             this.button_change_profpic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_change_profpic.Location = new System.Drawing.Point(15, 198);
+            this.button_change_profpic.Location = new System.Drawing.Point(15, 207);
             this.button_change_profpic.Name = "button_change_profpic";
             this.button_change_profpic.Size = new System.Drawing.Size(300, 34);
             this.button_change_profpic.TabIndex = 7;
@@ -171,7 +171,7 @@
             this.label_rank.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_rank.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_rank.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.label_rank.Location = new System.Drawing.Point(116, 160);
+            this.label_rank.Location = new System.Drawing.Point(116, 169);
             this.label_rank.Name = "label_rank";
             this.label_rank.Size = new System.Drawing.Size(100, 23);
             this.label_rank.TabIndex = 10;
@@ -292,7 +292,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(334, 456);
+            this.ClientSize = new System.Drawing.Size(334, 474);
             this.Controls.Add(this.flowLayout_admin);
             this.Controls.Add(this.flowLayoutPanel_user_sett);
             this.Controls.Add(this.button_change_profpic);

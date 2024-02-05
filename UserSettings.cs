@@ -17,7 +17,6 @@ namespace Spottyfy
     public partial class UserSettings : Form
     {
         public string getUsername { get; set; }
-        public int getTypeOfConnection { get; set; }
         public string getRank { get; set; }
         public List<UserData> users { get; set; }
 
@@ -29,6 +28,8 @@ namespace Spottyfy
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             InitializeComponent();
+            button_change_profpic.Text = Program.GetLangInstance().Descendants("pfpChange").FirstOrDefault()?.Value;
+            label1.Text = Program.GetLangInstance().Descendants("chooseUser").FirstOrDefault()?.Value;
             LoadProfilePicture();
 
         }
@@ -36,7 +37,6 @@ namespace Spottyfy
         {
             label_username.Text = this.getUsername;
             label_rank.Text = this.getRank;
-            type = this.getTypeOfConnection;
             users = this.users;
 
             comboBox_users.Items.Clear();
@@ -120,7 +120,7 @@ namespace Spottyfy
             {
                 if (checkBox_user.Checked == true || checkBox_admin.Checked == true)
                 {
-                    DataBaseConnect db = new DataBaseConnect(type);
+                    DataBaseConnect db = Program.GetDBInstance();
                     var username = db.connection.GetUserData();
                     foreach (var item in username)
                     {

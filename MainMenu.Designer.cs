@@ -46,10 +46,10 @@ namespace Spottyfy
             this.panel_user = new System.Windows.Forms.Panel();
             this.label_creditscore = new System.Windows.Forms.Label();
             this.label_creditinfo = new System.Windows.Forms.Label();
-            this.button_UserLibrary = new System.Windows.Forms.Button();
             this.label_section_line = new System.Windows.Forms.Label();
             this.panel_avatar = new System.Windows.Forms.Panel();
             this.label_username = new System.Windows.Forms.Label();
+            this.button_UserLibrary = new System.Windows.Forms.Button();
             this.right_cilck_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nightmodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,7 +184,7 @@ namespace Spottyfy
             this.panel_empty.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_empty.Location = new System.Drawing.Point(-1, 102);
             this.panel_empty.Name = "panel_empty";
-            this.panel_empty.Size = new System.Drawing.Size(578, 373);
+            this.panel_empty.Size = new System.Drawing.Size(804, 373);
             this.panel_empty.TabIndex = 2;
             // 
             // button_logout
@@ -260,23 +260,6 @@ namespace Spottyfy
             this.label_creditinfo.Text = "Your credit:";
             this.label_creditinfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button_UserLibrary
-            // 
-            this.button_UserLibrary.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_UserLibrary.FlatAppearance.BorderSize = 0;
-            this.button_UserLibrary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
-            this.button_UserLibrary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_UserLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_UserLibrary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
-            this.button_UserLibrary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_UserLibrary.Location = new System.Drawing.Point(602, 378);
-            this.button_UserLibrary.Name = "button_UserLibrary";
-            this.button_UserLibrary.Size = new System.Drawing.Size(193, 31);
-            this.button_UserLibrary.TabIndex = 7;
-            this.button_UserLibrary.Text = "My Library";
-            this.button_UserLibrary.UseVisualStyleBackColor = true;
-            this.button_UserLibrary.Visible = false;
-            // 
             // label_section_line
             // 
             this.label_section_line.AutoSize = true;
@@ -306,6 +289,23 @@ namespace Spottyfy
             this.label_username.TabIndex = 4;
             this.label_username.Text = "username";
             this.label_username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button_UserLibrary
+            // 
+            this.button_UserLibrary.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.button_UserLibrary.FlatAppearance.BorderSize = 0;
+            this.button_UserLibrary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(27)))));
+            this.button_UserLibrary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_UserLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_UserLibrary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(247)))), ((int)(((byte)(91)))));
+            this.button_UserLibrary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_UserLibrary.Location = new System.Drawing.Point(602, 378);
+            this.button_UserLibrary.Name = "button_UserLibrary";
+            this.button_UserLibrary.Size = new System.Drawing.Size(193, 31);
+            this.button_UserLibrary.TabIndex = 7;
+            this.button_UserLibrary.Text = "My Library";
+            this.button_UserLibrary.UseVisualStyleBackColor = true;
+            this.button_UserLibrary.Visible = false;
             // 
             // right_cilck_menu
             // 

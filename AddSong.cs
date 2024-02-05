@@ -18,6 +18,12 @@ namespace Spottyfy
         public AddSong()
         {
             InitializeComponent();
+            label1.Text = Program.GetLangInstance().Descendants("Name").FirstOrDefault()?.Value;
+            label2.Text = Program.GetLangInstance().Descendants("Album").FirstOrDefault()?.Value;
+            label3.Text = Program.GetLangInstance().Descendants("Author").FirstOrDefault()?.Value;
+            label4.Text = Program.GetLangInstance().Descendants("ReleaseDate").FirstOrDefault()?.Value;
+            label5.Text = Program.GetLangInstance().Descendants("Price").FirstOrDefault()?.Value;
+            addSongBtn.Text = Program.GetLangInstance().Descendants("AddSong").FirstOrDefault()?.Value;
         }
 
         private void AddSong_Load(object sender, EventArgs e)
@@ -43,6 +49,11 @@ namespace Spottyfy
         private void albumList_SelectedIndexChanged(object sender, EventArgs e)
         {
             albumId = albumki.Find(album => album.name == albumList.SelectedItem.ToString()).Id;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
