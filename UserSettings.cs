@@ -51,8 +51,7 @@ namespace Spottyfy
             users = this.users;
             
         }
-
-        private void LoadProfilePicture()
+        public void LoadProfilePicture()
         {
             if (File.Exists(ProfilePictureFilePath))
             {
@@ -96,6 +95,16 @@ namespace Spottyfy
         private void UserSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
             LoadProfilePicture();
+        }
+
+        private void panel_avatar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void UserSettings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

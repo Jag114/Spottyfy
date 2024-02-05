@@ -75,6 +75,7 @@ namespace Spottyfy
             this.panel_login_window.Name = "panel_login_window";
             this.panel_login_window.Size = new System.Drawing.Size(655, 405);
             this.panel_login_window.TabIndex = 0;
+            this.panel_login_window.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_login_window_Paint);
             // 
             // select_mysql
             // 
@@ -151,6 +152,7 @@ namespace Spottyfy
             this.label_failed_login_window.TabIndex = 11;
             this.label_failed_login_window.Text = "incorrect username and/or password!";
             this.label_failed_login_window.Visible = false;
+            this.label_failed_login_window.Click += new System.EventHandler(this.label_failed_login_window_Click);
             // 
             // linkLabel_forgot_password
             // 

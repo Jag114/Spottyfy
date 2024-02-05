@@ -57,7 +57,8 @@ namespace Spottyfy
         }
         private void PerformLogin()
         {
-            DataBaseConnect db = new DataBaseConnect(type);
+            Program.InitializeDB(type);
+            DataBaseConnect db = Program.GetDBInstance();
             string getUser = input_username_login_window.Text;
             string getRank = "rank";
 
@@ -75,7 +76,7 @@ namespace Spottyfy
                 this.Hide();
                 List <UserData> userDatas = new List<UserData>();
                 userDatas = db.connection.GetUserData();
-                MainMenu MainMenuOpen = new MainMenu();
+                MainMenu MainMenuOpen = Program.GetMainMenuInstance();
                 MainMenuOpen.users = userDatas;
                 MainMenuOpen.getUser = getUser;
                 Console.WriteLine(userDatas.Count);
@@ -110,7 +111,14 @@ namespace Spottyfy
             SignUpOpen.ShowDialog();
         }
 
-        
+        private void label_failed_login_window_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void panel_login_window_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

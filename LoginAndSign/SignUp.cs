@@ -53,7 +53,7 @@ namespace Spottyfy
 
         private void PerformSignUp()
         {
-            DataBaseConnect db = new DataBaseConnect(type);
+            DataBaseConnect db = Program.GetDBInstance();
             db.connection.GetUserData();
             var username = db.connection.GetUserData();
             foreach (var item in username) 

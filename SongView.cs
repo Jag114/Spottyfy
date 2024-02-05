@@ -23,8 +23,7 @@ namespace Spottyfy
 
         private void SongView_Load(object sender, EventArgs e)
         {
-            int type = 1;
-            DataBaseConnect db = new DataBaseConnect(type);
+            DataBaseConnect db = Program.GetDBInstance();
             var albums = db.connection.GetAlbumData();
             var songs = db.connection.GetSongDataFromAlbum(albums[0].Id);
             Console.WriteLine(string.Join(",",songs));
@@ -118,6 +117,11 @@ namespace Spottyfy
         }
 
         private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
